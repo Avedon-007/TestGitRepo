@@ -1,2 +1,2 @@
 # TestGitRepo
-Repo for test automation course
+Repo for test automation course.
