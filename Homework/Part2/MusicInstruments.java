@@ -1,9 +1,9 @@
 public class MusicInstruments {
 	private char typeOfInstrument;
 	private char material;
-	public int size;
-	public char powerSource;
-	public int weight;
+	private int size;
+	private char powerSource;
+	private int weight;
 
 public char getTypeOfInstrument() {return typeOfInstrument;}
 private char getMaterial() {return material;}

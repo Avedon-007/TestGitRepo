@@ -1,14 +1,14 @@
 ﻿public class WorkerOfCompany {
 			private int salary;
-			public int age;
+			private int age;
 			private char gender;
 			private int height;
 			private int weight;
 			private char heirColor;
 			private char eyesColor;
-			public String Fragrance; 
+			private String Fragrance; 
 			private boolean isChildren;
-			public char maritalStatus;
+			private char maritalStatus;
 			
 	private int getSalary() {return salary;}
 	public walk(){}

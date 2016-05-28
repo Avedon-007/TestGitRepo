@@ -9,19 +9,7 @@
 	private int mechanicalButtons;
 	private int camera;
 	private String cameraResolution;
-	private boolean isFrontCamera;
-	private boolean isFlash;
-	private int speaker;
-	private boolean isWifi;
-	private boolean isBluetooth;
-	private int simCardSlot;
-	private String typeOfConnection;
-	private String typeOfbatter;
-	private int batteryCapacity;
-	private boolean isMemoryCardSlot;
-	private int ram;
-	private String cpuCores;
-
+	
 public char getBodyColor(char bodyColor) {return bodyColor;}
 public char getScreenColor(char ScreenColor) {return screenColor;}
 public char getTypeOfScreen(char TypeOfScreen) {return typeOfScreen;}

@@ -1,9 +1,9 @@
 public class CustomerGoods {
-			public String goodsType;
-			public String color;
-			public String smell;
-			public String condition;
-			public String typeOfPacking;
+			private String goodsType;
+			private String color;
+			private String smell;
+			private String condition;
+			private String typeOfPacking;
 			private String dateOfProduction;
 			private String expiringDate;
 			private float price;

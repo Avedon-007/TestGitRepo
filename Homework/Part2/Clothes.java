@@ -1,11 +1,11 @@
 public class Clothes {
 		private String fabric;
 		private String style;
-		public String size;
-		public String type;
-		public String seasonKind;
-		public String forWhom;
-		public String color;
+		private String size;
+		private String type;
+		private String seasonKind;
+		private String forWhom;
+		private String color;
 		private float price;
 
 	public setFabric(int newFabric) {fabric=newFabric;}

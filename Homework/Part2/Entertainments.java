@@ -1,9 +1,8 @@
 public class Entertainments {
-			public char form;
-			public char type;
+			private char type;
 			private char safety;
-			public char  audience;
-			public char activity;
+			private char audience;
+			private char activity;
 
 	public char getForm() {return form;}
 	public char getType() {return type;}

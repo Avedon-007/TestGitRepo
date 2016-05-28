@@ -1,16 +1,16 @@
 public class Planes{
-		public String type;
-		public String engineType;
+		private String type;
+		private String engineType;
 		private int numberOfEngines;
-		public String color;
-		public String comfort;
+		private String color;
+		private String comfort;
 		private String materials;
-		public int maxVelocity;
+		private int maxVelocity;
 		private int weigth;
-		public int numberOfChassis;
+		private int numberOfChassis;
 		private int fuelTanks;
-		public int numberOfDoors;
-		public int numberOfHeadlights;
+		private int numberOfDoors;
+		private int numberOfHeadlights;
 
 	public setType(int newType) {type=newType;}
 	public setEngineType(int newEngineType) {engineType=newEngineType;}
