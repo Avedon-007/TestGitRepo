@@ -1,15 +1,20 @@
 ﻿public class MusicInstruments {
-	private char typeOfInstrument;
-	private char material;
-	private int size;
-	private char powerSource;
-	private int weight;
-
-public char getTypeOfInstrument() {return typeOfInstrument;}
-private char getMaterial() {return material;}
+				private String typeOfInstrument;
+				private String material;
+				private int size;
+				private String powerSource;
+				private int weight;
+		
+public int getTypeOfInstrument() {return typeOfInstrument;}
+public setTypeOfInstrument(int newTypeOfInstrument) {typeOfInstrument=newTypeOfInstrument;}
+public int getMaterial() {return material;}
+public setMaterial(int newMaterial) {material=newMaterial;}
 public int getSize() {return size;}
-public char getPowerSource() {return powerSource;}
+public setSize(int newSize) {size=newSize;}
+public int getPowerSource() {return powerSource;}
+public setPowerSource(int newPowerSource) {powerSource=newPowerSource;}
 public int getWeight() {return weight;}
+public setWeight(int newWeight) {weight=newWeight;}
 public makeSound() {}
 public startPlay() {}
 public stopPlay() {}

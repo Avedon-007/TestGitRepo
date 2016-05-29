@@ -11,16 +11,26 @@ public class TouchScreenDevices {
 	private int camera;
 	private String cameraResolution;
 	
-public char getBodyColor(char bodyColor) {return bodyColor;}
-public char getScreenColor(char ScreenColor) {return screenColor;}
-public char getTypeOfScreen(char TypeOfScreen) {return typeOfScreen;}
+public int getBodyColor(int bodyColor) {return bodyColor;}
+public setBodyColor(int newBodyColor) {bodyColor=newBodyColor;}
+public int getScreenColor(int ScreenColor) {return screenColor;}
+public setScreenColor(int newScreenColor) {screenColor=newScreenColor;}
+public int getTypeOfScreen(int TypeOfScreen) {return typeOfScreen;}
+public setTypeOfScreen(int newTypeOfScreen) {typeOfScreen=newTypeOfScreen;}
 public int getSize() {return size;}
+public setSize(int newSize) {size=newSize;}
 public int getScreenSize() {return screenSize;}
+public setScreenSize(int newScreenSize) {screenSize=newScreenSize;}
 public int getThickness() {return thickness;}
-public char getBodyMaterials(char bodyMaterials) {return bodyMaterials;}
+public setThickness(int newThickness) {thickness=newThickness;}
+public int getBodyMaterials(int bodyMaterials) {return bodyMaterials;}
+public setBodyMaterials(int newBodyMaterials) {size=newBodyMaterials;}
 private int getMechanicalButtons() {return mechanicalButtons;}
+public setMechanicalButtons(int newMechanicalButtons) {mechanicalButtons=newMechanicalButtons;}
 public int getCamera() {return camera;}
-public char getCameraResolution(char cameraResolution) {return cameraResolution;}
+public setCamera(int newCamera) {camera=newCamera;}
+public int getCameraResolution(int cameraResolution) {return cameraResolution;}
+public setCameraResolution(int newCameraResolution) {cameraResolution=newCameraResolution;}
 public ring() {}
 public dialNumber() {}
 public sendMessage() {}
