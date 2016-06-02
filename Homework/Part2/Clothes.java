@@ -9,9 +9,9 @@ public class Clothes {
 		private float price;
 
 	public int getFabric() {return fabric;}
-	public setFabric(int newFabric) {fabric=newFabric;}
+	public void setFabric(int newFabric) {fabric=newFabric;}
 	public int getStyle() {return style;}
-	public setStyle(int newStyle) {style=newStyle;}
+	public void setStyle(int newStyle) {style=newStyle;}
 	public int getSize)() {return size;}
 	public setSize(int newSize) {size=newSize;}
 	public int getType() {return type;}
