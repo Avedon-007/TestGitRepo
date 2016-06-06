@@ -8,21 +8,35 @@ public class Clothes {
 		private String color;
 		private float price;
 
-	public int getFabric() {return fabric;}
-	public void setFabric(int newFabric) {fabric=newFabric;}
-	public int getStyle() {return style;}
-	public void setStyle(int newStyle) {style=newStyle;}
-	public int getSize)() {return size;}
-	public setSize(int newSize) {size=newSize;}
-	public int getType() {return type;}
-	public setType(int newType) {type=newType;}
-	public int getSeasonKind() {return seasonKind;}
-	public setSeasonKind(int newSeasonKind) {seasonKind=newSeasonKind;}
-	public int getForWhom() {return forWhom;}
-	public setForWhom(int newForWhom) {forWhom=newForWhom;}
-	public int getColor() {return color;}
-	public setColor(int color) {color=newColor;}
-	public wash() {}
-	public dry() {}
-	public wear() {}
+	public String getFabric() {return fabric;}
+	public void setFabric(String newFabric) {fabric=newFabric;}
+	public String getStyle() {return style;}
+	public void setStyle(String newStyle) {style=newStyle;}
+	public String getSize() {return size;}
+	public void setSize(String newSize) {size=newSize;}
+	public String getType() {return type;}
+	public void setType(String newType) {type=newType;}
+	public String getSeasonKind() {return seasonKind;}
+	public void setSeasonKind(String newSeasonKind) {seasonKind=newSeasonKind;}
+	public String getForWhom() {return forWhom;}
+	public void setForWhom(String newForWhom) {forWhom=newForWhom;}
+	public String getColor() {return color;}
+	public void setColor(String newColor) {color=newColor;}
+	public float getPrice() {
+		return price;
+	}
+	public void setPrice(float newPrice) {
+		price=newPrice;
+	}
+	public void wash() {}
+	public void dry() {}
+	public void wear() {}
+	
 }
+
+
+
+
+
+
+
