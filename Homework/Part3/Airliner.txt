@@ -1,10 +1,23 @@
+
 abstract class Airliner extends Planes {
-			private String seat;		
-			private String crew;
-			private String bar;
+			private int seat;		
+			private int crew;
 			
-private setChassis() {}
-private turnRight() {}
-private turnLeft() {}
+	
+	public int getSeat() {
+		return seat;
+		}
+	public void setSeat(int newSeat) {
+		seat=newSeat;
+		}
+	public int getCrew() {
+		return crew;
+		}
+	public void setCrew(int newCrew) {
+		crew=newCrew;
+		}
+	public void openChassis() {}
+	public void turnRight() {}
+	public void turnLeft() {}
 
 }
