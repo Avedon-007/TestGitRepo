@@ -9,8 +9,7 @@ public class Planes {
 		private int weight;
 		private int numberOfChassis;
 		private int fuelTanks;
-		private int numberOfDoors;
-		private int numberOfHeadlights;
+		
 
 	public String getType() {
 			return type;}
