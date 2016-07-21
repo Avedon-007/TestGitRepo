@@ -4,14 +4,14 @@ public class Task_02 {
 		
 	
 	public static void main(String[] args){	
-		 int x = 5;
+		 int x = 10;
 		 int y = 4;
 		 boolean isTrue = false;
 		
 		if(x == 10){
-			isTrue = true;
-			System.out.println("x=10 " + isTrue);
 			
+			System.out.println("x=10 ");
+			isTrue = true;
 		}
 		
 		if(y == 10){

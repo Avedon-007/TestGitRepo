@@ -8,7 +8,7 @@ public class Task_03 {
 		
 		boolean isMultiple = false;
 		
-		System.out.print("¬ведите первое число: ");
+		System.out.print("¬ведите число: ");
 		@SuppressWarnings("resource")
 		Scanner scanner = new Scanner(System.in);
 		
