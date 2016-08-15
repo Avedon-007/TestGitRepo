@@ -1,11 +1,10 @@
 package Beginner_level;
-
 import java.util.Scanner;
 
-public class Task_03 {
-
-	public static void main(String[] args){
-		
+public class Task_03 
+{
+	public static void main(String[] args)
+	{		
 		boolean isMultiple = false;
 		
 		System.out.print("Введите число: ");
@@ -16,22 +15,22 @@ public class Task_03 {
 		
 		int remainder1 = number1 % 3;
 		
-		if(number1 > 0 && remainder1 == 0){
+		if(number1 > 0 && remainder1 == 0)
+		{
 			isMultiple = true;
 			System.out.println(isMultiple);
 			System.out.println("Число " + number1 + " кратное 3.");		
-			}
-		
-		if(number1 > 0 && (remainder1 = number1 % 5) == 0){
+		}		
+		else if(number1 > 0 && (remainder1 = number1 % 5) == 0)
+		{
 			isMultiple = true;
 			System.out.println(isMultiple);
 			System.out.println("Число " + number1 + " кратное 5.");
-		}
-		
-		else{
+		}		
+		else
+		{
 			System.out.println(isMultiple);
 			System.out.println("Число " + number1 + " не кратное 3 или 5.");
-		}
-		
+		}		
 	}
 }

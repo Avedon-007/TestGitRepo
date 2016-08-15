@@ -2,43 +2,29 @@ package Pre_intermediate_level;
 
 import java.math.BigInteger;
 
-public class Task_08 {
-
-	public static void main(String[] args) {
-
-		long[] fibo = new long[100];
-		//BigInteger big;
-		long oddSum = 0;
+public class Task_08 
+{
+	public static void main(String[] args) 
+	{
+		BigInteger[] fibo = new BigInteger[100];
+		BigInteger oddSum = BigInteger.ZERO;
 		
-		
-		for(int i = 0; i < fibo.length; i++)
-		{
-			
-			if(i < 2)
-			{
-				fibo[i] = 1;
-			}
-			else
-			{
-				fibo[i] = fibo[i-2] + fibo[i-1];
-			}
-				// Вывожу массив с последовательностью Фибоначи
-				//big = BigInteger.valueOf(fibo[i]);
-				System.out.println("fibo[" + i + "]" + BigInteger.valueOf(fibo[i]));
-		 
-		}
+		fibo[0]=BigInteger.ZERO;
+		fibo[1]=BigInteger.ONE;
+		fibo[2]=BigInteger.ONE;
 	
-			for(int j = 0; j < fibo.length; j++)
+		for(int i = 3; i < fibo.length; i++)
+		{			
+			fibo[i] = fibo[i-1].add(fibo[i-2]); // filling the array with Fibonacci numbers						
+		}
+							
+		for(int j = 0; j < fibo.length; j++)
+		{
+			if(fibo[j].mod(new BigInteger("2")).equals(BigInteger.ONE)) // choosing odd numbers only
 			{
-				if(fibo[j] % 2 == 1)
-				{
-					oddSum += fibo[j];
-			//System.out.println(fibo[j]);   // вывожу не четные числа, чтобы убедиться
-				
-				}	
-				
-			}
-			System.out.println("Сумма первых 100 чисел Фибоначи = " + oddSum);
-			
+				oddSum = oddSum.add(fibo[j]);  // counting sum of odd numbers									
+			}					
+		}			
+		System.out.println("Сумма первых 100 нечётных чисел Фибоначи = " + oddSum);		
 	}
 }

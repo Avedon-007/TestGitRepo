@@ -1,9 +1,9 @@
 package Pre_intermediate_level;
 
-public class Task_02 {
-
-	public static void main(String[] args) {
-
+public class Task_02 
+{
+	public static void main(String[] args) 
+	{
 		String word = new String("How wants to live foreve");
 		char bufer ;
 		
@@ -17,7 +17,5 @@ public class Task_02 {
 		String newWord = new String(wordArray);
 					
 		System.out.println(newWord);
-
 	}
-
 }
