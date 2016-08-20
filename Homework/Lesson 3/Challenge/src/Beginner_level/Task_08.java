@@ -2,10 +2,24 @@ package Beginner_level;
 
 public class Task_08 
 {
+	private static String word;
+	private static int n;
+	
+	public Task_08()
+	{
+		word = "Supercalifragilisticexpialidocious";
+		n = 5;
+	}
+	
+	public void setNumber(int n)
+	{
+		this.n = n;
+	}
+		
 	public static void main(String[] args) 
 	{
-		 String word = new String("Supercalifragilisticexpialidocious");
-		 int n = 5;
+		 Task_08 task = new Task_08();
+		 task.setNumber(6);    // можно задать число n
 		 
 		 for(int i = n; i >= 0; i--)
 		 {			

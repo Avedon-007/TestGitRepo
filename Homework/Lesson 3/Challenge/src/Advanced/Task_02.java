@@ -1,20 +1,29 @@
 package Advanced;
 import java.util.*;
 
-
 public class Task_02 
 {
-	public static void main(String[] args)
+	private static String roman = "";
+	private static int num;
+	
+	public Task_02()
 	{
-		String roman = "";
-		
+		roman = "";
+		int num;
+	}
+	
+	public void Scan()
+	{
 		System.out.print("Enter the number in range 1 to 2015: ");
 		Scanner scan = new Scanner(System.in);
-		
-	if(scan.hasNextInt())
+		if(scan.hasNextInt())		
+			num = scan.nextInt();	
+		else
+			System.out.println("ERROR! Please do not use letters and/or special symbols.");		
+	}
+	
+	public void Logic()
 	{
-		int num = scan.nextInt();
-		
 		if(num < 1 || num > 2015)
 		{
 			System.out.println("ERROR! Please enter the number in range 1 to 2015!");
@@ -98,11 +107,14 @@ public class Task_02
 				roman += "I";
 				num -= 1;
 			}
-		
-			System.out.println("Roman number is: " + roman);
 		}
 	}
-	else
-		System.out.println("ERROR! Please do not use letters and/or special symbols.");
+	
+	public static void main(String[] args)
+	{
+		Task_02 task = new Task_02();
+		task.Scan();
+		task.Logic();		
+		System.out.println("Roman number is: " + roman);s		
 	}
 }

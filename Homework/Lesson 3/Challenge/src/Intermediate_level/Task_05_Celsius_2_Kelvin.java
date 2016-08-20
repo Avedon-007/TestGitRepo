@@ -1,22 +1,22 @@
 package Intermediate_level;
 import java.util.*;
 
-public class Celsius_2_Kelvin 
+public class Task_05_Celsius_2_Kelvin 
 {
-	public static final double COEFFICIEN = 273.15;
+	public static final float COEFFICIEN = 273.15f;
 	private static Scanner sc1;
 	
 	public void convert_Cel_2_Kel() // создаю метод без мейна, чтоб его можно было использовать в Task_05
 	{
-		double tC = 0;
-		double tK = 0;
+		float tC = 0f;
+		float tK = 0f;
 		
 		System.out.print("Enter the temperature in Celsius: ");
 		sc1 = new Scanner(System.in);
 		
-		if(sc1.hasNextDouble())
+		if(sc1.hasNextFloat())
 		{
-			tC = sc1.nextDouble();
+			tC = sc1.nextFloat();
 			
 			if(tC >= -COEFFICIEN)
 			{	

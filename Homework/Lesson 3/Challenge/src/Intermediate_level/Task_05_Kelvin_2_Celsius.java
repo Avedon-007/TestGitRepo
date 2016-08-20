@@ -1,24 +1,24 @@
 package Intermediate_level;
 import java.util.*;
 
-public class Kelvin_2_Celsius 
+public class Task_05_Kelvin_2_Celsius 
 {
 	private static Scanner sc1;
 	
 	public void convert_Kel_2_Cel()    // создаю метод без мейна, чтоб его можно было использовать в Task_05
 	{
-		double tC = 0;
-		double tK = 0;
+		float tC = 0f;
+		float tK = 0f;
 		
 		System.out.print("Enter the temperature in Kelvin: ");
 		sc1 = new Scanner(System.in);
 		
-		if(sc1.hasNextDouble())
+		if(sc1.hasNextFloat())
 		{
-			tK = sc1.nextDouble();
+			tK = sc1.nextFloat();
 			if(tK >= 0)
 			{	
-				tC = tK - Celsius_2_Kelvin.COEFFICIEN; // взял переменную COEFFICIEN из класса Celsius_2_Kelvin, 
+				tC = tK - Task_05_Celsius_2_Kelvin.COEFFICIEN; // взял переменную COEFFICIEN из класса Celsius_2_Kelvin, 
 														//чтобы не дублировать её, так как она уже создана была
 				System.out.println("The temperature in Celsius is: " + tC);
 			}

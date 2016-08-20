@@ -2,12 +2,29 @@ package Beginner_level;
 
 public class Task_02 
 {	
+	private static int x;
+	private static  int y;
+	private static int sum;
+	private static  boolean isTrue;
+	
+	public Task_02()
+	{
+		x = 6;
+		y = 4;
+		sum = 0;
+		isTrue = false;
+	}
+	
+	public void sum()
+	{
+		sum = x + y;
+	}	
+	
 	public static void main(String[] args)
-	{	
-		 int x = 10;
-		 int y = 4;
-		 boolean isTrue = false;
-		
+	{			
+		Task_02 task = new Task_02();
+		task.sum();
+						 
 		if(x == 10)
 		{			
 			isTrue = true;
@@ -18,10 +35,10 @@ public class Task_02
 			isTrue = true;
 			System.out.println("y=10 " + isTrue);			
 		}		
-		else if(x + y == 10)
+		else if(sum == 10)
 		{
 			isTrue = true;
-			System.out.println("x+y=10 " + isTrue);			
+			System.out.println("x+y=" + sum + " " + isTrue);			
 		}
 		else 
 		{
