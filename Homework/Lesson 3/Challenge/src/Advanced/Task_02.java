@@ -115,6 +115,6 @@ public class Task_02
 		Task_02 task = new Task_02();
 		task.Scan();
 		task.Logic();		
-		System.out.println("Roman number is: " + roman);s		
+		System.out.println("Roman number is: " + roman);	
 	}
 }
