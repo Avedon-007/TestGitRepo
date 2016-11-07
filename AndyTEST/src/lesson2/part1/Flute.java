@@ -1,89 +1,70 @@
+package lesson2.part1;
 
-public class Flute extends MusicInstruments {
-			private String typeOfInstrument;
-			private String material;
-			private String powerSource;
-			private int weight;
-			private int valve;
-			private String logo;
-			private double price;
-			
-	public String getTypeOfInstrument() {
-				return typeOfInstrument;
-				}
-	public void setTypeOfInstrument(String newTypeOfInstrument) {
-				typeOfInstrument=newTypeOfInstrument;
-				}
+import lesson1.part2.MusicInstruments;
 
-	public String getMaterial() {
-				return material;
-				}
-	public void setMaterial(String newMaterial) {
-				material=newMaterial;
-				}
+
+public class Flute extends MusicInstruments 
+{			
+			private int valveNumber;
+			private String brandName;
+			private double flutePrice;
 	
-	public String getPowerSource() {
-			return powerSource;
-		}
-	public void setPowerSource(String newPowerSource) {
-				powerSource=newPowerSource;
-				}
+	public Flute(){}
 	
-	public int getWeight() {
-				return weight;
-				}
-	public void setWeight(int newWeight) {
-				weight=newWeight;
-				}
-		
-	public int getValve() {
-		return valve;
-		}
-	public void setValve(int newValve) {
-		valve = newValve;
-		}	
-			
-	public String getLogo() {
-		return logo;
-		}
-	public void setLogo(String newLogo) {
-		logo = newLogo;
-		}
-		
-	public double getPrice(){
-		return price;
+	public Flute(String typeOfInstrument, String brandName, int valveNumber, double flutePrice)
+	{
+		this.typeOfInstrument = typeOfInstrument;
+		this.brandName = brandName;
+		this.valveNumber = valveNumber;
+		this.flutePrice = flutePrice;
 	}
-	public void setPrice(double newPrice){
-		price = newPrice;
-	}		
-			
-	public void makeSound() {}
-	public void startPlay() {}	
-	
 		
-	public Flute(){
-		typeOfInstrument = "Wind instrument";
-		material = "Metal";
-		powerSource = "Non-Electric";
-		weight = 420;
-		valve = 4;
-		logo = "Gemeinhardt";
-		price = 300.0;
+	public int getValveNumber() {
+		return valveNumber;
 	}
-	
-	public static void main(String[] args){
-		
-		Flute Gemeinhardt_2SP = new Flute();
-			
+
+	public void setValveNumber(int valveNumber) {
+		this.valveNumber = valveNumber;
+	}
+
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public double getFlutePrice() {
+		return flutePrice;
+	}
+
+	public void setFlutePrice(double flutePrice) {
+		this.flutePrice = flutePrice;
+	}
+
+	public static void main(String[] args)
+	{		
+		Flute Gemeinhardt2SP = new Flute("Brass", "Gemeinhardt 2SP", 4, 299.99);			
 			System.out.println("   Gemeinhardt 2SP:");
-			System.out.println("Type Of Instrument: "+ Gemeinhardt_2SP.typeOfInstrument);
-			System.out.println("Material: "+ Gemeinhardt_2SP.material);
-			System.out.println("PowerSource: "+ Gemeinhardt_2SP.powerSource);
-			System.out.println("Weight: "+ Gemeinhardt_2SP.weight +"g");
-			System.out.println("Valve: "+ Gemeinhardt_2SP.valve);
-			System.out.println("Logo: "+ Gemeinhardt_2SP.logo);
-			System.out.println("Price: "+ Gemeinhardt_2SP.price +"$");
-			
-		}
-	
+			System.out.println("Type Of Instrument: " + Gemeinhardt2SP.getTypeOfInstrument());
+			System.out.println("Brand name of flute is: "+ Gemeinhardt2SP.getBrandName());
+			System.out.println("Number of valves is: "+ Gemeinhardt2SP.getValveNumber());
+			System.out.println("Price is: "+ Gemeinhardt2SP.getFlutePrice() +"$");			
+	}	
 }
+/*
+public void makeSound() {}
+public void startPlay() {}	
+
+	
+public Flute(){
+	typeOfInstrument = "Wind instrument";
+	material = "Metal";
+	powerSource = "Non-Electric";
+	weight = 420;
+	valve = 4;
+	logo = "Gemeinhardt";
+	price = 300.0;
+}
+*/

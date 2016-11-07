@@ -1,9 +1,9 @@
 package lesson1.part3;
 
-//import lesson1.part2.Planes;
+//import lesson1.part2.Planes; <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
 
-abstract class Airliner extends Planes 
+public class Airliner extends Planes 
 {
 	private int seatAirliner;		
 	private int crewAirliner;
@@ -30,8 +30,7 @@ abstract class Airliner extends Planes
 
 	public void setCrewAirliner(int crewAirliner) {
 		this.crewAirliner = crewAirliner;
-	}
-	
+	}	
 }
 
 /*

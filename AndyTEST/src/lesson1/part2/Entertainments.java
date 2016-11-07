@@ -4,7 +4,7 @@ public class Entertainments
 {
 	private String form;
 	private String type;
-	private String safety;
+	protected String safety;
 	private String audience;
 	protected String activity;
 	

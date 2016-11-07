@@ -6,10 +6,10 @@ public class CustomerGoods
 			private String color;
 			private String smell;
 			private String condition;
-			private String typeOfPacking;
+			protected String typeOfPacking;
 			protected String dateOfProduction;
-			private String expiringDate;
-			private double price;
+			protected String expiringDate;
+			protected double price;
 			
 			//CONSTRUCTORs//
 			

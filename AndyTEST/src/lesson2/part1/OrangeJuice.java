@@ -1,89 +1,63 @@
+package lesson2.part1;
 
-public class OrangeJuice extends CustomerGoods {
-	private String goodsType;
-	private String color;
-	private String smell;
-	private String typeOfPacking;
+import lesson1.part2.CustomerGoods;
+
+
+public class OrangeJuice extends CustomerGoods 
+{	
 	private String taste;
 	private String foodType;
-	private double price;
 	
-	public String getGoodsType() {
-		return goodsType;
-	}
-	public void setGoodsType(String newGoodsType){
-		goodsType = newGoodsType;
-	}
+	public OrangeJuice(){}
 	
-	public String getColor() {
-		return color;
-	}
-	public void setColor(String newColor){
-		color = newColor;
-	}
-	
-	public String getSmell() {
-		return smell;
-	}
-	public void setSmell(String newSmell){
-		smell = newSmell;
-	}
-	
-	public String getTypeOfPacking() {
-		return typeOfPacking;
-	}
-	public void setTypeOfPacking(String newTypeOfPacking){
-		typeOfPacking = newTypeOfPacking;
+	public OrangeJuice(String typeOfPacking, String dateOfProduction, String taste, double price)
+	{
+		this.typeOfPacking = typeOfPacking;
+		this.dateOfProduction = dateOfProduction;
+		this.taste = taste;
+		this.price = price;
 	}
 	
 	public String getTaste() {
 		return taste;
 	}
-	public void setTaste(String newTaste){
-		taste = newTaste;
+
+	public void setTaste(String taste) {
+		this.taste = taste;
 	}
-	
+
 	public String getFoodType() {
 		return foodType;
-		}
-	public void setFoodType(String newFoodType) {
-		foodType=newFoodType;
-		}	
-	
-	public double getPrice(){
-		return price;
 	}
-	public void setPrice(double newPrice){
-		price = newPrice;
+
+	public void setFoodType(String foodType) {
+		this.foodType = foodType;
 	}
-	
-	public void buy() {}
-	public void pourInGlass() {}
-	public void drink() {}
-	
-	
-	public OrangeJuice() {
-		goodsType = "Food";
-		color = "Orange";
-		smell = "Orange";
-		typeOfPacking = "Plastic bottle";
-		taste = "sweet and sour";
-		foodType = "Drinks";
-		price = 5.99;
-	}
-	
-	public static void main(String[] args) {
-	
-		OrangeJuice SandoraJuice = new OrangeJuice();
-		
+
+	public static void main(String[] args) 
+	{	
+		OrangeJuice sandoraJuice = new OrangeJuice("Tetra pack", "11.10.2012", "Sweet, sour", 1.99);		
 		System.out.println("   Sandora Orange Juice:");
-		System.out.println("Goods type: "+ SandoraJuice.goodsType);
-		System.out.println("Color: "+ SandoraJuice.color);
-		System.out.println("Smell: "+ SandoraJuice.smell);
-		System.out.println("Type of packing: "+ SandoraJuice.typeOfPacking);
-		System.out.println("Taste: "+ SandoraJuice.taste);
-		System.out.println("Food type: "+ SandoraJuice.foodType);
-		System.out.println("Price: "+ SandoraJuice.price +"$");
-	
+		System.out.println("Type of packing: "+ sandoraJuice.getTypeOfPacking());
+		System.out.println("Date of production: "+ sandoraJuice.getDateOfProduction());
+		System.out.println("Taste: "+ sandoraJuice.getTaste());
+		System.out.println("Price: "+ sandoraJuice.getPrice() +"$");
 	}
 }
+
+/*
+public void buy() {}
+public void pourInGlass() {}
+public void drink() {}
+
+
+public OrangeJuice() {
+	goodsType = "Food";
+	color = "Orange";
+	smell = "Orange";
+	typeOfPacking = "Plastic bottle";
+	taste = "sweet and sour";
+	foodType = "Drinks";
+	price = 5.99;
+}
+*/

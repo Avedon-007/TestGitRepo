@@ -1,66 +1,55 @@
+package lesson2.part1;
 
-public class Boeing extends Planes {
+import lesson1.part2.Planes;
 
-		private String type;
-		private String engineType;
-		private int numberOfEngines;
-		private int maxVelocity;
-		private double length;
-		private int maxTakeoffWeight;		
-		private int crew;
+
+public class Boeing extends Planes 
+{
+		private double lengthPlane;				
+		private int crewNumber;
 		
-		
-		
-	public String getType() {
-			return type;
-	}
- 	public void setType(String newType) {
- 			type = newType;
- 	}
- 	
- 	public String getEngineType() {
- 			return engineType;
- 	}
-	public void setEngineType(String newEngineType) {
-			engineType = newEngineType;
-	}
+	public Boeing(){}
 	
-	public int getNumberOfEngines() {
-			return numberOfEngines;
-	}
-	public void setNumberOfEngines(int newNumberOfEngines) {
-			numberOfEngines = newNumberOfEngines;
-	}
-	
-	public int getMaxVelocity() {
-			return maxVelocity;
-	}
-	public void setMaxVelocity(int newMaxVelocity) {
-		maxVelocity = newMaxVelocity;
-	}
-	
-	public double getLength(){
-		return length;
-	}
-	public void setLength(double newLength) {
-		length = newLength;
+	public Boeing(String type, String engineType, int maxVelocity, double lengthPlane, int crewNumber)
+	{
+		this.type = type;
+		this.engineType = engineType;
+		this.maxVelocity = maxVelocity;
+		this.lengthPlane = lengthPlane;
+		this.crewNumber = crewNumber;
 	}
 		
-	public int getMaxTakeoffWeight(){
-		return maxTakeoffWeight;
+	public double getLengthPlane() {
+		return lengthPlane;
 	}
-	public void setMaxTakeoffWeight(int newMaxTakeoffWeight) {
-		maxTakeoffWeight = newMaxTakeoffWeight;
+
+	public void setLengthPlane(double lengthPlane) {
+		this.lengthPlane = lengthPlane;
+	}
+
+	public int getCrewNumber() {
+		return crewNumber;
+	}
+
+	public void setCrewNumber(int crewNumber) {
+		this.crewNumber = crewNumber;
+	}
+
+	public static void main(String[] args){
+		
+		Boeing Boeing_747_100B = new Boeing("Airliner", "Jet engine", 800, 102.45, 2);
+		
+		System.out.println("   BOEING 747-100B");
+		System.out.println("Type of aircraft: "+ Boeing_747_100B.getType());
+		System.out.println("Engines type: "+ Boeing_747_100B.getEngineType());		
+		System.out.println("Max. velocity: "+ Boeing_747_100B.getMaxVelocity() +" km/h");		
+		System.out.println("Length of plane is: "+ Boeing_747_100B.getLengthPlane() +" m");
+		System.out.println("Number of crew: "+ Boeing_747_100B.getCrewNumber());
 	}
 		
-	public int getCrew() {
-		return crew;
-	}
-	public void setCrew(int newCrew) {
-		crew = newCrew;
-	}		
-	
-	public void turnRight() {}
+}
+/*
+ public void turnRight() {}
 	public void turnLeft() {}	
 		
 		
@@ -74,20 +63,5 @@ public class Boeing extends Planes {
 		maxTakeoffWeight = 334;
 		crew = 3;
 	}
-		
 	
-	public static void main(String[] args){
-		
-		Boeing Boeing_747_100B = new Boeing();
-		
-		System.out.println("   BOEING 747-100B");
-		System.out.println("Type: "+ Boeing_747_100B.type);
-		System.out.println("Engine: "+ Boeing_747_100B.engineType);
-		System.out.println("Number of engines: "+ Boeing_747_100B.numberOfEngines);
-		System.out.println("Max. velocity: "+ Boeing_747_100B.maxVelocity +" km/h");
-		System.out.println("Chassis: "+ Boeing_747_100B.length +" m");
-		System.out.println("Max. carrying weight: "+ Boeing_747_100B.maxTakeoffWeight +" kg");
-		System.out.println("Crew: "+ Boeing_747_100B.crew);
-	}
-		
-}
+	*/

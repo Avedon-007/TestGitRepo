@@ -7,7 +7,7 @@ public class TouchScreenDevices
 	protected String typeOfScreen;
 	private double screenSize;
 	private String screenResolution;
-	private String bodyMaterials;
+	protected String bodyMaterials;
 	private int mechanicalButtonsQuantity;
 	private int camerasQuantity;
 	

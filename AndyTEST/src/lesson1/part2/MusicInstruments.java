@@ -2,7 +2,7 @@ package lesson1.part2;
 
 public class MusicInstruments
 {
-	private String typeOfInstrument;
+	protected String typeOfInstrument;
 	private String material;
 	private double size;
 	protected String powerSource;

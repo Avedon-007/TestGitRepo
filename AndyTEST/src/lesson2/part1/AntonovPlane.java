@@ -1,93 +1,68 @@
+package lesson2.part1;
 
-public class AntonovPlane extends Planes {
-		
-		private String type;
-		private String engineType;
-		private int numberOfEngines;
-		private int maxVelocity;
-		private int numberOfChassis;
+import lesson1.part2.Planes;
+
+
+public class AntonovPlane extends Planes 
+{		
 		private int maxCarrying;		
 		private int crew;
 	
+	public AntonovPlane(){}
 	
-	public String getType() {
-			return type;
+	public AntonovPlane(String type, String engineType, int maxVelocity, int maxCarrying, int crew)
+	{
+		this.type = type;
+		this.engineType = engineType;
+		this.maxVelocity = maxVelocity;
+		this.maxCarrying = maxCarrying;
+		this.crew = crew;
 	}
- 	public void setType(String newType) {
- 			type=newType;
- 	}
- 	
- 	public String getEngineType() {
- 			return engineType;
- 	}
-	public void setEngineType(String newEngineType) {
-			engineType=newEngineType;
-	}
-	
-	public int getNumberOfEngines() {
-			return numberOfEngines;
-	}
-	public void setNumberOfEngines(int newNumberOfEngines) {
-			numberOfEngines=newNumberOfEngines;
-	}
-	
-	public int getMaxVelocity() {
-			return maxVelocity;
-	}
-	public void setMaxVelocity(int newMaxVelocity) {
-		maxVelocity=newMaxVelocity;
-	}
-	
-	public int getNumberOfChassis() {
-			return numberOfChassis;
-	}
-	public void setNumberOfChassis(int newNumberOfChassis) {
-		numberOfChassis=newNumberOfChassis;
-	}
-
-	public int getMaxCarrying() {
+			
+	public int getMaxCarrying() 
+	{
 		return maxCarrying;
 	}
-	public void setMaxCarrying(int newMaxCarrying) {
-		maxCarrying = newMaxCarrying;
+
+	public void setMaxCarrying(int maxCarrying) 
+	{
+		this.maxCarrying = maxCarrying;
 	}
 
-	public int getCrew() {
+	public int getCrew()
+	{
 		return crew;
 	}
-	public void setCrew(int newCrew) {
-		crew=newCrew;
-	}		
 
-	public void openDeckDoor() {}
+	public void setCrew(int crew) 
+	{
+		this.crew = crew;
+	}
+
+	public static void main(String[] args)
+	{		
+		AntonovPlane An32 = new AntonovPlane("Cargo airplane", "Turboprop engine", 510, 7, 3);		
+		System.out.println("   AN32");
+		System.out.println("Airplane type: "+ An32.getType());
+		System.out.println("Engine type: "+ An32.getEngineType());		
+		System.out.println("Max. velocity: "+ An32.getMaxVelocity() +" km/h");		
+		System.out.println("Max. carrying weight: "+ An32.getMaxCarrying() +" tonnes");
+		System.out.println("Crew: "+ An32.getCrew());
+	}
+}
+
+/*
+ * public void openDeckDoor() {}
 	public void turnLight() {}
 	
+	============================================
 	
-	
-	
-	
-	public AntonovPlane(){
-		
-		type = "Cargo airplane";
+	type = "Cargo airplane";
 		engineType = "Turboprop engine";
 		numberOfEngines = 2;
 		maxVelocity = 810;
 		numberOfChassis = 3;
 		maxCarrying = 7;
 		crew = 3;
-	}
-
-	public static void main(String[] args){
-		
-		AntonovPlane An32 = new AntonovPlane();
-		
-		System.out.println("   AN32");
-		System.out.println("Type: "+ An32.type);
-		System.out.println("Engine: "+ An32.engineType);
-		System.out.println("Number of engines: "+ An32.numberOfEngines);
-		System.out.println("Max. velocity: "+ An32.maxVelocity +"km/h");
-		System.out.println("Chassis: "+ An32.numberOfChassis);
-		System.out.println("Max. carrying weight: "+ An32.maxCarrying +" tonnes");
-		System.out.println("Crew: "+ An32.crew);
-	}
-}
+	
+	*/

@@ -1,69 +1,61 @@
+package lesson2.part1;
 
-public class TShirt extends Clothes {
-		private String fabric;
-		private String neck;
-		private String size;
-		private String color;
-		private double price;
+import lesson1.part2.Clothes;
+
+
+public class TShirt extends Clothes 
+{		
+	private String brandName;	
+	private String neckType;
+		
+	public TShirt(){}
 	
-		public String getFabric() {
-			return fabric;
-		}
-		public void setFabric(String newFabric){
-			fabric = newFabric;
-		}
-
-		public String getNeck(){
-			return neck;
-		}
-		public void setNeck(String newNeck){
-			neck = newNeck;
-		}
-
-		public String getSize(){
-			return size;
-		}
-		public void setSize(String newSize){
-			size = newSize;
-		}
-
-		public String getColor(){
-			return color;
-		}
-		public void setColor(String newColor){
-			color = newColor;
-		}
-
-		public double getPrice(){
-			return price;
-		}
-		public void setPrice(double newPrice){
-			price = newPrice;
-		}
-
-		public void wear() {}
-		public void wash() {}
-		public void dry() {}
-	
-	
-	public TShirt() {
-		fabric = "Nylon";
-		neck = "Round";
-		size = "XL";
-		color = "Orang";
-		price = 24.99;
+	public TShirt(String brandName, String color, String neckType, double price)
+	{
+		this.brandName = brandName;
+		this.neckType = neckType;
+		this.color = color;
+		this.price = price;
 	}
-	
-	public static void main(String[] args){
 		
-		TShirt FootballTShirt = new TShirt();
-		
+	public String getBrandName() {
+		return brandName;
+	}
+
+	public void setBrandName(String brandName) {
+		this.brandName = brandName;
+	}
+
+	public String getNeckType() {
+		return neckType;
+	}
+
+	public void setNeckType(String neckType) {
+		this.neckType = neckType;
+	}
+
+	public static void main(String[] args)
+	{		
+		TShirt footballTShirt = new TShirt("Nike", "Blue", "Round neck", 49.99);		
 		System.out.println("   T-SHIRT");
-		System.out.println("Fabric: "+ FootballTShirt.fabric);
-		System.out.println("Neck: "+ FootballTShirt.neck);
-		System.out.println("Size: "+ FootballTShirt.size);
-		System.out.println("Color: "+ FootballTShirt.color);
-		System.out.println("Price: "+ FootballTShirt.price +"$");
-	}
-	
+		System.out.println("Brand name of T-Shirt is: " + footballTShirt.getBrandName());
+		System.out.println("Neck type is: "+ footballTShirt.getNeckType());		
+		System.out.println("Color of T-Shirt is: "+ footballTShirt.getColor());
+		System.out.println("Price: "+ footballTShirt.getPrice() +"$");
+	}	
 }
+
+/*
+public void wear() {}
+public void wash() {}
+public void dry() {}
+
+
+public TShirt() {
+fabric = "Nylon";
+neck = "Round";
+size = "XL";
+color = "Orang";
+price = 24.99;
+}
+*/

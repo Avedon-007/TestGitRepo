@@ -8,8 +8,8 @@ public class Clothes {
 				private String type;
 				private String seasonKind;
 				private String forWhom;
-				private String color;
-				private double price;
+				protected String color;
+				protected double price;
 				
 				
 				//CONSTRUCTORs//
