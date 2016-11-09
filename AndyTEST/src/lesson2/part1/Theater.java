@@ -7,8 +7,8 @@ public class Theater extends Entertainments
 {					
 	private String playName;		
 	private int actorsNumber;
-			private String beginingTime;
-			private double ticketPrice;
+	private String beginingTime;
+	private double ticketPrice;
 
 	public Theater(){}
 	
