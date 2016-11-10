@@ -1,3 +1,11 @@
+/*
+ Create a method (program) which returns True if the given non-negative number is a multiple of
+
+3 or a multiple of 5
+ */
+/*
+ rewrite like task 1 and task 2 
+ */
 package lesson3.beginnerLevel;
 import java.util.Scanner;
 

@@ -1,34 +1,46 @@
+/*
+ Given an array of integer numbers. Create a method (program) which returns a new one where
+
+each element is multiplied by 3
+ */
 package lesson3.beginnerLevel;
 
 public class Task_01 
 {	
-	private static int[] numbers;
-	private static int factor;
 	
-	public Task_01()
-	{
-		numbers = new int[]{1,2,3,4,5};
-		factor = 3;
-	}	
 	
-	public void multiply()
-	{
-		Task_01 task = new Task_01();
-		task.setFactor(2);  // можно задать множитель
-		
+	public int[] multiplyArrayByFactor(int[] numbers, int factor )
+	{	
+		int[] multiplyArrayByFactor = new int[numbers.length] ;
 		for (int i = 0; i < numbers.length; i++){
-			numbers[i] = numbers[i] * factor;
-			System.out.print(numbers[i]);
-			System.out.print(" ");
+			multiplyArrayByFactor[i] = numbers[i] * factor;
+			
 		}
+		return multiplyArrayByFactor;
 	}
-	public void setFactor(int factor)
+	public void showArray(int[] numbers)
 	{
-		this.factor = factor;
+		for(int element: numbers)
+			System.out.print(element + " ");
+		System.out.println();
 	}
 	public static void main(String[] args)
 	{
+	//Test data
+		int[] numbers = new int[]{1,2,3,4,5};
+		int factor = 3;
+	//Instance of classes creation 
 		Task_01 task = new Task_01();
-		task.multiply();   // вывожу метод multiply() на экран, так как в нём есть 	System.out.println(numbers[i])
+		//Methods application 
+		
+		System.out.println("Given an array of integer numbers.\n "
+				+ "Create a method (program) which returns a new one where each element is multiplied by 3");
+		System.out.print("Initial array is ");
+		task.showArray(numbers);
+		System.out.println("Factor is " + factor);
+		System.out.print("Modified array is ");
+		task.showArray(task.multiplyArrayByFactor(numbers, factor));
+
+
 	}
 }

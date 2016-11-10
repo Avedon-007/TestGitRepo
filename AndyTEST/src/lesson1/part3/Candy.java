@@ -42,7 +42,7 @@ abstract class Candy extends CustomerGoods //класс абстрактный - не можо создать
 		this.taste = taste;
 	}
 	
-	public static void main(String[] args)
+	/*public static void main(String[] args)
 	{		
 		Candy chupaChups1 = new Candy("food", "Candy", "Lollipop", "Sweet, banana");	//класс абстрактный
 		System.out.println("CHUPA CHUPS Banana");
@@ -51,7 +51,7 @@ abstract class Candy extends CustomerGoods //класс абстрактный - не можо создать
 		System.out.println("Type of sweets is: " + chupaChups1.getSweetsType());
 		System.out.println("Taste is: " + chupaChups1.getTaste());
 		
-	}
+	}*/
 }
 
 /*

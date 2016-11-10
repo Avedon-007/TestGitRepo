@@ -1,9 +1,9 @@
 package lesson1.part3;
 
-//import lesson1.part2.Planes; <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+//import lesson1.part2.Planes;
 
 
-public class Airliner extends Planes 
+public class Airliner extends lesson1.part2.Planes 
 {
 	private int seatAirliner;		
 	private int crewAirliner;
