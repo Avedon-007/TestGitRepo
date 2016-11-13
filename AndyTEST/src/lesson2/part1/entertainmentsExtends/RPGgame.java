@@ -1,4 +1,4 @@
-package lesson2.part1;
+package lesson2.part1.entertainmentsExtends;
 
 import lesson1.part2.Entertainments;
 

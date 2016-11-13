@@ -1,4 +1,4 @@
-package lesson2.part1;
+package lesson2.part1.customerGoodsExtends;
 
 import lesson1.part2.CustomerGoods;
 
