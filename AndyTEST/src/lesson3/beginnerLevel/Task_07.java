@@ -8,7 +8,7 @@ public class Task_07
 	
 	public int findMax(int max)
 	{
-		int[] arr = new int[]{-100,0,2,5,8,3,10,36,2,9};
+		int[] arr = new int[]{-100,0,2,5,8,3,10,36,2,9,40};
 		 max = 0;
 		for(int i = 0; i < arr.length; i++)
 		{
@@ -28,6 +28,6 @@ public class Task_07
 		
 		Task_07 task = new Task_07();
 		
-		System.out.println("Max element of array is: " + task.findMax());  //Почему в task.findMax(0) нужно НОЛЬ?
+		System.out.println("Max element of array is: " + task.findMax(0));  //Почему в task.findMax(0) нужно НОЛЬ или другую цыфру?
 	}
 }
