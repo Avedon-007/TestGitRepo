@@ -17,7 +17,7 @@ public class Task_03
 		int	remainder3 = num % 3;
 		int	remainder5 = num % 5;
 					
-		return (  remainder3 == 0 ||  remainder5 == 0)? true: false;
+		return ( num >= 0 && (remainder3 == 0 ||  remainder5 == 0))? true: false;
 	}	
 			
 		public static void main(String[] args)
