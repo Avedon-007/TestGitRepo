@@ -12,25 +12,13 @@ package lesson3.beginnerLevel;
 
 public class Task_03 
 {
-	public boolean checkNumbers(int[] num)
-	{
-		int remainder3 = 0;
-		int remainder5 = 0;
-		
-		for(int i = 0; i < num.length; i++)
-		{
-			
-			remainder3 = num[i] % 3;
-			remainder5 = num[i] % 5;
-			
-		}	
-		
+	public boolean checkNumbers(int num)
+	{			
+		int	remainder3 = num % 3;
+		int	remainder5 = num % 5;
+					
 		return (  remainder3 == 0 ||  remainder5 == 0)? true: false;
-	}
-		
-			
-		
-		
+	}	
 			
 		public static void main(String[] args)
 		{		
@@ -41,7 +29,7 @@ public class Task_03
 					+ "3 or a multiple of 5");		
 			for(int newNum: num)
 			{	
-				System.out.println("For number " + newNum + " result is " + task.checkNumbers(num));
+				System.out.println("For number " + newNum + " result is " + task.checkNumbers(newNum));
 			}
 		}
 }
