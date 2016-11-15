@@ -1,18 +1,15 @@
+/*
+ Given an array of integers. Find and print the max element in it
+ */
 package lesson3.beginnerLevel;
 
 public class Task_07 
 {
-	private static int[] arr;
-	private static int max;
 	
-	public Task_07()
+	public int findMax(int max)
 	{
-		arr = new int[]{-100,0,2,5,8,3,10,36,2,9};
-		max = 0;
-	}
-	
-	public void Max()
-	{
+		int[] arr = new int[]{-100,0,2,5,8,3,10,36,2,9};
+		 max = 0;
 		for(int i = 0; i < arr.length; i++)
 		{
 			arr[i] = max;
@@ -23,12 +20,14 @@ public class Task_07
 					max = arr[j];				
 			}
 		}
+		return max;
 	}
 	
 	public static void main(String[] args)
 	{		
+		
 		Task_07 task = new Task_07();
-		task.Max();		
-		System.out.println("Max element: " + max);
+		
+		System.out.println("Max element of array is: " + task.findMax());  //Почему в task.findMax(0) нужно НОЛЬ?
 	}
 }
