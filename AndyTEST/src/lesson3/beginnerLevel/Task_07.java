@@ -4,16 +4,13 @@
 package lesson3.beginnerLevel;
 
 public class Task_07 
-{
-	
-	public int findMax(int max)
-	{
-		int[] arr = new int[]{-100,0,2,5,8,3,10,36,2,9,40};
-		 max = 0;
+{	
+	public int findMaxElementInArray(int[] arr)
+	{		
+		int max =0;
 		for(int i = 0; i < arr.length; i++)
 		{
-			arr[i] = max;
-			
+			arr[i] = max;			
 			for(int j = i+1; j < arr.length; j++)
 			{
 				if(arr[j] > max)				
@@ -24,10 +21,12 @@ public class Task_07
 	}
 	
 	public static void main(String[] args)
-	{		
-		
+	{			
+		//Test data
+		int[] arr = {-100,0,2,5,8,3,10,36,2,9};
+		// Intantiate new object
 		Task_07 task = new Task_07();
-		
-		System.out.println("Max element of array is: " + task.findMax(0));  //Почему в task.findMax(0) нужно НОЛЬ или другую цыфру?
+		//Methods application
+		System.out.println("Max element of array is: " + task.findMaxElementInArray(arr));
 	}
 }

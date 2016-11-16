@@ -23,11 +23,12 @@ public class Task_08
 			
 	public static void main(String[] args) 
 	{
-		 Task_08 task = new Task_08();
 		//Test data 
 		String word = "Supercalifragilisticexpialidocious";
-		int n = 6;  // set first n characters
-		
+		int n = 6;  // set first n characters 
+		//Instantiate new object
+		Task_08 task = new Task_08();
+		//Method application		
 		 task.quantityCharactersOfString(word, n);  	
 	}
 }

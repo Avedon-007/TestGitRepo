@@ -1,3 +1,17 @@
+/*
+ 	Create method which gets a number form 1 to 9 (for example 4) and then prints the follow output:
+	For number 4:				For number 3:
+	*							*
+	**							**
+	***							***
+	****						**
+	***							*
+	**
+	*
+	
+ */
+
+
 package lesson3.beginnerLevel;
 
 
