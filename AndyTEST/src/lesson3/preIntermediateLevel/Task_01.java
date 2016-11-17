@@ -23,11 +23,11 @@ public class Task_01
 		boolean heSmile = false;
 		boolean sheSmile = true;
 		// Instantiate new object
-		Task_01 visit = new Task_01();
+		Task_01 visitCinema = new Task_01();
 		// Methods application
 		System.out.println("Has he good mood? - " + heSmile);
 		System.out.println("Has she good mood? - " + sheSmile);
-		System.out.println("Do they go to the cinema? - " + visit.decisionToGoCinema(heSmile, sheSmile));
+		System.out.println("Do they go to the cinema? - " + visitCinema.decisionToGoCinema(heSmile, sheSmile));
 	}
 }
 
