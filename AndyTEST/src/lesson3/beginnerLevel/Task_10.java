@@ -12,6 +12,14 @@
  */
 
 
+
+/* 
+ Try implement only 1 FOR with FLAG attribute
+ 
+ */
+
+
+
 package lesson3.beginnerLevel;
 
 
