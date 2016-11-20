@@ -4,7 +4,7 @@
  */
 /*
  1. remake with array which contained pairs of numbers.
- 2. use Try catch or If condition in separeited method.
+ 2. use Try catch or If condition in separated method.
  */
 
 package lesson3.beginnerLevel;
@@ -12,21 +12,29 @@ package lesson3.beginnerLevel;
 
 public class Task_09 
 {	
-	public double devisionOfIntegersAandB(int a, int b)
-	{
-		double result = (float)a / b;
-		return result;				
+	public void devisionOfIntegersAandB(int a, int b)
+	{			
+		try
+		{
+			double result = (float)a / b;			
+			System.out.println("a/b= " + result);
+		}
+		catch(ArithmeticException e)
+		{			
+			System.out.println("Error! Division by zero " + e);
+		}
 	}
 	
 	public static void main(String[] args) 
 	{
 		//Test data
-		int a = 9;
-		int b = 2;
+		int[][] testDataArray = {{1,1}, {2,1}, {-1,2}, {0,1}, {1,0}, {-5,-2}, {9,-4}, {-2,3}};
+		
 		//Instantiate new object
 		Task_09 task = new Task_09();		
 		//Methods application
-		System.out.println("a/b= " + task.devisionOfIntegersAandB(a, b));				
+		for(int[] paireData: testDataArray)
+			task.devisionOfIntegersAandB(paireData[0], paireData[1]);			
 	}
 }
 

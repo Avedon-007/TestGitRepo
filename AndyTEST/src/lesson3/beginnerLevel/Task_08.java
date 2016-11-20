@@ -12,20 +12,36 @@ public class Task_08
 {		
 	public void quantityCharactersOfString(String word, int n)
 	{		
-		 for(int i = n; i > 0; i--)
-		 {	
-			 System.out.print(word + ", " + i + " -> "); //
-			 for(int k = i; k > 0; k--)				
-				 System.out.print(word.substring(0, k));			 
-			 System.out.println();			
-		 }
+		try
+		{
+			//if(n > 0 && n <= 34)
+			//{
+				for(int i = n; i > 0; i--)
+				{	
+					System.out.print(word + ", " + i + " -> "); //
+					for(int k = i; k > 0; k--)				
+						System.out.print(word.substring(0, k));			 
+					System.out.println();			
+				}
+			//}
+			//else
+			//	System.out.println("n should be in range of 1 to 34!");
+		}
+		catch(StringIndexOutOfBoundsException e)
+		{
+			System.out.println("Wrong number n! n should be =<34");
+		}
+		catch(Exception e)
+		{
+			
+		}
 	}	
 			
 	public static void main(String[] args) 
 	{
 		//Test data 
 		String word = "Supercalifragilisticexpialidocious";
-		int n = 6;  // set first n characters 
+		int n = 3;  // set first n characters 
 		//Instantiate new object
 		Task_08 task = new Task_08();
 		//Method application		

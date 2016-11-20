@@ -16,8 +16,7 @@ public class Task_01
 	{		
 		boolean mood = false;
 		if(heSmile == true && sheSmile == true) mood = true;
-		return mood;
-				
+		return mood;				
 	}
 
 	public static void main(String[] args) 
