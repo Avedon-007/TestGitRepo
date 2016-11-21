@@ -41,7 +41,7 @@ public class Task_10
 	public static void main(String[] args) 
 	{		
 		//Test data
-		int a = 4;
+		int a = 0;
 		//Instantiate new object 
 		Task_10 task = new Task_10();
 		//Method application
