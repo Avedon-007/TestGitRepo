@@ -30,7 +30,7 @@ public class Task_10
 		String star = "***********************";
 		if(a > 0 && a <= 9)	//Проверяем, чтобы вводимое число было в заданном диапазоне.
 		{   								
-			for(int i = 1; i < a; i++)											
+			for(int i = 1; i < a; i++)							//Try implement only 1 FOR with FLAG attribute				
 				System.out.println(star.substring(0, i));
 				
 			for(int i = a; i > 0; i--)						

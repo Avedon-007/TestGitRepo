@@ -23,7 +23,9 @@ public class Task_09
 				{
 					int multiplicationResult = num[i] * k;
 					System.out.println(num[i] + " * " + k + " = " + multiplicationResult);
+					
 				}
+				System.out.println();
 			}
 		}
 		catch(Exception e)
