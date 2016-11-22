@@ -1,4 +1,9 @@
-package Intermediate_level;
+/*
+ * Reversed array. Write a method which takes an array and returns inverted one.
+ 
+ */
+
+package lesson3.intermediateLevel;
 import java.util.Arrays;
 import org.apache.commons.lang3.ArrayUtils;
 
@@ -8,8 +13,11 @@ public class Task_03
 	// ---------------------------- билиотеку добавлю в репозиторий---------------
 		public static void main(String[] args)
 		{
-			int[] array = {1,2,3,4,5,6,7,8,9};
+			int[] array = {1,2,3,4,5,6,7,8,9};			
+			System.out.println("There is test array: " + Arrays.toString(array));
+			
 			ArrayUtils.reverse(array);
+			System.out.print("There is reversed test array: ");
 			System.out.print(Arrays.toString(array) + " ");
 		}
 		

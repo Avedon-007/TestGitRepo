@@ -1,47 +1,40 @@
-package Intermediate_level;
-import java.util.*;
+/*
+ 	Sum of numbers in the string. Given a string. Write a method which returns the sum of the numbers appearing in the string, 
+ 	ignoring all other characters. Provide all necessary checks. Example:
+					yourMethod("krm236abw") -> 11
+					yourMethod("aa49b55") -> 23
+ */
+
+
+package lesson3.intermediateLevel;
+
 
 public class Task_04   // Sum of numbers in the string.
-{
-	private static Scanner sc1;
-	private static int[] array;
-	private static int sum;
-	private static int num;
-	private static String str;
-	
-	public Task_04()
+{			
+	public static void main(String[] args) 
 	{
-		array = new int[1000];
-		sum = 0;
-		num = 0;
-		String str;
+		//Test data
+		String testString = "bh46hbhj5b5h";
+		//Instantiate new object
+		Task_04 task = new Task_04();
+		//Method application		
+		System.out.println("The sum of digits in the string is: " + task.countSumOfDigitsInString(testString));
 	}
 	
-	public void Scan()
+	public int countSumOfDigitsInString(String testString)
 	{
-		System.out.println("Enter the string: ");
-		sc1 = new Scanner(System.in);
-		str = sc1.nextLine();
-	}
-	
-	public void Logic()
-	{
-		for(int i =0; i < str.length(); i++)
+		int sum = 0;		
+		for(int i =0; i < testString.length(); i++)
 		{
-			if(Character.isDigit(str.charAt(i)))
+			if(Character.isDigit(testString.charAt(i)))
 			{
-				num = Integer.valueOf(str.substring(i, i+1)).intValue();
-				array[i] = num;  // буферный массив. в него записываем выбранные числа из строки.
+				int num = Integer.valueOf(testString.substring(i, i+1)).intValue();
+				int[] array = new int[testString.length()];  // буферный массив. в него записываем выбранные числа из строки.
+				array[i] = num;  
 				sum += array[i];
 				//System.out.println(num); // проверка, вывожу только цифры.
 			}			
 		}
-	}
-	public static void main(String[] args) 
-	{
-		Task_04 task = new Task_04();
-		task.Scan();	
-		task.Logic();		
-		System.out.println("The sum of digits in the string is: " + sum);
+		return sum;
 	}
 }

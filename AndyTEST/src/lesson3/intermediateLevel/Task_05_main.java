@@ -1,7 +1,30 @@
-package Intermediate_level;
+/*
+ Temperature converter. Write a program for temperature converter between Celsius and Kelvin and vice versa. 
+ Use OOP for realizing separate class with appropriate methods and call them in the main class of your program.
+ */
+
+package lesson3.intermediateLevel;
 import java.util.*;
 
-public class Task_05 
+
+public class Task_05_main 
+{	
+	public static void main(String[] args)
+	{		
+		//Test data
+		double kelvinTemperarute = 0;
+		double celsiusTemperature = 0;
+		
+		Task_05_Kelvin_2_Celsius convertKelvToCels = new Task_05_Kelvin_2_Celsius();
+		convertKelvToCels.convert_Kel_2_Cel(kelvinTemperarute);	
+		
+		Task_05_Celsius_2_Kelvin convertCelsToKelv = new Task_05_Celsius_2_Kelvin();
+		convertCelsToKelv.convert_Cel_2_Kel(celsiusTemperature);
+	}
+}
+
+/*
+public class Task_05_main 
 {
 	private static Scanner sc1;
 	private static String c;
@@ -48,3 +71,4 @@ public class Task_05
 		task.Logic();			
 	}
 }
+*/
