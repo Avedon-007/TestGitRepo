@@ -19,11 +19,46 @@
  */
 
 
-
 package lesson3.beginnerLevel;
 
 
 public class Task_10 
+{
+	public void printStarsInOrder(int a)
+	{		
+		String star = "***********************";
+		boolean directionFlag = true;
+
+		
+			for(int i = 1; i <= a; i++)
+			{
+				if(directionFlag == true)
+				{
+				System.out.println(star.substring(0, i));
+				
+				}
+			
+				else{
+					System.out.println(star.substring(0, i--));
+				}
+				
+			}
+	}	
+		
+	public static void main(String[] args) 
+	{		
+		//Test data
+		int a = 3;
+		//Instantiate new object 
+		Task_10 task = new Task_10();
+		//Method application
+		task.printStarsInOrder(a);			
+	}
+}
+
+
+/*
+ public class Task_10 
 {
 	public void printStarsInOrder(int a)
 	{		
@@ -48,4 +83,4 @@ public class Task_10
 		task.printStarsInOrder(a);			
 	}
 }
-
+*/

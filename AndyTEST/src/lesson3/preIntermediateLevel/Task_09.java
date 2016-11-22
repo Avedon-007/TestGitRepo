@@ -19,11 +19,11 @@ public class Task_09
 		{
 			for(int i = 0; i <= num.length-1; i++)
 			{
+				System.out.println("Multiplication table for " + num[i]);
 				for(int k = 1; k <= 10; k++)
 				{
 					int multiplicationResult = num[i] * k;
 					System.out.println(num[i] + " * " + k + " = " + multiplicationResult);
-					
 				}
 				System.out.println();
 			}

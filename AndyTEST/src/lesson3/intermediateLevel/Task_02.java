@@ -1,3 +1,10 @@
+/*
+  Lucky tickets. As you may know tram tickets have numbering in the range from 000 001 to 999 999.
+Many people try to find a lucky ticket, where the sum of the first three digits = the sum of the second
+three digits. For example, 205 151 is a lucky ticket. Write a program for calculating of how many lucky
+tickets people can find in the one roll.
+ */
+
 package Intermediate_level;
 
 public class Task_02 
