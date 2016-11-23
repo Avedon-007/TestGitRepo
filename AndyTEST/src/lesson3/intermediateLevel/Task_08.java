@@ -1,74 +1,66 @@
-package Intermediate_level;
-import java.util.*;
+/*
+ * CamelCaseSeparator. Some testing frameworks can read names of test methods and include them to
+the report like a beautiful sentence. As you know, we use camelCaseNamingPolicy during writing our
+tests. Please write a method which takes a test name and returns beautiful sentence for report.
+Example:
+		Input: "checkChangingProfilePicture“
+		Output: "Check changing profile picture"
+ */
+
+
+
+package lesson3.intermediateLevel;
+
 
 public class Task_08 
 {
-	private static Scanner sc1;	
-	private static String str;
-	private static String newStr = "";
-	private static char newChar = ' ';
-	private static char ch;
-	private static char[] buf;
 	
-		
-	public Task_08()
+	public String splitCamelCase(String testString)  // метод для разбиения Верблюжей записи на слова
 	{
-		Scanner sc1;
-		String str;
-		newStr = "";
-		newChar = ' ';
-		char ch;
-		char[] buf;
-	}
-	
-	
-	
-	static String splitCamelCase(String str)  // метод для разбиения Верблюжей записи на слова
-	{
-		return str.replaceAll(String.format("%s|%s|%s", 
+		return testString.replaceAll(String.format("%s|%s|%s", 
 								"(?<=[A-Z])(?=[A-Z][a-z])", 
 								"(?<=[^A-Z])(?=[A-Z])", 
 								"(?<=[A-Za-z])(?=[^A-Za-z])" ), 
-								" " 
-								);
+								" ");
 	}	
 	
-	public void Scan()
-	{
-		System.out.print("Enter CamelCase string: ");		
-		sc1 = new Scanner(System.in);
-		str = sc1.nextLine();
-	}
-	
-	public void Logic()
-	{
-		char[] buf = splitCamelCase(str).toCharArray(); // перевожу строку в буквенный массив
 		
+	public void Logic(String testString)
+	{
+		char[] buf = splitCamelCase(testString).toCharArray(); // перевожу строку в буквенный массив
+		String newStr = "";
+		char newChar = ' ';	
 		for(int i = 0; i < buf.length; i++)
 		{			
-			ch = buf[i];
+			char ch = buf[i];
+					
 			if(i == 0)     //1. первый символ переводим в верхний регистр			
 				newChar = Character.toUpperCase(ch);
 			
 			else if(i > 0)  //2. все последующие символы переводим в нижний регистр
 			{
 				if(ch == ' ') //3. пробел (чтобы пробел попал в массив)				
-					newChar = ' ';												
+					newChar = '*';												
 				else if(Character.isUpperCase(ch))								 
 					newChar = Character.toLowerCase(ch);			
-				else if(Character.isLowerCase(ch))				
-					newChar = Character.toLowerCase(ch);				
+				else 				
+					newChar = ch;				
 			}	
 			buf[i] = newChar;		// присваиваю элементам массива изменённые буквы						
 		}	
-		newStr = String.valueOf(buf); // перевожу массив обратно в строку
+		 newStr = String.valueOf(buf); // перевожу массив обратно в строку
+		System.out.println(newStr);
 	}	
 	
 	public static void main(String[] args) 
 	{
+		//Test data
+		String testString = "canWeLoveAgaine";
+		//Instantiate new object
 		Task_08 task = new Task_08();
-		task.Scan();
-		task.Logic();		
-		System.out.print(newStr);
+		//Method application
+		//System.out.print("New string: " + );
+		task.Logic(task.splitCamelCase(testString));
 	}
 }
+

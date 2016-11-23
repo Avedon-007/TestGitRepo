@@ -1,6 +1,52 @@
-package Intermediate_level;
-import java.util.Scanner;
+/*
+ 	Addition of matrices. Add two matrix according to the common math rules and print the output to
+the console.
+ */
 
+package lesson3.intermediateLevel;
+
+
+public class Task_07
+{	
+	public void addTwoMatrices(int[][]first, int[][]second)
+	{		
+	/	int sum[][] = new int[2][2];			
+		//int sum[][] = null;
+		
+		for (int c = 0; c < first.length; c++ )
+		{
+			for (int d = 0; d < first[c].length; d++ )
+			{	        	 
+				sum[c][d] = first[c][d] + second[c][d];  //replace '+' with '-' to subtract matrices
+			}
+		}
+		 System.out.println("Sum of entered matrices:");
+		 
+	     for (int c = 0; c < sum.length; c++)
+	     {
+	        for (int d = 0; d < sum[c].length; d++)
+	        {	        	 
+	           System.out.print(sum[c][d]+"\t");
+	        }
+	        System.out.println();
+	     }	      
+	}
+	
+	public static void main(String args[])
+	{
+	    //Test data
+		int[][] first = {{1, 2}, 
+						 {3, 4}};
+		int[][] second = {{4, 3}, 
+						  {2, 1}};
+		//Initiate new object
+		Task_07 task = new Task_07();	
+		//Method application
+	      task.addTwoMatrices(first, second);	     
+	}
+}
+
+/*
 public class Task_07
 {
 	private static int m, n, c, d;
@@ -59,3 +105,4 @@ public class Task_07
 	      task.Logic();	     
 	}
 }
+*/
