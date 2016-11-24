@@ -46,7 +46,7 @@ public class Task_11
 				yPosition++;
 				directionFlag = true;
 			}
-		/*   //  Bebug
+		/*   //  Debug
 			System.out.println("current number is " + i);
 			System.out.println("xPosition=" + xPosition);
 			System.out.println("yPositiony=" + yPosition);
@@ -62,7 +62,12 @@ public class Task_11
 		{			
 			for(int y: x)
 			{		
+				if(y < 10)
+					System.out.print("  ");
+				if(y>9 && y< 100)
+					System.out.print(" ");
 				System.out.print(y + " ");
+				
 			}
 			System.out.println();
 		}
@@ -71,6 +76,6 @@ public class Task_11
 	public static void main(String[] args) 
 	{
 		Task_11 superArray = new Task_11();
-		superArray.showArray(superArray.createArray(2)); // set dimension of array
+		superArray.showArray(superArray.createArray(16)); // set dimension of array
 	}
 }

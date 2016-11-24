@@ -16,7 +16,7 @@ public class Task_09
 	{			
 		try
 		{
-			double result = (float)a / b;			
+			double result = (double)a / b;			
 			System.out.println("a/b= " + result);
 		}
 		catch(ArithmeticException e)
