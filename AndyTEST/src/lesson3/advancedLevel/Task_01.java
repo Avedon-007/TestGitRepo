@@ -22,6 +22,8 @@ length = 15)
 package lesson3.advancedLevel;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Task_01 
 {
@@ -29,21 +31,23 @@ public class Task_01
 	{
 		String passwordTemplate = "";
 		do{Random random = new Random();
-		for(int i = 1; i <=passwordLength; i++ ){
+			for(int i = 1; i <=passwordLength; i++ )
+			{
 								
-			switch (random.nextInt(3)) {
-			case 0:
-				passwordTemplate += "B";
-				break;
-			case 1:
-				passwordTemplate += "S";
-				break;
-			case 2:
-				passwordTemplate += "N";
-				break;			
+				switch (random.nextInt(3)) 
+				{
+				case 0:
+					passwordTemplate += "B";
+					break;
+				case 1:
+					passwordTemplate += "S";
+					break;
+				case 2:
+					passwordTemplate += "N";
+					break;			
+				}			
 			}
-			
-		}} while(checkTemplate(passwordTemplate));
+		} while(checkTemplate(passwordTemplate) == true);
 		
 		return passwordTemplate; 
 	}
@@ -53,16 +57,24 @@ public class Task_01
 		boolean checkResult = true;
 		
 			// Use Regular Expression to check IF(string contains some letters/characters)
+		Pattern p = Pattern.compile("B+");
+		Matcher m = p.matcher(passwordTemplate);		
+		if(m.matches() == true)
+		{
+			checkResult = true;
+		}
+		else
+			checkResult = false;
 		
 		
-		return false;
+		return checkResult;		
 	}
 
 
 	public static void main(String[] args) 
 	{
 		Task_01 task = new Task_01();
-		System.out.println(task.generatePasswordTemplate(15));
+		System.out.println(task.generatePasswordTemplate(4));
 		
 		
 	}
