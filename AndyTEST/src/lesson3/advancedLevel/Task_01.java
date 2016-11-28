@@ -28,9 +28,12 @@ import java.util.regex.Pattern;
 public class Task_01 
 {
 	public String generatePasswordTemplate(int passwordLength)
-	{
-		String passwordTemplate = "";
-		do{Random random = new Random();
+	{		
+		String passwordTemplate;
+		do			
+		{
+			passwordTemplate = "";  // this variable should be there
+			Random random = new Random();
 			for(int i = 1; i <=passwordLength; i++ )
 			{
 								
@@ -47,34 +50,26 @@ public class Task_01
 					break;			
 				}			
 			}
-		} while(checkTemplate(passwordTemplate) == true);
-		
+			//System.out.println(passwordTemplate); // Debug
+		} while(checkTemplate(passwordTemplate) == false);		
 		return passwordTemplate; 
 	}
 	
 	
 	private boolean checkTemplate(String passwordTemplate) {
-		boolean checkResult = true;
-		
+			
 			// Use Regular Expression to check IF(string contains some letters/characters)
-		Pattern p = Pattern.compile("B+");
+		Pattern p = Pattern.compile("(.*[S].*)(.*[B].*)(.*[N].*)"); // S, B and N should be presented in string
 		Matcher m = p.matcher(passwordTemplate);		
-		if(m.matches() == true)
-		{
-			checkResult = true;
-		}
-		else
-			checkResult = false;
-		
-		
-		return checkResult;		
+		boolean ft = m.matches();		
+		return ft;		
 	}
 
 
 	public static void main(String[] args) 
 	{
 		Task_01 task = new Task_01();
-		System.out.println(task.generatePasswordTemplate(4));
+		System.out.println(task.generatePasswordTemplate(6));
 		
 		
 	}
