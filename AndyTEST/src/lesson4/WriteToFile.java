@@ -8,7 +8,8 @@ import java.io.OutputStreamWriter;
 
 public class WriteToFile 
 {
-	private static void writeToFile() throws IOException
+	//private static void writeToFile() throws IOException
+	public static void main(String[] args) throws IOException
 	{
 		//Specify path to your new file
 		File file = new File("out.txt");
