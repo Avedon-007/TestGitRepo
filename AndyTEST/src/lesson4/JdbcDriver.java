@@ -1,8 +1,6 @@
 package lesson4;
+
 import java.sql.*;
-
-
-
 
 
 public class JdbcDriver 
@@ -42,37 +40,7 @@ public class JdbcDriver
 					 + "(15, 'Barcelona', 'yes', 'no')";
 					
 			myStmt.executeUpdate(sql);
-			System.out.println("Insert complete.");   
-			
-			
-			
-			
-			/*
-			TestCollection test001 = new TestCollection();
-			List<String> sql = test001.getCol4();
-			//StringBuilder sql = new StringBuilder();
-			for(String s : test001.getCol4())
-			{
-				sql.append(s);
-				//sql.append("\t");
-			
-			}
-			myStmt.executeLargeUpdate(test001.getCol4());
-			System.out.println(sql);
-			
-			//myStmt.executeUpdate(sql);
-			 System.out.println("Insert complete."); 
-			*/
-			
-			
-			
-			
-			/*
-			TestCollection test001 = new TestCollection();
-			test001.insertIntoAirports();
-			Collection<String> col = insertIntoAirports();
-			*/
-			
+			System.out.println("Insert complete.");   		
 			
 			
 			// 4. Process the result set
@@ -101,4 +69,35 @@ String sql = "USE TestDB" + " "
 		+ "values (1, 'London', 'yes', 'yes'),"
 		+ "(2, 'Paris', 'yes', 'yes'),"
 		+ "(3, 'Sydney', 'no', 'no') ";
+*/
+
+
+
+/*
+  
+  step 3
+  
+TestCollection test001 = new TestCollection();
+List<String> sql = test001.getCol4();
+//StringBuilder sql = new StringBuilder();
+for(String s : test001.getCol4())
+{
+	sql.append(s);
+	//sql.append("\t");
+
+}
+myStmt.executeLargeUpdate(test001.getCol4());
+System.out.println(sql);
+
+//myStmt.executeUpdate(sql);
+ System.out.println("Insert complete."); 
+*/
+
+
+
+
+/*
+TestCollection test001 = new TestCollection();
+test001.insertIntoAirports();
+Collection<String> col = insertIntoAirports();
 */
