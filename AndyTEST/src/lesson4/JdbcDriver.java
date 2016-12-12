@@ -5,6 +5,63 @@ import java.sql.*;
 
 public class JdbcDriver 
 {	
+	// User credentials
+	static final String USERNAME = "admin";
+	static final String PASSWORD = "12345";
+			
+	// JDBC driver name and database URL
+	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433/TestDB";
+	
+	public static void main(String[] args)
+	{			
+		try
+		{
+			// 1. Get a connection to database
+			Class.forName(DATABASE_DRIVER);  // Driver registering			
+			System.out.println("Driver was registered.");
+			Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+			
+			// 2. Create a statement
+			Statement myStmt = myConn.createStatement();
+			
+			// 3. Execute SQL query					
+			String sql = "SELECT * FROM Airports";
+			ResultSet result = myStmt.executeQuery(sql);					
+			
+			System.out.println("Query executed!!!");   		
+			
+			
+			// 4. Process the result set
+			while(result.next())
+			{// Separate columns for every result
+				int	id= result.getInt("id");
+				int quantity = result.getInt("quantity");
+				String model = result.getString("model");
+				String manufacturer = result.getString("manufacturer");
+				System.out.print("ID: " + id);
+				System.out.print(", Quantity: " + quantity);
+				System.out.print(", Model: " + model);
+				System.out.println(", Manufacturer: " + manufacturer);
+			}
+			result.close();
+			myStmt.close();
+			myConn.close();
+			
+		}
+		catch(Exception exc)
+		{
+			exc.printStackTrace();
+		}
+		
+	}
+}
+
+
+/*
+
+public class JdbcDriver 
+{	
 	public static void main(String[] args)
 	{		
 		try
@@ -53,10 +110,7 @@ public class JdbcDriver
 	}
 }
 
-
-
-
-
+*/
 
 
 

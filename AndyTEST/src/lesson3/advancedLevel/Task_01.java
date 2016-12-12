@@ -27,7 +27,7 @@ import java.util.regex.Pattern;
 
 public class Task_01 
 {
-	public String generatePasswordTemplate(int passwordLength)
+	private String generatePasswordTemplate(int passwordLength)
 	{		
 		String passwordTemplate;
 		do			
@@ -55,6 +55,30 @@ public class Task_01
 		return passwordTemplate; 
 	}
 	
+	public String generatePass(String passwordTemplate)
+	{
+		String myPassword= "";
+		
+		Random random = new Random();
+		String passLetter = "";
+		for(int i = 1; i <=passwordTemplate.length(); i++ )
+		{
+							passLetter = passwordTemplate.substring(i-1, i);
+			switch (passLetter) 
+			{
+			case "S":
+				myPassword += String.valueOf(97+random.nextInt(26));
+				break;
+			case "N":
+				passwordTemplate += "S";
+				break;
+			case "B":
+				passwordTemplate += "N";
+				break;			
+			}			
+		}
+		return myPassword;
+	}
 	
 	private boolean checkTemplate(String passwordTemplate) {
 			
