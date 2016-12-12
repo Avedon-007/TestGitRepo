@@ -17,9 +17,9 @@ public class JdbcDriver
 	{			
 		
 			// 1. Get a connection to database
-			//Class.forName(DATABASE_DRIVER);  // Driver registering	
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			Class.forName(DATABASE_DRIVER);  // Driver registering		
 			System.out.println("Driver was registered.");
+			
 			//Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
 		Connection myConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433; databaseName = TestDB;integratedSecurity=true;");
 			// 2. Create a statement
