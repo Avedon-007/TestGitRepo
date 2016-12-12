@@ -6,12 +6,14 @@ import java.sql.*;
 public class JdbcDriver 
 {	
 	// User credentials
-	static final String USERNAME = "admin";
-	static final String PASSWORD = "12345";
+	//static final String USERNAME = "admin";
+	//static final String PASSWORD = "12345";
 			
 	// JDBC driver name and database URL
 	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433/TestDB";
+	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
+	static final String DATABASE_NAME = "databaseName = TestDB;";
+	static final String DB_SECURITY = "integratedSecurity=true;";
 	
 	public static void main(String[] args) throws Exception
 	{			
@@ -21,36 +23,23 @@ public class JdbcDriver
 			System.out.println("Driver was registered.");
 			
 			//Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
-		Connection myConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433; databaseName = TestDB;integratedSecurity=true;");
+		Connection myConn = DriverManager.getConnection(DATABASE_URL + DATABASE_NAME + DB_SECURITY);
 			// 2. Create a statement
 			Statement myStmt = myConn.createStatement();
 			
 			// 3. Execute SQL query					
-			String sql = "SELECT * FROM Airports";
-			ResultSet result = myStmt.executeQuery(sql);					
-			
-			System.out.println("Query executed!!!");   		
-			
+			String sql = "SELECT airport FROM Airports WHERE airportNumber = 2;";
+			ResultSet result = myStmt.executeQuery(sql);			
+			System.out.println("Query executed!!!");   			
 			
 			// 4. Process the result set
 			while(result.next())
-			{// Separate columns for every result
-				int	id= result.getInt("id");
-				int quantity = result.getInt("quantity");
-				String model = result.getString("model");
-				String manufacturer = result.getString("manufacturer");
-				System.out.print("ID: " + id);
-				System.out.print(", Quantity: " + quantity);
-				System.out.print(", Model: " + model);
-				System.out.println(", Manufacturer: " + manufacturer);
+			{				
+				System.out.print(result.getString("airport") + ";");				
 			}
 			result.close();
 			myStmt.close();
-			myConn.close();
-			
-		
-		
-		
+			myConn.close();		
 	}
 }
 
@@ -98,7 +87,20 @@ public class JdbcDriver
 			
 			
 			// 4. Process the result set
+		
 			
+			// 4. Process the result set
+			while(result.next())
+			{// Separate columns for every result
+				int	airportNumber = result.getInt("airportNumber");
+				String airport = result.getString("airport");
+				String dutyFree = result.getString("dutyFree");
+				String priorityBoarding = result.getString("priorityBoarding");
+				System.out.print("airportNumber: " + airportNumber);
+				System.out.print(", airport: " + airport);
+				System.out.print(", dutyFree: " + dutyFree);
+				System.out.println(", priorityBoarding: " + priorityBoarding);
+			}
 		}
 		catch(Exception exc)
 		{
@@ -107,48 +109,4 @@ public class JdbcDriver
 	}
 }
 
-*/
-
-
-
-
-
-/*
-String sql = "USE TestDB" + " "  
-		+ "insert into Airports" 
-		+ "(airportNumber, airport, dutyFree, priorityBoarding)" 
-		+ "values (1, 'London', 'yes', 'yes'),"
-		+ "(2, 'Paris', 'yes', 'yes'),"
-		+ "(3, 'Sydney', 'no', 'no') ";
-*/
-
-
-
-/*
-  
-  step 3
-  
-TestCollection test001 = new TestCollection();
-List<String> sql = test001.getCol4();
-//StringBuilder sql = new StringBuilder();
-for(String s : test001.getCol4())
-{
-	sql.append(s);
-	//sql.append("\t");
-
-}
-myStmt.executeLargeUpdate(test001.getCol4());
-System.out.println(sql);
-
-//myStmt.executeUpdate(sql);
- System.out.println("Insert complete."); 
-*/
-
-
-
-
-/*
-TestCollection test001 = new TestCollection();
-test001.insertIntoAirports();
-Collection<String> col = insertIntoAirports();
 */
