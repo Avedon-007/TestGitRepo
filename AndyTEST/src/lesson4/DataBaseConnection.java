@@ -15,10 +15,9 @@ public class DataBaseConnection
 	
 	
 	
-	public static void dataBaseConnAndCredentials()
+	public static void dataBaseConnAndCredentials() throws Exception
 	{	
-		try
-		{
+		
 			// 1. Get a connection to database
 			Class.forName(DATABASE_DRIVER);  // Driver registering			
 			System.out.println("Driver was registered.");
@@ -28,11 +27,8 @@ public class DataBaseConnection
 		//	Statement myStmt = myConn.createStatement();
 			
 			
-		}
-		catch(Exception exc)
-		{
-			exc.printStackTrace();
-		}
+		
+		
 		
 	}
 	

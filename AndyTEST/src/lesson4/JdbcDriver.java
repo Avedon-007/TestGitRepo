@@ -13,15 +13,15 @@ public class JdbcDriver
 	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433/TestDB";
 	
-	public static void main(String[] args)
+	public static void main(String[] args) throws Exception
 	{			
-		try
-		{
+		
 			// 1. Get a connection to database
-			Class.forName(DATABASE_DRIVER);  // Driver registering			
+			//Class.forName(DATABASE_DRIVER);  // Driver registering	
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
 			System.out.println("Driver was registered.");
-			Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
-			
+			//Connection myConn = DriverManager.getConnection(DATABASE_URL, USERNAME, PASSWORD);
+		Connection myConn = DriverManager.getConnection("jdbc:sqlserver://localhost:1433; databaseName = TestDB;integratedSecurity=true;");
 			// 2. Create a statement
 			Statement myStmt = myConn.createStatement();
 			
@@ -48,11 +48,8 @@ public class JdbcDriver
 			myStmt.close();
 			myConn.close();
 			
-		}
-		catch(Exception exc)
-		{
-			exc.printStackTrace();
-		}
+		
+		
 		
 	}
 }
