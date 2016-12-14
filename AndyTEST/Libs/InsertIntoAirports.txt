@@ -9,7 +9,7 @@ VALUES
 	(3, 'Sydney', 'no', 'no'),
 	(4, 'Berlin', 'yes', 'no'),
 	(5, 'Munich', 'yes', 'no'),
-	(6, 'New-York', 'no', 'no'),
+	(6, 'New York', 'no', 'no'),
 	(7, 'Kiev', 'yes', 'yes'),
 	(8, 'Budapest', 'yes', 'no'),
 	(9, 'Beijing', 'no', 'yes'),
