@@ -12,7 +12,7 @@ public class ReadFromFile
 	//public static void main(String[] args) throws IOException
 	{
 		//Specify path to your file
-		File file = new File("D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\FillDataBase_1.txt");
+		File file = new File("D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\DeployAndFillDataBase.txt");
 				
 		//Create special input stream for reading data
 		FileInputStream fis = new FileInputStream(file);
