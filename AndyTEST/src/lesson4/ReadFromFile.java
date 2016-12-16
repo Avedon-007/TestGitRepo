@@ -23,10 +23,12 @@ public class ReadFromFile
 		//Print all existing lines from file to the console
 		String line = null;
 		while((line = br.readLine()) != null)
-		{
-			System.out.println(line);
-		}
+	//	{
+	//		System.out.println(line);
+	//	}
 		br.close();
+		
+		
 		return line;
 	}
 	
