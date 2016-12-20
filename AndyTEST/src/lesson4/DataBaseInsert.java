@@ -7,11 +7,10 @@ import java.sql.Statement;
 
 public class DataBaseInsert 
 {
-	// JDBC driver name and database URL
+		// JDBC driver name and database URL
 	static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
 	static final String DB_URL = "jdbc:sqlserver://localhost:1433;";
-
-	   //  Database credentials
+		//  Database credentials
 	static final String PASS = "integratedSecurity=true;";
 	   
 	public static void main(String[] args)

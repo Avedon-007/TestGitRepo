@@ -29,17 +29,17 @@ public class JdbcDriver
 		Statement myStmt = myConn.createStatement();
 
 		// 3. Execute SQL query
-		//String sql = "SELECT airline FROM Airlines INNER JOIN Flights ON Airlines.flightNumber = Flights.flightNumber WHERE ( arrivalAirport = 'Milan' OR arrivalAirport = 'Helsinki' ) AND webRegistration = 'yes';";
-		ReadFromFile readFromFile = new ReadFromFile();		
-		ResultSet result = myStmt.executeQuery(readFromFile.readFromFile());
-		//ResultSet result = myStmt.executeQuery(sql);
+		String sql = "USE TestDB SELECT airport FROM Airports";
+		//ReadFromFile readFromFile = new ReadFromFile();		
+		//ResultSet result = myStmt.executeQuery(readFromFile.readFromFile());
+		ResultSet result = myStmt.executeQuery(sql);
 		System.out.println("Query executed!!!");
 
 		// 4. Process the result set
-		//while (result.next()) 
-		//{
-		//	System.out.print(result.getString("airline") + ";");
-		//}
+		while (result.next()) 
+		{
+			System.out.print(result.getString("airport") + ";");
+		}
 		result.close();
 		myStmt.close();
 		myConn.close();

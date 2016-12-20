@@ -8,11 +8,12 @@ import java.io.InputStreamReader;
 
 public class ReadFromFile 
 {
-	public static String readFromFile() throws IOException
+	public  String readFromFile() throws IOException
+	
 	//public static void main(String[] args) throws IOException
 	{
 		//Specify path to your file
-		File file = new File("D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\DeployAndFillDataBase.txt");
+		File file = new File("E:\\йспяш\\TestClub\\Automation\\DataBase\\Select.txt");
 				
 		//Create special input stream for reading data
 		FileInputStream fis = new FileInputStream(file);
@@ -23,19 +24,19 @@ public class ReadFromFile
 		//Print all existing lines from file to the console
 		String line = null;
 		while((line = br.readLine()) != null)
-	//	{
-	//		System.out.println(line);
-	//	}
-		br.close();
+		{
+			System.out.println(line);
+		}
+		//br.close();
 		
 		
 		return line;
 	}
 	
-	public static void main(String[] args)throws IOException
-	{
-		ReadFromFile readFromFile = new ReadFromFile();
-		readFromFile.readFromFile();
-	}
+	//public static void main(String[] args)throws IOException
+	//{
+	//	ReadFromFile readFromFile = new ReadFromFile();
+	//	readFromFile.readFromFile();
+	//}
 }
  
