@@ -1,4 +1,4 @@
-package lesson4;
+package lesson4.test;
 
 import java.io.BufferedReader;
 import java.io.File;

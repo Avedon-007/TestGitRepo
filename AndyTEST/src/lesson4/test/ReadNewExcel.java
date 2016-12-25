@@ -1,6 +1,6 @@
 // link to web  http://www.java67.com/2014/09/how-to-read-write-xlsx-file-in-java-apache-poi-example.html
 
-package lesson4;
+package lesson4.test;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,7 +16,7 @@ public class ReadNewExcel {
 	@SuppressWarnings("deprecation")
 	public static void main(String[] args) throws Exception
 	{
-		File myFile = new File("C:\\Users\\user\\Desktop\\Test.xlsx");
+		File myFile = new File("C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		
 		// 1. Finds the workbook instance for XLSX file

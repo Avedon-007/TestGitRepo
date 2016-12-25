@@ -27,29 +27,36 @@ public class DataBaseSelect
 		      conn = DriverManager.getConnection(DB_URL + PASS);
 		      System.out.println("Connected database successfully...");
 	      
-	      //STEP 4: Execute a query
-	      System.out.println("Creating statement...");
-	      stmt = conn.createStatement();
+		      //STEP 4: Execute a query
+		      System.out.println("Creating statement...");
+		      stmt = conn.createStatement();
 
-	     // String sql = "USE TestDB SELECT * FROM Airports";
-	     // ResultSet rs = stmt.executeQuery(sql);
-	      ReadFromFile readFromFile = new ReadFromFile();
-	      ResultSet rs = stmt.executeQuery(readFromFile.readFromFile());
-	      //STEP 5: Extract data from result set
-	      while(rs.next()){
-	         //Retrieve by column name
-	         int airportNumber  = rs.getInt("airportNumber");
-	         String airport = rs.getString("airport");
-	         String dutyFree = rs.getString("dutyFree");
-	         String priorityBoarding = rs.getString("priorityBoarding");
+		      // String sql = "USE TestDB SELECT * FROM Airports";
+		      // ResultSet rs = stmt.executeQuery(sql);	     
+	     
+//		    ExcelReadCell readCell = new ExcelReadCell();
+//		     ResultSet rs = stmt.executeQuery(readCell.readFromExcel());	      
+	      
+		      ExcelReadCells readCell = new ExcelReadCells();
+		      ResultSet rs = stmt.executeQuery(readCell.readCellsFromExcel());
+		      
+		      
+		      
+		      //STEP 5: Extract data from result set
+		      while(rs.next()){
+		    	  //Retrieve by column name
+		    	  //int airportNumber  = rs.getInt("airportNumber");
+		    	  String airport = rs.getString("airport");
+		    	 // String dutyFree = rs.getString("dutyFree");
+		    	  //String priorityBoarding = rs.getString("priorityBoarding");
 
-	         //Display values
-	         System.out.print(airportNumber + ";");
-	         System.out.print(airport + ";");
-	         System.out.print(dutyFree + ";");
-	         System.out.println(priorityBoarding + ";");
-	      }
-	      rs.close();
+		    	  //Display values
+		    	 // System.out.print(airportNumber + ";");
+		    	  System.out.print(airport + ";");
+		    	 // System.out.print(dutyFree + ";");
+		    	 // System.out.println(priorityBoarding + ";");
+		      }
+		      rs.close();
 	   }catch(SQLException se){
 	      //Handle errors for JDBC
 	      se.printStackTrace();

@@ -1,4 +1,4 @@
-package lesson4;
+package lesson4.test;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
