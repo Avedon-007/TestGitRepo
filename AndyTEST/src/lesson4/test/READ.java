@@ -50,9 +50,7 @@ public class READ
 		XSSFSheet mySheet = myWorkBook.getSheetAt(1);
 		Iterator<Row> rowIterator = mySheet.iterator();
 		
-		// 2. Read Column
-		//Row row = mySheet.getRow(1);
-		//for(rowIterator.hasNext())
+		// 2. Read Column		
 		for(Row row: myWorkBook.getSheetAt(1))
 		{		
 			Cell cell = row.getCell(2);
@@ -63,3 +61,20 @@ public class READ
 		
 	}
 }
+
+
+/*
+  // 2. Read Column
+		Row row = mySheet.getRow(2);
+		while(rowIterator.hasNext())
+		//for(Row row: myWorkBook.getSheetAt(1))
+		{		
+			
+			Cell cell = row.getCell(2); // 2 - is third column in excel table
+			System.out.print(getExcelCell(cell ) + "\t");
+			System.out.println();
+			row = rowIterator.next();
+			
+		}
+		*/
+
