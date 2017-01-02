@@ -1,11 +1,74 @@
 package lesson4;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+public class DataBaseSelect 
+{
+			// JDBC driver name and database URL
+		static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
+		static final String DB_URL = "jdbc:sqlserver://localhost:1433;";
+			//  Database credentials
+		static final String PASS = "integratedSecurity=true;";
+	   
+	public String selectFromDataBase() throws IOException, SQLException, ClassNotFoundException
+		{
+		   String sqlResult = "";
+			Connection conn = null;
+		   Statement stmt = null;
+		   
+		      //STEP 2: Register JDBC driver
+			   Class.forName(JDBC_DRIVER);
+
+		      //STEP 3: Open a connection
+		 //     System.out.println("Connecting to a selected database...");
+		      conn = DriverManager.getConnection(DB_URL + PASS);
+		 //     System.out.println("Connected database successfully...");
+	      
+		      //STEP 4: Execute a query
+		 //     System.out.println("Creating statement...");
+		      stmt = conn.createStatement();
+
+		      // String sql = "USE TestDB SELECT * FROM Airports";
+		      // ResultSet rs = stmt.executeQuery(sql);	     
+	     
+		    ExcelReadCell readCell = new ExcelReadCell();
+		    ResultSet rs = stmt.executeQuery(readCell.readFromExcel());	      
+	      
+		     // ExcelReadCells readCell = new ExcelReadCells();
+		     // ResultSet rs = stmt.executeQuery(readCell.readCellsFromExcel());
+		      
+		      1. resultSet to ArrayList
+		      2. column names read from arrayList (Retrieve column names from java.sql.ResultSet)
+		      
+		      //STEP 5: Extract data from result set
+		      while(rs.next()){
+		    	  //Retrieve by column name
+		    	  //int airportNumber  = rs.getInt("airportNumber");
+		    	  String flightNumber = rs.getString("flightNumber");
+		    	 // String dutyFree = rs.getString("dutyFree");
+		    	  //String priorityBoarding = rs.getString("priorityBoarding");
+		    	  sqlResult = flightNumber + ";";
+		    	  //Display values
+		    	 // System.out.print(airportNumber + ";");
+		    	  //System.out.print(flightNumber + ";");
+		    	 // System.out.print(dutyFree + ";");
+		    	 // System.out.println(priorityBoarding + ";");
+		      }
+		      rs.close();
+	 
+	return sqlResult;
+//	  System.out.println("BINGO!!!");	//DEBUG
+	}
+}
+
+
+
+/*
 public class DataBaseSelect 
 {
 			// JDBC driver name and database URL
@@ -34,11 +97,11 @@ public class DataBaseSelect
 		      // String sql = "USE TestDB SELECT * FROM Airports";
 		      // ResultSet rs = stmt.executeQuery(sql);	     
 	     
-//		    ExcelReadCell readCell = new ExcelReadCell();
-//		     ResultSet rs = stmt.executeQuery(readCell.readFromExcel());	      
+		    ExcelReadCell readCell = new ExcelReadCell();
+		    ResultSet rs = stmt.executeQuery(readCell.readFromExcel());	      
 	      
-		      ExcelReadCells readCell = new ExcelReadCells();
-		      ResultSet rs = stmt.executeQuery(readCell.readCellsFromExcel());
+		     // ExcelReadCells readCell = new ExcelReadCells();
+		     // ResultSet rs = stmt.executeQuery(readCell.readCellsFromExcel());
 		      
 		      
 		      
@@ -46,13 +109,13 @@ public class DataBaseSelect
 		      while(rs.next()){
 		    	  //Retrieve by column name
 		    	  //int airportNumber  = rs.getInt("airportNumber");
-		    	  String airport = rs.getString("airport");
+		    	  String flightNumber = rs.getString("flightNumber");
 		    	 // String dutyFree = rs.getString("dutyFree");
 		    	  //String priorityBoarding = rs.getString("priorityBoarding");
 
 		    	  //Display values
 		    	 // System.out.print(airportNumber + ";");
-		    	  System.out.print(airport + ";");
+		    	  System.out.print(flightNumber + ";");
 		    	 // System.out.print(dutyFree + ";");
 		    	 // System.out.println(priorityBoarding + ";");
 		      }
@@ -77,6 +140,7 @@ public class DataBaseSelect
 	         se.printStackTrace();
 	      }//end finally try
 	   }//end try
-	   System.out.println("BINGO!!!");
+	   //System.out.println("BINGO!!!");	//DEBUG
 	}//end main
 }
+*/
