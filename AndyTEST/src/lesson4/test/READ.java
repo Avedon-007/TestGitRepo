@@ -25,7 +25,7 @@ public class READ
 			if(DateUtil.isCellDateFormatted(cell))
 				result = cell.getDateCellValue().toString();
 			else
-				result = Double.toString(cell.getNumericCellValue());
+				result = Double.toString(cell.getNumericCellValue());				
 			break;
 		case Cell.CELL_TYPE_BOOLEAN:
 			result = Boolean.toString(cell.getBooleanCellValue());

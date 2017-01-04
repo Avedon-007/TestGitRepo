@@ -13,21 +13,21 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ExcelReadCell 
 {
-	public String readFromExcel() throws IOException
-	//public static void main(String[] args) throws Exception
+	//public String readFromExcel() throws IOException
+	public static void main(String[] args) throws Exception
 	{
-		File myFile = new File("C:\\Users\\MAMA\\Desktop\\123.xlsx");
+		File myFile = new File("C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		
 		// 1. Finds the workbook instance for XLSX file
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);   // if you need to read old Excel format, change to HSSFWorkbook
 		
 		// 2. Read Cell
-		String result = myWorkBook.getSheetAt(0).getRow(0).getCell(0).getStringCellValue();
-		//System.out.println(result);
+		String result = myWorkBook.getSheetAt(0).getRow(2).getCell(2).getStringCellValue();
+		System.out.println(result);
 		
 		fis.close();
 		
-		return result;
+		//return result;
 	}
 }

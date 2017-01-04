@@ -37,8 +37,8 @@ public class ExcelReadCells
 	return result;
 	}
 	
-	//public static void main(String[] args) throws Exception
-	public String readCellsFromExcel() throws IOException
+	public static void main(String[] args) throws Exception
+	//public String readCellsFromExcel() throws IOException
 	{
 		File myFile = new File("C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
@@ -48,17 +48,24 @@ public class ExcelReadCells
 		
 		// 2. Read Cell
 		String result = "";
-		for(Row row: myWorkBook.getSheetAt(0))	//Read all Cells of Sheet 0
+		int counter=0;
+		
+		for(Row row: myWorkBook.getSheetAt(1))	//Read all Cells of Sheet 0
 		{
-			//for(Cell cell: row)	// Read all Cells of all Rows
-			for(Cell cell: myWorkBook.getSheetAt(0).getRow(3)) // Read specific Row
+			String outputResult="";
+			for(Cell cell: row)	// Read all Cells of all Rows
+			//for(Cell cell: myWorkBook.getSheetAt(0).getRow(3)) // Read specific Row
 			{
-				result = getExcelCell(((Row) cell).getCell(2));
-				//System.out.print(getExcelCell(cell) + "\t");		// DEBUG			
+				
+				//result = getExcelCell(2);
+				outputResult+=getExcelCell(cell) + "\t";		// DEBUG			
 			}
-			System.out.println();
-		}
+			if (counter>1) System.out.println(outputResult);
+			counter++;
+System.out.println();
+			}
+
 		fis.close();	
-		return result;
+		//return result;
 	}
 }
