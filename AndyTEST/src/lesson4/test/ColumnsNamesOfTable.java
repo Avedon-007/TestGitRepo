@@ -2,29 +2,44 @@ package lesson4.test;
 
 public class ColumnsNamesOfTable 
 {
-	int testCaseNo;
+	String nameOfTestCaseNoColumn;
+	double testCaseNo;
 	String testCaseName;
 	String sqlQuery;
 	String expectedResult;
 	String actualResult;
 	String testResult;
 	
+	
+	
+	
+/*
 	public ColumnsNamesOfTable(int testCaseNo, String testCaseName, String sqlQuery, String expectedResult,
 			String actualResult, String testResult) 
 	{		
-		this.testCaseNo = testCaseNo;
+		//this.testCaseNo = testCaseNo;
 		this.testCaseName = testCaseName;
 		this.sqlQuery = sqlQuery;
 		this.expectedResult = expectedResult;
 		this.actualResult = actualResult;
 		this.testResult = testResult;
 	}
-
-	public int getTestCaseNo() {
-		return testCaseNo;
+*/
+	
+	public String getNameOfTestCaseNoColumn() {
+		return nameOfTestCaseNoColumn;
 	}
 
-	public void setTestCaseNo(int testCaseNo) {
+	public void setNameOfTestCaseNoColumn(String nameOfTestCaseNameColumn) {
+		this.nameOfTestCaseNoColumn = nameOfTestCaseNameColumn;
+	}
+
+	
+	public double getTestCaseNo() {
+		return testCaseNo;
+	}
+	
+	public void setTestCaseNo(double testCaseNo) {
 		this.testCaseNo = testCaseNo;
 	}
 
