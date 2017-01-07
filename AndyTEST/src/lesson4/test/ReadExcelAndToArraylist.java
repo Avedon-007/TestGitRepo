@@ -36,7 +36,7 @@ public class ReadExcelAndToArraylist
 			{
 				Cell cell = cellIterator.next();//						
 				int i = 0;
-				double i = 0;
+		>>>>>	//double i = 0;
 				int j = 0;
 				
 				switch(cell.getCellType())
