@@ -16,7 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelAndToArraylist 
 {
-	public static String fileSource = "C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	public static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
 	
 	public static void main(String[] args) throws IOException
 	{
@@ -36,7 +36,7 @@ public class ReadExcelAndToArraylist
 			{
 				Cell cell = cellIterator.next();//						
 				int i = 0;
-		>>>>>	//double i = 0;
+		//>>>>>	//double i = 0;
 				int j = 0;
 				
 				switch(cell.getCellType())
