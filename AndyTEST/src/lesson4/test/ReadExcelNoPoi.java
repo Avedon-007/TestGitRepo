@@ -16,7 +16,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelNoPoi 
 {
-	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	private static String fileSource = "C:\\Users\\user\\Desktop\\SimpleScenariosChecklist_02.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	
@@ -32,22 +32,31 @@ public class ReadExcelNoPoi
 		//String resultOfReadCell = "";
 		for(Row row: excelBook.getSheetAt(0))
 		{			
+			myArrayForArrayList = new String[6];
 			for(int j = 0; j <= 5; j++)
 			{
 				Cell cell = row.getCell(j);
 				if(cell!= null)
 				{					
-					//System.out.print(cell + "\t\t\t\t\t");	// DEBUG
-					myArrayForArrayList = new String[6];				
+					//System.out.print(cell + "\t\t\t\t\t");	// DEBUG									
 					myArrayForArrayList[j] = cell.getStringCellValue();
-					System.out.print(myArrayForArrayList[j] + "\t");	//DEBUG					
-					arrayListOfTestCases.add(myArrayForArrayList);
+					//System.out.print(myArrayForArrayList[j] + "\t");	//DEBUG						
 				}
-			}	
+			}
+			arrayListOfTestCases.add(myArrayForArrayList);
 			System.out.println();
 		}
 		
 		//return resultOfReadCell;
+		
+		for(String[] tt: arrayListOfTestCases)
+		{
+			for(String s: tt)
+			{
+				System.out.print(s + " ");
+			}
+			System.out.println();
+		}
 		
 	}
 	
