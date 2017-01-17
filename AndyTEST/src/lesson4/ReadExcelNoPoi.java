@@ -3,9 +3,6 @@ package lesson4;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-
-
-
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -20,7 +17,7 @@ public class ReadExcelNoPoi
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	
 	
-	//public static void main(String[] args) throws IOException	// DEBUG
+//	public static void main(String[] args) throws IOException	// DEBUG
 	public String readCellsFromExcel() throws IOException
 	{
 		File myFile = new File(fileSource);
@@ -42,8 +39,7 @@ public class ReadExcelNoPoi
 					//System.out.print(myArrayForArrayList[j] + "\t");	//DEBUG						
 				}
 			}
-			arrayListOfTestCases.add(myArrayForArrayList);
-			System.out.println();
+			arrayListOfTestCases.add(myArrayForArrayList);			
 		}				
 		fis.close();			
 		
@@ -54,7 +50,7 @@ public class ReadExcelNoPoi
 				counter++;
 			else
 				{
-					//System.out.println(tt[2].toString());
+					//System.out.println(tt[2].toString());	// DEBUG
 					resultOfReadCell = tt[2].toString();
 					counter++;
 				}				
