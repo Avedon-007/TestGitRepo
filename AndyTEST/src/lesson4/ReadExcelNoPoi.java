@@ -1,4 +1,4 @@
-package lesson4.test;
+package lesson4;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,26 +10,25 @@ import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFShape;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelNoPoi 
 {
-	private static String fileSource = "C:\\Users\\user\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	
 	
-	public static void main(String[] args) throws IOException	// DEBUG
-	//public String readCellsFromExcel() throws IOException
+	//public static void main(String[] args) throws IOException	// DEBUG
+	public String readCellsFromExcel() throws IOException
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		XSSFSheet excelSheet = excelBook.getSheetAt(0);
 		
-		//String resultOfReadCell = "";
+		String resultOfReadCell = "";
 		for(Row row: excelBook.getSheetAt(0))
 		{			
 			myArrayForArrayList = new String[6];
@@ -45,23 +44,23 @@ public class ReadExcelNoPoi
 			}
 			arrayListOfTestCases.add(myArrayForArrayList);
 			System.out.println();
-		}
+		}				
+		fis.close();			
 		
-		//return resultOfReadCell;
-		
+		int counter = 0;	// Make COUNTER for pass through the name of column and get only data
 		for(String[] tt: arrayListOfTestCases)
-		{
-			for(String s: tt)
-			{
-				System.out.print(s + " ");
-			}
-			System.out.println();
-		}
-		
-	}
-	
-	
-	
+		{					
+			if(counter==0)
+				counter++;
+			else
+				{
+					//System.out.println(tt[2].toString());
+					resultOfReadCell = tt[2].toString();
+					counter++;
+				}				
+		}	
+		return resultOfReadCell;
+	}	
 }
 
 /*

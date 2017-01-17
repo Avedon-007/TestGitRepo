@@ -15,8 +15,6 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import lesson4.DataBaseSelect;
-
 public class WriteNewExcel 
 {
 

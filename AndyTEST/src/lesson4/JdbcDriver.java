@@ -24,21 +24,22 @@ public class JdbcDriver
 		// Connection myConn = DriverManager.getConnection(DATABASE_URL,
 		// USERNAME, PASSWORD);
 		Connection myConn = DriverManager.getConnection(DATABASE_URL + DATABASE_NAME + DB_SECURITY);
+		System.out.println("Connecting to database...is successful");
 		
 		// 2. Create a statement
 		Statement myStmt = myConn.createStatement();
 
 		// 3. Execute SQL query
-		String sql = "USE TestDB SELECT airport FROM Airports";
-		//ReadFromFile readFromFile = new ReadFromFile();		
-		//ResultSet result = myStmt.executeQuery(readFromFile.readFromFile());
-		ResultSet result = myStmt.executeQuery(sql);
+		//String sql = "USE TestDB SELECT airport FROM Airports";
+		ReadExcelNoPoi readSQLquery = new ReadExcelNoPoi();		
+		ResultSet result = myStmt.executeQuery(readSQLquery.readCellsFromExcel());
+		//ResultSet result = myStmt.executeQuery(sql);
 		System.out.println("Query executed!!!");
 
 		// 4. Process the result set
 		while (result.next()) 
 		{
-			System.out.print(result.getString("airport") + ";");
+			System.out.print(result + ";");
 		}
 		result.close();
 		myStmt.close();
@@ -66,25 +67,7 @@ public class JdbcDriver
 			Statement myStmt = myConn.createStatement();		
 			
 			// 3. Execute SQL query					
-			String sql = "USE TestDB" + " "
-					 + "INSERT INTO Airports" + "(airportNumber, airport, dutyFree, priorityBoarding)"
-					 + "VALUES"
-					 + "(1, 'London', 'yes', 'yes'),"
-					 + "(2, 'Paris', 'yes', 'yes'),"
-					 + "(3, 'Sydney', 'no', 'no'),"
-					 + "(4, 'Berlin', 'yes', 'no'),"
-					 + "(5, 'Munich', 'yes', 'no'),"
-					 + "(6, 'New-York', 'no', 'no'),"
-					 + "(7, 'Kiev', 'yes', 'yes'),"
-					 + "(8, 'Budapest', 'yes', 'no'),"
-					 + "(9, 'Beijing', 'no', 'yes'),"
-					 + "(10, 'Prague', 'yes', 'yes'),"
-					 + "(11, 'Helsinki', 'no', 'no'),"
-					 + "(12, 'Ottava', 'no', 'no'),"
-					 + "(13, 'Vilnius', 'yes', 'yes'),"
-					 + "(14, 'Milan', 'yes', 'yes'),"
-					 + "(15, 'Barcelona', 'yes', 'no')";
-					
+			
 			myStmt.executeUpdate(sql);
 			System.out.println("Insert complete.");   		
 			

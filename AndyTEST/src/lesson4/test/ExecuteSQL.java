@@ -1,4 +1,4 @@
-package lesson4;
+package lesson4.test;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
