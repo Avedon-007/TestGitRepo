@@ -12,13 +12,13 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelNoPoi 
 {
-	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	private static String fileSource = "C:\\Users\\user\\Desktop\\SimpleScenariosChecklist_02.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	
 	
-//	public static void main(String[] args) throws IOException	// DEBUG
-	public String readCellsFromExcel() throws IOException
+	public static void main(String[] args) throws IOException	// DEBUG
+//	public String readCellsFromExcel() throws IOException
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
@@ -34,28 +34,31 @@ public class ReadExcelNoPoi
 				Cell cell = row.getCell(j);
 				if(cell!= null)
 				{					
-					//System.out.print(cell + "\t\t\t\t\t");	// DEBUG									
+					//System.out.println(cell + "\t\t\t\t\t");	// DEBUG									
 					myArrayForArrayList[j] = cell.getStringCellValue();
-					//System.out.print(myArrayForArrayList[j] + "\t");	//DEBUG						
-				}
+					//System.out.println(myArrayForArrayList[j] + "\t");	//DEBUG						
+				}				
 			}
 			arrayListOfTestCases.add(myArrayForArrayList);			
 		}				
 		fis.close();			
 		
 		int counter = 0;	// Make COUNTER for pass through the name of column and get only data
-		for(String[] tt: arrayListOfTestCases)
+		for(String[] buferArry: arrayListOfTestCases)
 		{					
 			if(counter==0)
 				counter++;
 			else
 				{
-					//System.out.println(tt[2].toString());	// DEBUG
-					resultOfReadCell = tt[2].toString();
-					counter++;
+					if(buferArry[2]!=null)
+					{	
+						System.out.println(buferArry[2].toString());	// DEBUG
+						//resultOfReadCell = buferArry[2].toString();
+						counter++;
+					}
 				}				
 		}	
-		return resultOfReadCell;
+		//return resultOfReadCell;
 	}	
 }
 
