@@ -39,7 +39,8 @@ public class JdbcDriver
 		// 4. Process the result set
 		while (result.next()) 
 		{
-			System.out.print(result + ";");
+			System.out.println("ok");
+			System.out.println(result + ";");
 		}
 		result.close();
 		myStmt.close();
@@ -95,4 +96,52 @@ public class JdbcDriver
 	}
 }
 
+*/
+
+
+/*
+public class JdbcDriver 
+{	
+	// User credentials
+	//static final String USERNAME = "admin";
+	//static final String PASSWORD = "12345";
+			
+	// JDBC driver name and database URL
+	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
+	static final String DATABASE_NAME = "databaseName = TestDB;";
+	static final String DB_SECURITY = "integratedSecurity=true;";
+	
+	public static void main(String[] args) throws Exception
+	{
+		// 1. Get a connection to database
+		Class.forName(DATABASE_DRIVER); // Driver registering
+		System.out.println("Driver was registered.");
+
+		// Connection myConn = DriverManager.getConnection(DATABASE_URL,
+		// USERNAME, PASSWORD);
+		Connection myConn = DriverManager.getConnection(DATABASE_URL + DATABASE_NAME + DB_SECURITY);
+		System.out.println("Connecting to database...is successful");
+		
+		// 2. Create a statement
+		Statement myStmt = myConn.createStatement();
+
+		// 3. Execute SQL query
+		//String sql = "USE TestDB SELECT airport FROM Airports";
+		ReadExcelNoPoi readSQLquery = new ReadExcelNoPoi();		
+		ResultSet result = myStmt.executeQuery(readSQLquery.readCellsFromExcel());
+		//ResultSet result = myStmt.executeQuery(sql);
+		System.out.println("Query executed!!!");
+
+		// 4. Process the result set
+		while (result.next()) 
+		{
+			System.out.println("ok");
+			System.out.println(result + ";");
+		}
+		result.close();
+		myStmt.close();
+		myConn.close();
+	}
+}
 */
