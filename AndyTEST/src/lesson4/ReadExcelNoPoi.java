@@ -78,7 +78,7 @@ public class ReadExcelNoPoi
 			{
 				if(buferArry[3]!=null && buferArry[4]!=null)
 				{				
-					if(buferArry[3] == buferArry[4])
+					if(buferArry[3].equals(buferArry[4]))
 					{
 //						myArrayForArrayList = new String[6];
 //						myArrayForArrayList[5] = "PASS";
