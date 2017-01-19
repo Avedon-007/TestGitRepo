@@ -22,7 +22,7 @@ public class TestEnvironment
 		String resultValue = "";
 		// open file (.ini) and read row by row
 		// if row starts from myParam then return the content after =
-		
+		//use subString
 		
 		
 		return resultValue;
