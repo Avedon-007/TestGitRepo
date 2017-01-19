@@ -85,15 +85,17 @@ public class ReadExcelNoPoi
 //						arrayListOfTestCases.add(myArrayForArrayList);
 //						System.out.println("PASS");	// DEBUG
 						resultOfcompare = "Pass";
+						counter2 = counter2 + 1;
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare);
+						myNewObject.writeExcelCell(resultOfcompare, counter2);
 					}
 					else
 					{
 //						System.out.println("FAIL");	// DEBUG
 						resultOfcompare = "Fail";
+						counter2 = counter2 + 1;
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare);
+						myNewObject.writeExcelCell(resultOfcompare, counter2);
 					}
 				}
 			}
