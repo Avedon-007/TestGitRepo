@@ -3,6 +3,7 @@ package lesson4;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
@@ -17,8 +18,8 @@ public class ReadExcelNoPoi
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	
 	
-//	public static void main(String[] args) throws IOException	// DEBUG
-	public String readCellsFromExcel() throws IOException
+	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException	// DEBUG
+//	public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
@@ -58,14 +59,14 @@ public class ReadExcelNoPoi
 					}
 				}				
 		}	
-//		ReadExcelNoPoi instance = new ReadExcelNoPoi();	// DEBUG
-//		instance.compareColumns();						// DEBUG
+		ReadExcelNoPoi instance = new ReadExcelNoPoi();	// DEBUG
+		instance.compareColumns();						// DEBUG
 //		System.out.println(instance.compareColumns());	// DEBUG
 		
-		return resultOfReadCell;	
+//		return resultOfReadCell;	
 	}	//end of MAIN method
 	
-	public String compareColumns()
+	public String compareColumns() throws ClassNotFoundException, IOException, SQLException
 	{
 		String resultOfcompare = "";
 		int counter2 = 0;
@@ -83,12 +84,16 @@ public class ReadExcelNoPoi
 //						myArrayForArrayList[5] = "PASS";
 //						arrayListOfTestCases.add(myArrayForArrayList);
 //						System.out.println("PASS");	// DEBUG
-						resultOfcompare = "Pass";					
+						resultOfcompare = "Pass";
+						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+						myNewObject.writeExcelCell(resultOfcompare);
 					}
 					else
 					{
 //						System.out.println("FAIL");	// DEBUG
 						resultOfcompare = "Fail";
+						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+						myNewObject.writeExcelCell(resultOfcompare);
 					}
 				}
 			}
