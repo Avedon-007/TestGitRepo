@@ -18,6 +18,16 @@ public class TestEnvironment
 		this.password  = getValueFromFile(DATA_FILE, "password");
 	};
 
+	private String getValueFromFile(String dataFile, String myParam) {
+		String resultValue = "";
+		// open file (.ini) and read row by row
+		// if row starts from myParam then return the content after =
+		
+		
+		
+		return resultValue;
+	}
+
 	public void  createEnvironment()
 	{
 		Database myDatabase = new Database(databaseURL, username, password);
