@@ -117,3 +117,43 @@ public class WriteNewExcel
 
 }
 */
+
+
+/*
+public class WriteNewExcel 
+{
+
+	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException
+	{
+		File myFile = new File("C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx");
+		FileInputStream fis = new FileInputStream(myFile);
+		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
+		XSSFSheet mySheet = myWorkBook.getSheetAt(1);
+		XSSFRow row = mySheet.getRow(2);
+		XSSFCell cell = row.getCell(4);
+		if(cell == null)
+		{
+			cell = row.createCell(4);
+		}
+		
+		
+		DataBaseSelect selectFromDB = new DataBaseSelect();		
+		cell.setCellValue(selectFromDB.selectFromDataBase());
+//		cell.setCellValue("SUPER");		//DEBUG
+		fis.close();
+//		System.out.println("!!!!!!"); //DEBUG
+		// open an OutputStream to save written data into XLSX file 
+		 FileOutputStream os = new FileOutputStream(myFile);
+         myWorkBook.write(os);
+         System.out.println("Writing on XLSX file Finished ...");
+         
+      // Close workbook, OutputStream and Excel file to prevent leak
+         myWorkBook.close();
+         os.close();
+         
+        
+
+	}
+
+}
+*/

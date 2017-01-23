@@ -2,6 +2,7 @@ package lesson4;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -11,10 +12,9 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class WriteExcelForCompareColumns 
+public class WriteSQLQueryResult 
 {
-
-	protected void writeExcelCell(String resultOfcompare, int i) throws IOException, ClassNotFoundException, SQLException
+	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int i) throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File("C:\\Users\\user\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
@@ -24,12 +24,12 @@ public class WriteExcelForCompareColumns
 		XSSFRow row = mySheet.getRow(i);
 		if(row != null)
 		{
-			XSSFCell cell = row.getCell(5);
+			XSSFCell cell = row.getCell(4);
 			if(cell == null)
 			{
-				cell = row.createCell(5);
+				cell = row.createCell(4);
 			}			
-			cell.setCellValue(resultOfcompare);
+			cell.setCellValue(resultOfSQLQueryExecut);
 		}	
 		fis.close();		
 		
@@ -42,6 +42,5 @@ public class WriteExcelForCompareColumns
          myWorkBook.close();
          os.close();        
          
-	}// end of Main method
-
-}// end of Class
+	}
+}

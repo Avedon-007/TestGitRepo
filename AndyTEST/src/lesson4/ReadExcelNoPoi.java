@@ -11,39 +11,57 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import lesson4.test.ExecuteQueryAndGenerateCSV;
+
 public class ReadExcelNoPoi 
 {
 	private static String fileSource = "C:\\Users\\user\\Desktop\\test.xlsx";
 	private static String[] myArrayForArrayList;
-	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
+	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();	
 	
-	
-	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException	// DEBUG
+	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException 	// DEBUG
 //	public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
+	{		
+		ReadExcelNoPoi instance = new ReadExcelNoPoi();	
+		instance.writeDataFromExcelToArrayList();
+		instance.gettingExectColumnFromArrayList();
+		instance.compareColumns();	
+	}	//end of MAIN method
+	
+		
+	protected	void writeDataFromExcelToArrayList() throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
-		XSSFSheet excelSheet = excelBook.getSheetAt(0);
 		
+		
+		
+		XSSFSheet excelSheet = excelBook.getSheetAt(0);		
+		
+			for(Row row: excelBook.getSheetAt(0))
+			{			
+				myArrayForArrayList = new String[6];
+				for(int j = 0; j <= 5; j++)
+				{
+					Cell cell = row.getCell(j);
+					if(cell!= null)
+					{					
+						//System.out.println(cell + "\t\t\t\t\t");	// DEBUG									
+						myArrayForArrayList[j] = cell.getStringCellValue();
+						//System.out.println(myArrayForArrayList[j] + "\t");	//DEBUG						
+					}				
+				}
+				arrayListOfTestCases.add(myArrayForArrayList);	
+			}	
+						
+		
+		fis.close();	
+	}	// end of writeDataFromExcelToArrayList()
+	
+	private void gettingExectColumnFromArrayList() throws ClassNotFoundException, SQLException, IOException	
+	{
 		String resultOfReadCell = "";
-		for(Row row: excelBook.getSheetAt(0))
-		{			
-			myArrayForArrayList = new String[6];
-			for(int j = 0; j <= 5; j++)
-			{
-				Cell cell = row.getCell(j);
-				if(cell!= null)
-				{					
-					//System.out.println(cell + "\t\t\t\t\t");	// DEBUG									
-					myArrayForArrayList[j] = cell.getStringCellValue();
-					//System.out.println(myArrayForArrayList[j] + "\t");	//DEBUG						
-				}				
-			}
-			arrayListOfTestCases.add(myArrayForArrayList);			
-		}				
-		fis.close();			
-		
 		int counter = 0;	// Make COUNTER for pass through the name of column and get only data
 		for(String[] buferArry: arrayListOfTestCases)
 		{					
@@ -54,83 +72,54 @@ public class ReadExcelNoPoi
 					if(buferArry[2]!=null)
 					{	
 						//System.out.println(buferArry[2].toString());	// DEBUG
-						resultOfReadCell = buferArry[2].toString();
+						resultOfReadCell = buferArry[2].toString();	
+						ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
+						String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell);
+						WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
+						myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, counter);
 						counter++;
 					}
 				}				
 		}	
-		ReadExcelNoPoi instance = new ReadExcelNoPoi();	// DEBUG
-		instance.compareColumns();						// DEBUG
-//		System.out.println(instance.compareColumns());	// DEBUG
-		
-//		return resultOfReadCell;	
-	}	//end of MAIN method
+	}	// end of gettingExectColumnFromArrayList()
 	
-	public String compareColumns() throws ClassNotFoundException, IOException, SQLException
+	private void compareColumns() throws ClassNotFoundException, IOException, SQLException
 	{
-		String resultOfcompare = "";
-		int counter2 = 0;
-		for(String[] buferArry: arrayListOfTestCases)
-		{
-			if(counter2 == 0)
-				counter2++;
-			else
+		
+			String resultOfcompare = "";
+			int counter2 = 0;	// Make COUNTER for pass through the name of column and get only data
+			for(String[] buferArry: arrayListOfTestCases)
 			{
-				if(buferArry[3]!=null && buferArry[4]!=null)
-				{				
-					if(buferArry[3].equals(buferArry[4]))
-					{
-//						myArrayForArrayList = new String[6];
-//						myArrayForArrayList[5] = "PASS";
-//						arrayListOfTestCases.add(myArrayForArrayList);
-//						System.out.println("PASS");	// DEBUG
-						resultOfcompare = "Pass";
-						counter2 = counter2 + 1;
-						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare, counter2);
-					}
-					else
-					{
-//						System.out.println("FAIL");	// DEBUG
-						resultOfcompare = "Fail";
-						counter2 = counter2 + 1;
-						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare, counter2);
+				if(counter2 == 0)
+					counter2++;
+				else
+				{
+					if(buferArry[3]!=null && buferArry[4]!=null)
+					{				
+						if(buferArry[3].equals(buferArry[4]))
+						{
+							resultOfcompare = "Pass";						
+							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+							myNewObject.writeExcelCell(resultOfcompare, counter2);
+							counter2++;
+						
+						}
+						else
+						{
+							resultOfcompare = "Fail";						
+							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+							myNewObject.writeExcelCell(resultOfcompare, counter2);
+							counter2++;
+						
+						}
 					}
 				}
 			}
-		}
-		return resultOfcompare;
 		
-	}	// end of COMPARE COLUMNS method
+		//return resultOfcompare;
 		
-	
+	}	// end of COMPARE COLUMNS method	
 }	// end of CLASS
-
-
-//int counter2 = 0;
-//for(String[] buferArry: arrayListOfTestCases)
-//{
-//	if(counter==0)
-//		counter++;
-//	else
-//	{
-//		if(buferArry[3]==buferArry[4])
-//		{
-//			System.out.println("PASS");
-//		}
-//		else
-//		{
-//			System.out.println("FAIL");
-//		}
-//	}
-//}
-
-
-
-
-
-
 
 
 
@@ -161,4 +150,119 @@ public void readCellsFromExcel() throws IOException
 	
 	
 }
+*/
+
+
+
+/*
+public class ReadExcelNoPoi 
+{
+	private static String fileSource = "C:\\Users\\user\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	private static String[] myArrayForArrayList;
+	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
+	private static ArrayList<ArrayList<String[]>> lists = new ArrayList<ArrayList<String[]>>();
+
+	
+	
+	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException 	// DEBUG
+//	public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
+	{		
+		ReadExcelNoPoi instance = new ReadExcelNoPoi();	
+		instance.writeDataFromExcelToArrayList();
+		//instance.gettingExectColumnFromArrayList();
+		instance.compareColumns();	
+	}	//end of MAIN method
+
+	
+		
+	private	void writeDataFromExcelToArrayList() throws IOException, ClassNotFoundException, SQLException
+	{
+		File myFile = new File(fileSource);
+		FileInputStream fis = new FileInputStream(myFile);
+		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
+		
+		
+		for(int i = 0; i <= 1; i++)
+		{
+		XSSFSheet excelSheet = excelBook.getSheetAt(i);		
+		
+			for(Row row: excelBook.getSheetAt(i))
+			{			
+				myArrayForArrayList = new String[6];
+				for(int j = 0; j <= 5; j++)
+				{
+					Cell cell = row.getCell(j);
+					if(cell!= null)
+					{					
+						//System.out.println(cell + "\t\t\t\t\t");	// DEBUG									
+						myArrayForArrayList[j] = cell.getStringCellValue();
+						//System.out.println(myArrayForArrayList[j] + "\t");	//DEBUG						
+					}				
+				}
+				arrayListOfTestCases.add(myArrayForArrayList);	
+			}	
+		}				
+		
+		fis.close();	
+	}	// end of writeDataFromExcelToArrayList()
+	
+	private void gettingExectColumnFromArrayList()	
+	{
+		String resultOfReadCell = "";
+		int counter = 0;	// Make COUNTER for pass through the name of column and get only data
+		for(String[] buferArry: arrayListOfTestCases)
+		{					
+			if(counter==0)
+				counter++;
+			else
+				{
+					if(buferArry[2]!=null)
+					{	
+						//System.out.println(buferArry[2].toString());	// DEBUG
+						resultOfReadCell = buferArry[2].toString();
+						counter++;
+					}
+				}				
+		}	
+	}	// end of gettingExectColumnFromArrayList()
+	
+	private void compareColumns() throws ClassNotFoundException, IOException, SQLException
+	{
+		for(int i = 0; i <= 1; i++)
+		{
+			String resultOfcompare = "";
+			int counter2 = 0;	// Make COUNTER for pass through the name of column and get only data
+			for(String[] buferArry: arrayListOfTestCases)
+			{
+				if(counter2 == 0)
+					counter2++;
+				else
+				{
+					if(buferArry[3]!=null && buferArry[4]!=null)
+					{				
+						if(buferArry[3].equals(buferArry[4]))
+						{
+							resultOfcompare = "Pass";						
+							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+							myNewObject.writeExcelCell(resultOfcompare, counter2, i);
+							counter2++;
+						
+						}
+						else
+						{
+							resultOfcompare = "Fail";						
+							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+							myNewObject.writeExcelCell(resultOfcompare, counter2, i);
+							counter2++;
+						
+						}
+					}
+				}
+			}
+		}
+		//return resultOfcompare;
+		
+	}	// end of COMPARE COLUMNS method	
+}	// end of CLASS
+
 */
