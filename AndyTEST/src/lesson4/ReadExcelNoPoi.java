@@ -2,6 +2,7 @@ package lesson4;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -15,9 +16,12 @@ import lesson4.test.ExecuteQueryAndGenerateCSV;
 
 public class ReadExcelNoPoi 
 {
-	private static String fileSource = "C:\\Users\\user\\Desktop\\test.xlsx";
+	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\test.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();	
+	private static String[] myArrayForArrayListAfterSQL;	
+	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();	
+
 	
 	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException 	// DEBUG
 //	public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
@@ -25,6 +29,7 @@ public class ReadExcelNoPoi
 		ReadExcelNoPoi instance = new ReadExcelNoPoi();	
 		instance.writeDataFromExcelToArrayList();
 		instance.gettingExectColumnFromArrayList();
+		instance.addSQLresultToArrayList();
 		instance.compareColumns();	
 	}	//end of MAIN method
 	
@@ -83,20 +88,48 @@ public class ReadExcelNoPoi
 		}	
 	}	// end of gettingExectColumnFromArrayList()
 	
+	
+	private void addSQLresultToArrayList() throws IOException	// Create new ArrayList and add Excel table with SQL query results to it
+	{
+		File myFile = new File(fileSource);
+		FileInputStream fis = new FileInputStream(myFile);
+		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
+		
+		XSSFSheet excelSheet = excelBook.getSheetAt(0);	
+		
+		for(Row row: excelBook.getSheetAt(0))
+		{			
+			myArrayForArrayListAfterSQL = new String[6];
+			for(int j = 0; j <= 5; j++)
+			{
+				Cell cell = row.getCell(j);
+				if(cell!= null)
+				{													
+					myArrayForArrayListAfterSQL[j] = cell.getStringCellValue();											
+				}				
+			}
+			arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);	
+		}
+		fis.close();
+	}
+	
+	
+	
+	
 	private void compareColumns() throws ClassNotFoundException, IOException, SQLException
 	{
 		
 			String resultOfcompare = "";
 			int counter2 = 0;	// Make COUNTER for pass through the name of column and get only data
-			for(String[] buferArry: arrayListOfTestCases)
+			for(String[] myBuferArry: arrayListOfTestCasesWithSQLResults)
 			{
 				if(counter2 == 0)
 					counter2++;
 				else
 				{
-					if(buferArry[3]!=null && buferArry[4]!=null)
+					if(myBuferArry[3]!=null && myBuferArry[4]!=null)
 					{				
-						if(buferArry[3].equals(buferArry[4]))
+						if(myBuferArry[3].equals(myBuferArry[4]))
 						{
 							resultOfcompare = "Pass";						
 							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();

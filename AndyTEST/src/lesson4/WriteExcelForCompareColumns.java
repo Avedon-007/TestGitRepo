@@ -16,7 +16,7 @@ public class WriteExcelForCompareColumns
 
 	protected void writeExcelCell(String resultOfcompare, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\user\\Desktop\\test.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
 		XSSFSheet mySheet = myWorkBook.getSheetAt(0);
