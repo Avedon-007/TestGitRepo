@@ -28,9 +28,9 @@ public class ReadExcelNoPoi
 	{		
 		ReadExcelNoPoi instance = new ReadExcelNoPoi();	
 		instance.writeDataFromExcelToArrayList();
-		instance.gettingExectColumnFromArrayList();
+		//instance.gettingExectColumnFromArrayList();
 		instance.addSQLresultToArrayList();
-		instance.compareColumns();	
+		//instance.compareColumns();	
 	}	//end of MAIN method
 	
 		
@@ -40,11 +40,11 @@ public class ReadExcelNoPoi
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		
-		
-		
-		XSSFSheet excelSheet = excelBook.getSheetAt(0);		
-		
-			for(Row row: excelBook.getSheetAt(0))
+		for(int sh = 0; sh < excelBook.getNumberOfSheets(); sh++)
+		{
+			XSSFSheet excelSheet = excelBook.getSheetAt(sh);		
+			
+			for(Row row: excelBook.getSheetAt(sh))
 			{			
 				myArrayForArrayList = new String[6];
 				for(int j = 0; j <= 5; j++)
@@ -59,12 +59,19 @@ public class ReadExcelNoPoi
 				}
 				arrayListOfTestCases.add(myArrayForArrayList);	
 			}	
+			ReadExcelNoPoi instance = new ReadExcelNoPoi();	
+			instance.gettingExectColumnFromArrayList(sh);
+			arrayListOfTestCases.clear();			//	I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! !  !!! ! ! ! ! !! 
+			
+		}
+		
+		
 						
 		
 		fis.close();	
 	}	// end of writeDataFromExcelToArrayList()
 	
-	private void gettingExectColumnFromArrayList() throws ClassNotFoundException, SQLException, IOException	
+	private void gettingExectColumnFromArrayList(int sh) throws ClassNotFoundException, SQLException, IOException	
 	{
 		String resultOfReadCell = "";
 		int counter = 0;	// Make COUNTER for pass through the name of column and get only data
@@ -79,9 +86,10 @@ public class ReadExcelNoPoi
 						//System.out.println(buferArry[2].toString());	// DEBUG
 						resultOfReadCell = buferArry[2].toString();	
 						ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
-						String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell);
+						String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell);	//присваиваю буферной переменной результат выполнения SQL запроса
+						
 						WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
-						myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, counter);
+						myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы пропустить первую с названиями колонок)
 						counter++;
 					}
 				}				
@@ -89,34 +97,43 @@ public class ReadExcelNoPoi
 	}	// end of gettingExectColumnFromArrayList()
 	
 	
-	private void addSQLresultToArrayList() throws IOException	// Create new ArrayList and add Excel table with SQL query results to it
+	private void addSQLresultToArrayList() throws IOException, ClassNotFoundException, SQLException // Create new ArrayList and add Excel table with SQL query results to it
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		
-		XSSFSheet excelSheet = excelBook.getSheetAt(0);	
-		
-		for(Row row: excelBook.getSheetAt(0))
-		{			
-			myArrayForArrayListAfterSQL = new String[6];
-			for(int j = 0; j <= 5; j++)
-			{
-				Cell cell = row.getCell(j);
-				if(cell!= null)
-				{													
-					myArrayForArrayListAfterSQL[j] = cell.getStringCellValue();											
-				}				
+		for(int sh2 = 0; sh2 < excelBook.getNumberOfSheets(); sh2++)
+		{
+			XSSFSheet excelSheet = excelBook.getSheetAt(sh2);	
+			
+			for(Row row: excelBook.getSheetAt(sh2))
+			{			
+				myArrayForArrayListAfterSQL = new String[6];
+				for(int j = 0; j <= 5; j++)
+				{
+					Cell cell = row.getCell(j);
+					if(cell!= null)
+					{													
+						myArrayForArrayListAfterSQL[j] = cell.getStringCellValue();											
+					}				
+				}
+				arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);	
 			}
-			arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);	
+			ReadExcelNoPoi instance = new ReadExcelNoPoi();	
+			instance.compareColumns(sh2);
+			arrayListOfTestCasesWithSQLResults.clear();//	I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! !  !!! ! ! ! ! !! 
 		}
+		
+		
+		
 		fis.close();
 	}
 	
 	
 	
 	
-	private void compareColumns() throws ClassNotFoundException, IOException, SQLException
+	private void compareColumns(int sh2) throws ClassNotFoundException, IOException, SQLException
 	{
 		
 			String resultOfcompare = "";
@@ -133,7 +150,7 @@ public class ReadExcelNoPoi
 						{
 							resultOfcompare = "Pass";						
 							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-							myNewObject.writeExcelCell(resultOfcompare, counter2);
+							myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);
 							counter2++;
 						
 						}
@@ -141,7 +158,7 @@ public class ReadExcelNoPoi
 						{
 							resultOfcompare = "Fail";						
 							WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-							myNewObject.writeExcelCell(resultOfcompare, counter2);
+							myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);
 							counter2++;
 						
 						}

@@ -14,23 +14,29 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class WriteExcelForCompareColumns 
 {
 
-	protected void writeExcelCell(String resultOfcompare, int i) throws IOException, ClassNotFoundException, SQLException
+	protected void writeExcelCell(String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
-		XSSFSheet mySheet = myWorkBook.getSheetAt(0);
 		
-		XSSFRow row = mySheet.getRow(i);
-		if(row != null)
-		{
-			XSSFCell cell = row.getCell(5);
-			if(cell == null)
+		
+		
+		
+			XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
+			
+			XSSFRow row = mySheet.getRow(i);
+			if(row != null)
 			{
-				cell = row.createCell(5);
-			}			
-			cell.setCellValue(resultOfcompare);
-		}	
+				XSSFCell cell = row.getCell(5);
+				if(cell == null)
+				{
+					cell = row.createCell(5);
+				}			
+				cell.setCellValue(resultOfcompare);
+			}	
+		
+		
 		fis.close();		
 		
 		// open an OutputStream to save written data into XLSX file 

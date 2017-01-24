@@ -13,7 +13,7 @@ public class ExecuteQueryAndGenerateCSV {
 	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
 	static final String DATABASE_NAME = "databaseName = TestDB;";
 	static final String DB_SECURITY = "integratedSecurity=true;";
-	static String query = "Use TestDB SELECT * FROM Airports";
+	//static String query = "Use TestDB SELECT * FROM Airports";
 	
 	//public static void main(String[] args) throws Exception, SQLException // DEBUG
 	public String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException

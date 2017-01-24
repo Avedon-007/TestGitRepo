@@ -14,23 +14,29 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteSQLQueryResult 
 {
-	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int i) throws IOException, ClassNotFoundException, SQLException
+	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int sh, int i) throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
-		XSSFSheet mySheet = myWorkBook.getSheetAt(0);
 		
-		XSSFRow row = mySheet.getRow(i);
-		if(row != null)
-		{
-			XSSFCell cell = row.getCell(4);
-			if(cell == null)
+		
+		
+			XSSFSheet mySheet = myWorkBook.getSheetAt(sh);
+			
+			XSSFRow row = mySheet.getRow(i);
+			if(row != null)
 			{
-				cell = row.createCell(4);
-			}			
-			cell.setCellValue(resultOfSQLQueryExecut);
-		}	
+				XSSFCell cell = row.getCell(4);
+				if(cell == null)
+				{
+					cell = row.createCell(4);
+				}			
+				cell.setCellValue(resultOfSQLQueryExecut);
+			}	
+		
+		
+		
 		fis.close();		
 		
 		// open an OutputStream to save written data into XLSX file 
