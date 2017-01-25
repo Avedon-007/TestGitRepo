@@ -11,43 +11,39 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class WriteExcelForCompareColumns 
+public class WriteExcelForCompareColumns
 {
 
 	protected void writeExcelCell(String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
-		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
-		
-		
-		
-		
-			XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
-			
-			XSSFRow row = mySheet.getRow(i);
-			if(row != null)
+		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
+
+		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
+
+		XSSFRow row = mySheet.getRow(i);
+		if (row != null)
+		{
+			XSSFCell cell = row.getCell(5);
+			if (cell == null)
 			{
-				XSSFCell cell = row.getCell(5);
-				if(cell == null)
-				{
-					cell = row.createCell(5);
-				}			
-				cell.setCellValue(resultOfcompare);
-			}	
+				cell = row.createCell(5);
+			}
+			cell.setCellValue(resultOfcompare);
+		}
 		
-		
-		fis.close();		
-		
-		// open an OutputStream to save written data into XLSX file 
-		 FileOutputStream os = new FileOutputStream(myFile);
-         myWorkBook.write(os);
-         System.out.println("Writing on XLSX file Finished ...");
-         
-      // Close workbook, OutputStream and Excel file to prevent leak
-         myWorkBook.close();
-         os.close();        
-         
+		fis.close();
+
+		// open an OutputStream to save written data into XLSX file
+		FileOutputStream os = new FileOutputStream(myFile);
+		myWorkBook.write(os);
+		System.out.println("Writing on XLSX file Finished ...");
+
+		// Close workbook, OutputStream and Excel file to prevent leak
+		myWorkBook.close();
+		os.close();
+
 	}// end of Main method
 
 }// end of Class

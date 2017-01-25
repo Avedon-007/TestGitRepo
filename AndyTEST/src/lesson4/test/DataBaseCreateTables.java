@@ -13,25 +13,24 @@ public class DataBaseCreateTables
 	//  Database credentials
 	static final String PASS = "integratedSecurity=true;";
 	   
-	public static void main(String[] args) 
+	public static void main(String[] args) throws ClassNotFoundException, SQLException 
 	{
-	   Connection conn = null;
-	   Statement stmt = null;
-	   try
-	   {
-	      //STEP 2: Register JDBC driver
-		   Class.forName(JDBC_DRIVER);
+		Connection conn = null;
+		Statement stmt = null;
 
-	      //STEP 3: Open a connection
-	      System.out.println("Connecting to a selected database...");
-	      conn = DriverManager.getConnection(DB_URL + PASS);
-	      System.out.println("Connected database successfully...");
-	      
-	      //STEP 4: Execute a query
-	      System.out.println("Creating table in given database...");
-	      stmt = conn.createStatement();
-	      
-	      String sql = "USE TestDB "
+		// STEP 2: Register JDBC driver
+		Class.forName(JDBC_DRIVER);
+
+		// STEP 3: Open a connection
+		System.out.println("Connecting to a selected database...");
+		conn = DriverManager.getConnection(DB_URL + PASS);
+		System.out.println("Connected database successfully...");
+
+		// STEP 4: Execute a query
+		System.out.println("Creating table in given database...");
+		stmt = conn.createStatement();
+
+		String sql = "USE TestDB "
 	    		  + " CREATE TABLE Airports "
 	    		  + " ( "
 	    		  + " airportNumber int NOT NULL PRIMARY KEY, "
@@ -58,34 +57,13 @@ public class DataBaseCreateTables
 	    		  + " isMealIncluded varchar(3) NOT NULL "
 	    		  + " )"; 
 
-	      stmt.executeUpdate(sql);
-	      System.out.println("Created table in given database...");
-	   }
-	   catch(SQLException se)
-	   {
-	      //Handle errors for JDBC
-	      se.printStackTrace();
-	   }
-	   catch(Exception e)
-	   {
-	      //Handle errors for Class.forName
-	      e.printStackTrace();
-	   }
-	   finally
-	   {
-	      //finally block used to close resources
-	      try{
-	         if(stmt!=null)
-	            conn.close();
-	      }catch(SQLException se){
-	      }// do nothing
-	      try{
-	         if(conn!=null)
-	            conn.close();
-	      }catch(SQLException se){
-	         se.printStackTrace();
-	      }//end finally try
-	   }//end try
-	   System.out.println("BINGO!!!");
-	}//end main
+		stmt.executeUpdate(sql);
+		System.out.println("Created table in given database...");
+
+		stmt.close();
+
+		conn.close();
+
+		System.out.println("BINGO!!!");
+	}// end main
 }
