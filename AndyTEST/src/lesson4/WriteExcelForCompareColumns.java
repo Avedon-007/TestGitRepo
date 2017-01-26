@@ -37,7 +37,9 @@ public class WriteExcelForCompareColumns
 			cell.setCellValue(resultOfcompare);	
 			
 // Set Color of Font and Background
-			/*
+			// http://poi.apache.org/spreadsheet/quick-guide.html#CustomColors
+			//https://poi.apache.org/apidocs/index.html?org/apache/poi/ss/usermodel/IndexedColors.html
+			
 			if(resultOfcompare.equals("Pass"))
 			{
 			cell.setCellValue(resultOfcompare);	
@@ -45,9 +47,21 @@ public class WriteExcelForCompareColumns
 			XSSFFont font = myWorkBook.createFont();
 				font.setColor(IndexedColors.GREEN.getIndex());
 				 style.setFillForegroundColor(new XSSFColor(new java.awt.Color(0, 255, 128)));
-				 style.setFont(font);//				 
+				 style.setFont(font);//		
+				 cell.setCellStyle(style);		 
 			}
-			*/
+			else if(resultOfcompare.equals("Fail"))
+			{
+				cell.setCellValue(resultOfcompare);	
+				XSSFCellStyle style = myWorkBook.createCellStyle();
+				XSSFFont font = myWorkBook.createFont();
+					font.setColor(IndexedColors.RED.getIndex());
+					 style.setFillForegroundColor(IndexedColors.BLUE.getIndex());
+					 style.setFont(font);
+					 
+					 cell.setCellStyle(style);
+			}
+			
 			
 			
 		}
