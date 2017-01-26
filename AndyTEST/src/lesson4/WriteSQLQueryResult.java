@@ -24,7 +24,7 @@ public class WriteSQLQueryResult
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
-		XSSFCellStyle style = myWorkBook.createCellStyle();
+		
 
 		XSSFRow row = mySheet.getRow(i);
 		if (row != null)
@@ -34,16 +34,7 @@ public class WriteSQLQueryResult
 			{
 				cell = row.createCell(4);
 			}
-			cell.setCellValue(resultOfSQLQueryExecut);
-			
-//			if(resultOfSQLQueryExecut.equals("Pass"))
-//			{
-//				XSSFFont font = myWorkBook.createFont();
-//				font.setColor(IndexedColors.GREEN.getIndex());
-//				 style.setFillForegroundColor(new XSSFColor(new java.awt.Color(128, 0, 128)));
-//				 style.setFont(font);
-//				 cell.setCellValue(resultOfSQLQueryExecut);
-//			}
+			cell.setCellValue(resultOfSQLQueryExecut);			
 		}
 
 		fis.close();
@@ -51,7 +42,7 @@ public class WriteSQLQueryResult
 		// open an OutputStream to save written data into XLSX file
 		FileOutputStream os = new FileOutputStream(myFile);
 		myWorkBook.write(os);
-		System.out.println("Writing on XLSX file Finished ...");
+		//System.out.println("Writing on XLSX file Finished ...");
 
 		// Close workbook, OutputStream and Excel file to prevent leak
 		myWorkBook.close();

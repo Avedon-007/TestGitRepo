@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
 import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -33,7 +34,22 @@ public class WriteExcelForCompareColumns
 			{
 				cell = row.createCell(5);
 			}
-			cell.setCellValue(resultOfcompare);			
+			cell.setCellValue(resultOfcompare);	
+			
+// Set Color of Font and Background
+			/*
+			if(resultOfcompare.equals("Pass"))
+			{
+			cell.setCellValue(resultOfcompare);	
+			XSSFCellStyle style = myWorkBook.createCellStyle();
+			XSSFFont font = myWorkBook.createFont();
+				font.setColor(IndexedColors.GREEN.getIndex());
+				 style.setFillForegroundColor(new XSSFColor(new java.awt.Color(0, 255, 128)));
+				 style.setFont(font);//				 
+			}
+			*/
+			
+			
 		}
 		
 		fis.close();
