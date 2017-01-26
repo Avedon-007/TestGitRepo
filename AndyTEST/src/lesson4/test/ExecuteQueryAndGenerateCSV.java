@@ -9,19 +9,17 @@ import java.sql.Statement;
 
 public class ExecuteQueryAndGenerateCSV
 {
-
 	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
 	static final String DATABASE_NAME = "databaseName = TestDB;";
 	static final String DB_SECURITY = "integratedSecurity=true;";
-	// static String query = "Use TestDB SELECT * FROM Airports";
-
-	// public static void main(String[] args) throws Exception, SQLException // DEBUG
+	// static String query = "Use TestDB SELECT * FROM Airports";	// DEBUG
+	
 	public String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException
 	{
 		ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();		
 		return myObject.ResultSetToString(myObject.getResultSetFromQuery(resultOfReadCel));
-	}
+	}	// end of Main method
 
 	private ResultSet getResultSetFromQuery(String query) throws ClassNotFoundException, SQLException
 	{
@@ -31,7 +29,7 @@ public class ExecuteQueryAndGenerateCSV
 		Statement myStmt = myConn.createStatement();
 		result = myStmt.executeQuery(query);
 		return result;
-	}
+	}	// end of getResultSetFromQuery()
 
 	private String ResultSetToString(ResultSet result) throws SQLException
 	{
@@ -46,5 +44,5 @@ public class ExecuteQueryAndGenerateCSV
 				resultString += result.getString(rsmd.getColumnName(i)) + ";";			
 		}
 		return resultString;
-	}
-}
+	}	// end of ResultSetToString()
+}	// end of class

@@ -16,7 +16,7 @@ import lesson4.test.ExecuteQueryAndGenerateCSV;
 
 public class ReadExcelNoPoi
 {
-	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\test.xlsx";
+	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;
@@ -25,24 +25,21 @@ public class ReadExcelNoPoi
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException // DEBUG public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
 	{
+		System.out.println("GETTING STARTED...");
 		ReadExcelNoPoi instance = new ReadExcelNoPoi();
 		instance.writeDataFromExcelToArrayList();		
-		instance.addSQLresultToArrayList();		
+		instance.addSQLresultToArrayList();	
+		System.out.println("FINISH!!!");
 	} // end of MAIN method
 
 	protected void writeDataFromExcelToArrayList() throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
-		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
-		
-		
-		
-
+		XSSFWorkbook excelBook = new XSSFWorkbook(fis);	
 		for (int sh = 0; sh < excelBook.getNumberOfSheets(); sh++)
 		{
 			XSSFSheet excelSheet = excelBook.getSheetAt(sh);
-
 			for (Row row : excelBook.getSheetAt(sh))
 			{
 				myArrayForArrayList = new String[6];
@@ -50,8 +47,7 @@ public class ReadExcelNoPoi
 				{
 					Cell cell = row.getCell(j);
 					if (cell != null)
-					{
-						// System.out.println(cell + "\t\t\t\t\t"); // DEBUG
+					{	// System.out.println(cell + "\t\t\t\t\t"); // DEBUG
 						myArrayForArrayList[j] = cell.getStringCellValue();
 						// System.out.println(myArrayForArrayList[j] + "\t");	// //DEBUG
 					}
@@ -81,11 +77,9 @@ public class ReadExcelNoPoi
 					resultOfReadCell = buferArry[2].toString();
 					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
 					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
-
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
 					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
-																								// пропустить первую с названиями колонок)
-					counter++;
+					counter++;																			// пропустить первую с названиями колонок)
 				}
 			}
 		}
@@ -96,11 +90,9 @@ public class ReadExcelNoPoi
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
-
 		for (int sh2 = 0; sh2 < excelBook.getNumberOfSheets(); sh2++)  // sh - number of excel sheet
 		{
 			XSSFSheet excelSheet = excelBook.getSheetAt(sh2);
-
 			for (Row row : excelBook.getSheetAt(sh2))
 			{
 				myArrayForArrayListAfterSQL = new String[6];
@@ -108,9 +100,7 @@ public class ReadExcelNoPoi
 				{
 					Cell cell = row.getCell(j);
 					if (cell != null)
-					{
-						myArrayForArrayListAfterSQL[j] = cell.getStringCellValue();
-					}
+						myArrayForArrayListAfterSQL[j] = cell.getStringCellValue();					
 				}
 				arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);
 			}
@@ -119,7 +109,7 @@ public class ReadExcelNoPoi
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
 		fis.close();
-	}
+	}	// end of addSQLresultToArrayList()
 
 	private void compareColumns(int sh2) throws ClassNotFoundException, IOException, SQLException
 	{
@@ -146,7 +136,6 @@ public class ReadExcelNoPoi
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
 						myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);
 						counter2++;
-
 					}
 				}
 			}

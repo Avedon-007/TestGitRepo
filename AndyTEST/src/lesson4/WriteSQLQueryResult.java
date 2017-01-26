@@ -20,23 +20,19 @@ public class WriteSQLQueryResult
 {
 	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int sh, int i)	throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
-		
-
 		XSSFRow row = mySheet.getRow(i);
 		if (row != null)
 		{
 			XSSFCell cell = row.getCell(4);
 			if (cell == null)
-			{
 				cell = row.createCell(4);
-			}
+			
 			cell.setCellValue(resultOfSQLQueryExecut);			
 		}
-
 		fis.close();
 
 		// open an OutputStream to save written data into XLSX file
@@ -47,6 +43,5 @@ public class WriteSQLQueryResult
 		// Close workbook, OutputStream and Excel file to prevent leak
 		myWorkBook.close();
 		os.close();
-
-	}
-}
+	}	//end of writeExcelCellsWithSQLQueryResult()
+}	// end of class

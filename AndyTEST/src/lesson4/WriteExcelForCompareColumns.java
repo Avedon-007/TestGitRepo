@@ -17,15 +17,12 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteExcelForCompareColumns
 {
-
 	protected void writeExcelCell(String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
-		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
-		
+		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);		
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
-
 		XSSFRow row = mySheet.getRow(i);
 		if (row != null)
 		{
@@ -34,20 +31,15 @@ public class WriteExcelForCompareColumns
 			{
 				cell = row.createCell(5);
 			}
-			cell.setCellValue(resultOfcompare);	
-			
-// Set Color of Font and Background
-			// http://poi.apache.org/spreadsheet/quick-guide.html#CustomColors
-			//https://poi.apache.org/apidocs/index.html?org/apache/poi/ss/usermodel/IndexedColors.html
-			
+			cell.setCellValue(resultOfcompare);				
 			if(resultOfcompare.equals("Pass"))
 			{
-			cell.setCellValue(resultOfcompare);	
-			XSSFCellStyle style = myWorkBook.createCellStyle();
-			XSSFFont font = myWorkBook.createFont();
-				font.setColor(IndexedColors.GREEN.getIndex());
-				 style.setFillForegroundColor(new XSSFColor(new java.awt.Color(0, 255, 128)));
-				 style.setFont(font);//		
+				cell.setCellValue(resultOfcompare);	
+				XSSFCellStyle style = myWorkBook.createCellStyle();
+				XSSFFont font = myWorkBook.createFont();
+					font.setColor(IndexedColors.GREEN.getIndex());
+					style.setFillForegroundColor(new XSSFColor(new java.awt.Color(0, 255, 128)));
+					style.setFont(font);//		
 				 cell.setCellStyle(style);		 
 			}
 			else if(resultOfcompare.equals("Fail"))
@@ -55,17 +47,12 @@ public class WriteExcelForCompareColumns
 				cell.setCellValue(resultOfcompare);	
 				XSSFCellStyle style = myWorkBook.createCellStyle();
 				XSSFFont font = myWorkBook.createFont();
-					font.setColor(IndexedColors.RED.getIndex());
+					 font.setColor(IndexedColors.RED.getIndex());
 					 style.setFillForegroundColor(IndexedColors.BLUE.getIndex());
-					 style.setFont(font);
-					 
-					 cell.setCellStyle(style);
-			}
-			
-			
-			
-		}
-		
+					 style.setFont(font);					 
+				cell.setCellStyle(style);
+			}			
+		}		
 		fis.close();
 
 		// open an OutputStream to save written data into XLSX file
@@ -76,7 +63,10 @@ public class WriteExcelForCompareColumns
 		// Close workbook, OutputStream and Excel file to prevent leak
 		myWorkBook.close();
 		os.close();
-
-	}// end of Main method
-
+	}// end of writeExcelCell() method
 }// end of Class
+
+
+//Set Color of Font and Background
+			// http://poi.apache.org/spreadsheet/quick-guide.html#CustomColors
+			//https://poi.apache.org/apidocs/index.html?org/apache/poi/ss/usermodel/IndexedColors.html
