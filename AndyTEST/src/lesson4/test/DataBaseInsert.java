@@ -7,28 +7,28 @@ import java.sql.Statement;
 
 public class DataBaseInsert 
 {
-		// JDBC driver name and database URL
-	static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";  
+	// JDBC driver name and database URL
+	static final String JDBC_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static final String DB_URL = "jdbc:sqlserver://localhost:1433;";
-		//  Database credentials
+	// Database credentials
 	static final String PASS = "integratedSecurity=true;";
-	   
-	public static void main(String[] args)
-	{
-	   Connection conn = null;
-	   Statement stmt = null;
-	   try{
-	      //STEP 2: Register JDBC driver
-		   Class.forName(JDBC_DRIVER);
 
-	      //STEP 3: Open a connection
-	      System.out.println("Connecting to a selected database...");
-	      conn = DriverManager.getConnection(DB_URL + PASS);
-	      System.out.println("Connected database successfully...");
-	      
-	      //STEP 4: Execute a query
-	      System.out.println("Inserting records into the table...");
-	      stmt = conn.createStatement();
+	public static void main(String[] args) throws ClassNotFoundException, SQLException
+	{
+		Connection conn = null;
+		Statement stmt = null;
+
+		// STEP 2: Register JDBC driver
+		Class.forName(JDBC_DRIVER);
+
+		// STEP 3: Open a connection
+		System.out.println("Connecting to a selected database...");
+		conn = DriverManager.getConnection(DB_URL + PASS);
+		System.out.println("Connected database successfully...");
+
+		// STEP 4: Execute a query
+		System.out.println("Inserting records into the table...");
+		stmt = conn.createStatement();
 	      
 	      String sql = "USE TestDB "
 	    		  + " INSERT INTO Airports "
@@ -126,29 +126,12 @@ public class DataBaseInsert
 	    		  + " (1034, 'WizzAir', 'no', 'yes', 'yes'), "
 	    		  + " (1035, 'Ryanair', 'no', 'yes', 'no')";
 	      
-	      stmt.executeUpdate(sql);
-	      System.out.println("Insert comleted...");
+		stmt.executeUpdate(sql);
+		System.out.println("Insert comleted...");
 
-	   }catch(SQLException se){
-	      //Handle errors for JDBC
-	      se.printStackTrace();
-	   }catch(Exception e){
-	      //Handle errors for Class.forName
-	      e.printStackTrace();
-	   }finally{
-	      //finally block used to close resources
-	      try{
-	         if(stmt!=null)
-	            conn.close();
-	      }catch(SQLException se){
-	      }// do nothing
-	      try{
-	         if(conn!=null)
-	            conn.close();
-	      }catch(SQLException se){
-	         se.printStackTrace();
-	      }//end finally try
-	   }//end try
-	   System.out.println("BINGO!!!");
-	}//end main
+		stmt.close();
+		conn.close();
+
+		System.out.println("BINGO!!!");
+	}// end main
 }

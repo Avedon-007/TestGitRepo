@@ -2,9 +2,9 @@ package lesson4.framework;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "d:\\Git\\TestGitRepo\\AndyTEST\\src\\lesson4\\lib\\Framework.ini";
+	public static final String DATA_FILE = "d:\\Git\\TestGitRepo\\AndyTEST\\src\\lesson4\\lib\\FrameworkForMSSQL.ini";
 	private String pathToExcelFile = "";
-	private String databaseDriver = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+	private String databaseDriver = "";
 	private String databaseURL = "";
 	private String username = "";
 	private String password = "";
@@ -13,6 +13,7 @@ public class TestEnvironment
 	public void initialiseEnvironmentVariables()
 	{
 		this.pathToExcelFile = getValueFromFile(DATA_FILE, "pathToExcelFile");
+		this.databaseDriver = getValueFromFile(DATA_FILE, databaseDriver);
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
 		this.username  = getValueFromFile(DATA_FILE, "username");
 		this.password  = getValueFromFile(DATA_FILE, "password");
@@ -37,7 +38,7 @@ public class TestEnvironment
 
 	public void  runTests()
 	{
-		Test myTest = Test();
+		Test myTest = new Test();
 		myTest.readData();
 		myTest.executeTestCases();
 		myTest.generateReports();
