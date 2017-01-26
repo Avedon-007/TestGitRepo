@@ -2,10 +2,10 @@ package lesson4;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -21,6 +21,7 @@ public class ReadExcelNoPoi
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;
 	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();
+	
 
 	public static void main(String[] args) throws ClassNotFoundException, IOException, SQLException // DEBUG public String readCellsFromExcel() throws IOException, ClassNotFoundException, SQLException
 	{
@@ -34,6 +35,9 @@ public class ReadExcelNoPoi
 		File myFile = new File(fileSource);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
+		
+		
+		
 
 		for (int sh = 0; sh < excelBook.getNumberOfSheets(); sh++)
 		{
@@ -133,7 +137,7 @@ public class ReadExcelNoPoi
 					{
 						resultOfcompare = "Pass";
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);
+						myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);						
 						counter2++;
 
 					} else

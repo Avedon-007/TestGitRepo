@@ -7,7 +7,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -20,6 +24,7 @@ public class WriteSQLQueryResult
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
+		XSSFCellStyle style = myWorkBook.createCellStyle();
 
 		XSSFRow row = mySheet.getRow(i);
 		if (row != null)
@@ -30,6 +35,15 @@ public class WriteSQLQueryResult
 				cell = row.createCell(4);
 			}
 			cell.setCellValue(resultOfSQLQueryExecut);
+			
+//			if(resultOfSQLQueryExecut.equals("Pass"))
+//			{
+//				XSSFFont font = myWorkBook.createFont();
+//				font.setColor(IndexedColors.GREEN.getIndex());
+//				 style.setFillForegroundColor(new XSSFColor(new java.awt.Color(128, 0, 128)));
+//				 style.setFont(font);
+//				 cell.setCellValue(resultOfSQLQueryExecut);
+//			}
 		}
 
 		fis.close();

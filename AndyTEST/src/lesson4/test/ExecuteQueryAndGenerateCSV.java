@@ -43,10 +43,8 @@ public class ExecuteQueryAndGenerateCSV
 		{
 			// The column count starts from 1
 			for (int i = 1; i <= columnCount; i++)			
-				resultString += result.getString(rsmd.getColumnName(i)) + ";";
-			
+				resultString += result.getString(rsmd.getColumnName(i)) + ";";			
 		}
-
 		return resultString;
 	}
 }

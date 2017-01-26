@@ -6,7 +6,10 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -19,7 +22,7 @@ public class WriteExcelForCompareColumns
 		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
-
+		
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
 
 		XSSFRow row = mySheet.getRow(i);
@@ -30,7 +33,7 @@ public class WriteExcelForCompareColumns
 			{
 				cell = row.createCell(5);
 			}
-			cell.setCellValue(resultOfcompare);
+			cell.setCellValue(resultOfcompare);			
 		}
 		
 		fis.close();
