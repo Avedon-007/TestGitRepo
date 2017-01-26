@@ -16,7 +16,7 @@ import lesson4.test.ExecuteQueryAndGenerateCSV;
 
 public class ReadExcelNoPoi
 {
-	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx";
+	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\test.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;

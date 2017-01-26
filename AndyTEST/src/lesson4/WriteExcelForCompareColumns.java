@@ -19,7 +19,7 @@ public class WriteExcelForCompareColumns
 {
 	protected void writeExcelCell(String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);		
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
@@ -27,11 +27,9 @@ public class WriteExcelForCompareColumns
 		if (row != null)
 		{
 			XSSFCell cell = row.getCell(5);
-			if (cell == null)
-			{
+			if (cell == null)			
 				cell = row.createCell(5);
-			}
-			cell.setCellValue(resultOfcompare);				
+						
 			if(resultOfcompare.equals("Pass"))
 			{
 				cell.setCellValue(resultOfcompare);	

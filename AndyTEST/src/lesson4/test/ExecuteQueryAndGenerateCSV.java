@@ -34,7 +34,6 @@ public class ExecuteQueryAndGenerateCSV
 	private String ResultSetToString(ResultSet result) throws SQLException
 	{
 		String resultString = "";
-
 		ResultSetMetaData rsmd = result.getMetaData();
 		int columnCount = rsmd.getColumnCount();
 		while (result.next())

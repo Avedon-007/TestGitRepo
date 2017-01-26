@@ -20,7 +20,7 @@ public class WriteSQLQueryResult
 {
 	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int sh, int i)	throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\SimpleScenariosChecklist_02.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
