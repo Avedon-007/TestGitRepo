@@ -3,14 +3,14 @@ package lesson4.framework;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import lesson4.test.ExecuteQueryAndGenerateCSV;
+import lesson4.ExecuteQueryAndGenerateCSV;
 
 public class Test
 {
-	protected void readData()
-	{
-		
-	}
+//	protected void readData()
+//	{
+//		
+//	}
 	
 	protected void executeTestCases(String pathToExcelFile, String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, IOException, SQLException
 	{
@@ -21,9 +21,9 @@ public class Test
 		
 	}
 	
-	protected void generateReports()
-	{
-		
-	}
+//	protected void generateReports()
+//	{
+//		
+//	}
 	
 }
