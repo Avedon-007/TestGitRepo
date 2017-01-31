@@ -13,7 +13,7 @@ public class ReadFromFile
 	//public static void main(String[] args) throws IOException
 	{
 		//Specify path to your file
-		File file = new File("E:\\йспяш\\TestClub\\Automation\\DataBase\\Select.txt");
+		File file = new File("D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\FrameworkForMSSQL.ini");
 				
 		//Create special input stream for reading data
 		FileInputStream fis = new FileInputStream(file);
@@ -22,21 +22,22 @@ public class ReadFromFile
 		BufferedReader br = new BufferedReader(new InputStreamReader(fis));
 		
 		//Print all existing lines from file to the console
-		String line = null;
-		while((line = br.readLine()) != null)
-		{
-			System.out.println(line);
+		String line = "";
+		String resultRead = "";
+		while ((line = br.readLine()) != null) {
+			//System.out.println(line);
+			resultRead += line + "\n";
 		}
-		//br.close();
+		br.close();
 		
 		
-		return line;
+		return resultRead;
 	}
 	
-	//public static void main(String[] args)throws IOException
-	//{
-	//	ReadFromFile readFromFile = new ReadFromFile();
-	//	readFromFile.readFromFile();
-	//}
+	public static void main(String[] args)throws IOException
+	{
+		ReadFromFile readFromFile = new ReadFromFile();
+		System.out.println(readFromFile.readFromFile());
+	}
 }
  
