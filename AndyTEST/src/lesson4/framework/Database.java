@@ -7,7 +7,7 @@ import java.sql.Statement;
 
 public class Database
 {
-	protected void createStructure(String databaseDriver, String databaseURL, String PASS) throws ClassNotFoundException, SQLException
+	protected void createStructure(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;
 		Statement stmt = null;
@@ -17,7 +17,7 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + PASS);
+		conn = DriverManager.getConnection(databaseURL + security);
 
 		//  Execute a query
 		System.out.println("Creating database...");
@@ -31,7 +31,7 @@ public class Database
 		conn.close();		
 	}
 	
-	protected void createTables(String databaseDriver, String databaseURL, String PASS) throws ClassNotFoundException, SQLException
+	protected void createTables(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;
 		Statement stmt = null;
@@ -41,7 +41,7 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + PASS);
+		conn = DriverManager.getConnection(databaseURL + security);
 
 		//  Execute a query
 		System.out.println("Creating Tables...");
@@ -81,7 +81,7 @@ public class Database
 	}
 	
 	
-	protected void fillData(String databaseDriver, String databaseURL, String PASS) throws ClassNotFoundException, SQLException
+	protected void fillData(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;
 		Statement stmt = null;
@@ -91,7 +91,7 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + PASS);
+		conn = DriverManager.getConnection(databaseURL + security);
 
 		//  Execute a query
 		System.out.println("Creating Tables...");
