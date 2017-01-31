@@ -1,5 +1,10 @@
 package lesson4.framework;
 
+import java.io.IOException;
+import java.sql.SQLException;
+
+import lesson4.test.ExecuteQueryAndGenerateCSV;
+
 public class Test
 {
 	protected void readData()
@@ -7,8 +12,12 @@ public class Test
 		
 	}
 	
-	protected void executeTestCases()
+	protected void executeTestCases(String pathToExcelFile, String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, IOException, SQLException
 	{
+		ReadExcelAndCompareResults instance = new ReadExcelAndCompareResults();
+		instance.writeDataFromExcelToArrayList(pathToExcelFile, databaseDriver, databaseURL, security);		
+		instance.addSQLresultToArrayList(pathToExcelFile);	
+		
 		
 	}
 	
@@ -16,4 +25,5 @@ public class Test
 	{
 		
 	}
+	
 }

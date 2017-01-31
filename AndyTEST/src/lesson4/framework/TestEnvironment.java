@@ -16,19 +16,21 @@ public class TestEnvironment
 	private String databaseURL = "";
 	private String username = "";
 	private String password = "";
-	private String PASS = "";
+	private String security = ""; // For MS SQL Server
 	
 
 	public void initialiseEnvironmentVariables() throws IOException
 	{
 		this.pathToExcelFile = getValueFromFile(DATA_FILE, "pathToExcelFile");
-		this.databaseDriver = getValueFromFile(DATA_FILE, databaseDriver);
+		this.databaseDriver = getValueFromFile(DATA_FILE, "databaseDriver");
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
 		this.username  = getValueFromFile(DATA_FILE, "username");
 		this.password  = getValueFromFile(DATA_FILE, "password");
+		this.security  = getValueFromFile(DATA_FILE, "security");
+
 	}
 
-	private String getValueFromFile(String dataFile, String myParam) throws IOException {
+	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException {
 		String resultValue = "";
 		// open file (.ini) and read row by row
 		// if row starts from myParam then return the content after =
@@ -48,6 +50,26 @@ public class TestEnvironment
 		while ((line = br.readLine()) != null)
 		{
 			resultValue += line + "\n";
+			
+			
+			if(myParam.equalsIgnoreCase("pathToExcelFile") )
+			{
+				
+			}
+			else if(myParam.equalsIgnoreCase("databaseDriver") )
+			{
+				
+			}
+			else if(myParam.equalsIgnoreCase("databaseURL") )
+			{
+				
+			}
+			else if(myParam.equalsIgnoreCase("security") )
+			{
+				
+			}
+			
+			
 		}
 		 br.close();
 
@@ -57,16 +79,16 @@ public class TestEnvironment
 	public void  createEnvironment() throws ClassNotFoundException, SQLException
 	{
 		Database myDatabase = new Database();
-		myDatabase.createStructure(databaseDriver, databaseURL, PASS);
-		myDatabase.createTables(databaseDriver, databaseURL, PASS);
-		myDatabase.fillData(databaseDriver, databaseURL, PASS);
+		myDatabase.createStructure(databaseDriver, databaseURL, security);
+		myDatabase.createTables(databaseDriver, databaseURL, security);
+		myDatabase.fillData(databaseDriver, databaseURL, security);
 	}
 
-	public void  runTests()
+	public void  runTests(String pathToExcelFile, String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, IOException, SQLException
 	{
 		Test myTest = new Test();
 		myTest.readData();
-		myTest.executeTestCases();
+		myTest.executeTestCases(pathToExcelFile, databaseDriver, databaseURL, security);
 		myTest.generateReports();
 	}
 	
