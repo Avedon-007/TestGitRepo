@@ -15,10 +15,10 @@ public class ExecuteQueryAndGenerateCSV
 	static final String DB_SECURITY = "integratedSecurity=true;";
 	// static String query = "Use TestDB SELECT * FROM Airports";	// DEBUG
 	
-	public String executeSQLQuery(String resultOfReadCel, String databaseURL, String security, String resultOfReadCell) throws ClassNotFoundException, SQLException
+	public String executeSQLQuery(String resultOfReadCell) throws ClassNotFoundException, SQLException
 	{
 		ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();		
-		return myObject.ResultSetToString(myObject.getResultSetFromQuery(resultOfReadCel));
+		return myObject.ResultSetToString(myObject.getResultSetFromQuery(resultOfReadCell));
 	}	// end of Main method
 
 	private ResultSet getResultSetFromQuery(String query) throws ClassNotFoundException, SQLException
