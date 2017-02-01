@@ -15,14 +15,14 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class WriteExcelForCompareColumns
+public class WriteExcelAfterCompareColumns
 {
 	protected void writeExcelCell(String pathToExcelFile, String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
 		File myFile = new File(pathToExcelFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);		
-		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);
+		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);	//sh - number of excel sheet
 		XSSFRow row = mySheet.getRow(i);
 		if (row != null)
 		{
@@ -35,9 +35,8 @@ public class WriteExcelForCompareColumns
 				cell.setCellValue(resultOfcompare);	
 				XSSFCellStyle style = myWorkBook.createCellStyle();
 				XSSFFont font = myWorkBook.createFont();
-					font.setColor(IndexedColors.GREEN.getIndex());
-					style.setFillForegroundColor(new XSSFColor(new java.awt.Color(0, 255, 128)));
-					style.setFont(font);//		
+					font.setColor(IndexedColors.GREEN.getIndex());					
+					style.setFont(font);
 				 cell.setCellStyle(style);		 
 			}
 			else if(resultOfcompare.equals("Fail"))
@@ -45,8 +44,7 @@ public class WriteExcelForCompareColumns
 				cell.setCellValue(resultOfcompare);	
 				XSSFCellStyle style = myWorkBook.createCellStyle();
 				XSSFFont font = myWorkBook.createFont();
-					 font.setColor(IndexedColors.RED.getIndex());
-					 style.setFillForegroundColor(IndexedColors.BLUE.getIndex());
+					 font.setColor(IndexedColors.RED.getIndex());					 
 					 style.setFont(font);					 
 				cell.setCellStyle(style);
 			}			
@@ -64,7 +62,3 @@ public class WriteExcelForCompareColumns
 	}// end of writeExcelCell() method
 }// end of Class
 
-
-//Set Color of Font and Background
-			// http://poi.apache.org/spreadsheet/quick-guide.html#CustomColors
-			//https://poi.apache.org/apidocs/index.html?org/apache/poi/ss/usermodel/IndexedColors.html

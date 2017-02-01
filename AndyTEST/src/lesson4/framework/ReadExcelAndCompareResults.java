@@ -6,11 +6,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-
-
-
-
-
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -55,7 +50,7 @@ public class ReadExcelAndCompareResults
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
-	protected void gettingExectColumnFromArrayList(String pathToExcelFile, String databaseDriver, String databaseURL, String security, int sh) throws ClassNotFoundException, SQLException, IOException
+	private void gettingExectColumnFromArrayList(String pathToExcelFile, String databaseDriver, String databaseURL, String security, int sh) throws ClassNotFoundException, SQLException, IOException
 	{
 		String resultOfReadCell = "";
 		int counter = 0; // Make COUNTER for pass through the name of column and get only data
@@ -105,7 +100,7 @@ public class ReadExcelAndCompareResults
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 
-	protected void compareColumns(String pathToExcelFile, int sh2) throws ClassNotFoundException, IOException, SQLException
+	private void compareColumns(String pathToExcelFile, int sh2) throws ClassNotFoundException, IOException, SQLException
 	{
 		String resultOfcompare = "";
 		int counter2 = 0; // Make COUNTER for pass through the name of column and get only data
@@ -120,14 +115,14 @@ public class ReadExcelAndCompareResults
 					if (myBuferArry[3].equals(myBuferArry[4]))
 					{
 						resultOfcompare = "Pass";
-						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
 						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sh2, counter2);						
 						counter2++;
 
 					} else
 					{
 						resultOfcompare = "Fail";
-						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
+						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
 						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sh2, counter2);
 						counter2++;
 					}
