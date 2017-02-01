@@ -8,12 +8,9 @@ import java.sql.Statement;
 public class Database
 {
 	protected void createStructure(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
-	{
+	{		
 		Connection conn = null;
-		Statement stmt = null;
-		
-		
-		
+		Statement stmt = null;		
 
 		// Register JDBC driver
 		Class.forName(databaseDriver);
@@ -96,10 +93,11 @@ public class Database
 		conn = DriverManager.getConnection(databaseURL + security);
 
 		//  Execute a query
-		System.out.println("Creating Tables...");
+		System.out.println("Filling the Tables of datasóå...");
 		stmt = conn.createStatement();
 	      
-		String sql = " INSERT INTO Airports "
+		String sql = "USE TestDB "
+				  + " INSERT INTO Airports "
 	    		  + " (airportNumber, airport, dutyFree, priorityBoarding) "
 	    		  + " VALUES "
 	    		  + " (1, 'London', 'yes', 'yes'), "
@@ -195,7 +193,7 @@ public class Database
 	    		  + " (1035, 'Ryanair', 'no', 'yes', 'no')";		
 					
 		stmt.executeUpdate(sql);
-		System.out.println("Tables were created successfully...BINGO!!!");
+		System.out.println("Tables were filled successfully...BINGO!!!");
 		stmt.close();
 		conn.close();	
 	}

@@ -11,12 +11,12 @@ import java.sql.SQLException;
 public class TestEnvironment 
 {	
 	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\FrameworkForMSSQL.ini";
-	private String pathToExcelFile = "";
-	private String databaseDriver = "";
-	private String databaseURL = "";
-	private String username = ""; // For Oracle
-	private String password = ""; // For Oracle
-	private String databaseSecurity  = ""; // For MS SQL Server
+	private static String pathToExcelFile = "";
+	private static String databaseDriver = "";
+	private static String databaseURL = "";
+	private static String username = ""; // For Oracle
+	private static String password = ""; // For Oracle
+	private static String databaseSecurity  = ""; // For MS SQL Server
 	
 
 	public void initialiseEnvironmentVariables() throws IOException, ClassNotFoundException
@@ -26,7 +26,7 @@ public class TestEnvironment
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
 		//this.username  = getValueFromFile(DATA_FILE, "username");
 		//this.password  = getValueFromFile(DATA_FILE, "password");
-		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity ");
+		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity");
 
 	}
 
@@ -62,7 +62,7 @@ public class TestEnvironment
 		return resultValue;
 	}
 
-	public void  createEnvironment() throws ClassNotFoundException, SQLException
+	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
 	{
 		Database myDatabase = new Database();
 		myDatabase.createStructure(databaseDriver, databaseURL, databaseSecurity );

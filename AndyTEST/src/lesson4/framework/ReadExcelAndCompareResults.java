@@ -49,13 +49,13 @@ public class ReadExcelAndCompareResults
 				arrayListOfTestCases.add(myArrayForArrayList);
 			}
 			ReadExcelAndCompareResults instance = new ReadExcelAndCompareResults();
-			instance.gettingExectColumnFromArrayList(databaseDriver, databaseURL, security, sh);
+			instance.gettingExectColumnFromArrayList(pathToExcelFile, databaseDriver, databaseURL, security, sh);
 			arrayListOfTestCases.clear(); // I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !!
 		}
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
-	protected void gettingExectColumnFromArrayList(String databaseDriver, String databaseURL, String security, int sh) throws ClassNotFoundException, SQLException, IOException
+	protected void gettingExectColumnFromArrayList(String pathToExcelFile, String databaseDriver, String databaseURL, String security, int sh) throws ClassNotFoundException, SQLException, IOException
 	{
 		String resultOfReadCell = "";
 		int counter = 0; // Make COUNTER for pass through the name of column and get only data
@@ -72,7 +72,7 @@ public class ReadExcelAndCompareResults
 					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
 					String bufferSQLResult = myObject.executeSQLQuery(databaseDriver, databaseURL, security, resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
-					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
+					myObject2.writeExcelCellsWithSQLQueryResult(pathToExcelFile, bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
 					counter++;																			// пропустить первую с названиями колонок)
 				}
 			}
