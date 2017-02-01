@@ -55,7 +55,7 @@ public class ReadExcelAndCompareResults
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
-	protected void gettingExectColumnFromArrayList(String DATABASE_DRIVER, String DATABASE_URL, String DB_SECURITY, int sh) throws ClassNotFoundException, SQLException, IOException
+	protected void gettingExectColumnFromArrayList(String databaseDriver, String databaseURL, String security, int sh) throws ClassNotFoundException, SQLException, IOException
 	{
 		String resultOfReadCell = "";
 		int counter = 0; // Make COUNTER for pass through the name of column and get only data
@@ -70,7 +70,7 @@ public class ReadExcelAndCompareResults
 					// System.out.println(buferArry[2].toString()); // DEBUG
 					resultOfReadCell = buferArry[2].toString();
 					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
-					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
+					String bufferSQLResult = myObject.executeSQLQuery(databaseDriver, databaseURL, security, resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
 					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
 					counter++;																			// пропустить первую с названиями колонок)

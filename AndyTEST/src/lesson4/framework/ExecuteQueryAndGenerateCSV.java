@@ -11,23 +11,23 @@ import java.sql.Statement;
 
 public class ExecuteQueryAndGenerateCSV
 {
-	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
-	static final String DATABASE_NAME = "databaseName = TestDB;";
-	static final String DB_SECURITY = "integratedSecurity=true;";
+//	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
+//	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
+//	static final String DATABASE_NAME = "databaseName = TestDB;";
+//	static final String DB_SECURITY = "integratedSecurity=true;";
 	// static String query = "Use TestDB SELECT * FROM Airports";	// DEBUG
 	
-	public String executeSQLQuery(String DATABASE_DRIVER, String DATABASE_URL, String DB_SECURITY, String resultOfReadCel) throws ClassNotFoundException, SQLException
+	public String executeSQLQuery(String databaseDriver, String databaseURL, String security, String resultOfReadCel) throws ClassNotFoundException, SQLException
 	{
 		ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();		
-		return myObject.resultSetToString(myObject.getResultSetFromQuery(DATABASE_DRIVER, DATABASE_URL, DB_SECURITY, resultOfReadCel));
+		return myObject.resultSetToString(myObject.getResultSetFromQuery(databaseDriver, databaseURL, security, resultOfReadCel));
 	}	// end of Main method
 	
-	private ResultSet getResultSetFromQuery(String DATABASE_DRIVER, String DATABASE_URL, String DB_SECURITY, String query) throws ClassNotFoundException, SQLException
+	private ResultSet getResultSetFromQuery(String databaseDriver, String databaseURL, String security, String query) throws ClassNotFoundException, SQLException
 	{
 		ResultSet result;
-		Class.forName(DATABASE_DRIVER);
-		Connection myConn = DriverManager.getConnection(DATABASE_URL + DATABASE_NAME + DB_SECURITY);
+		Class.forName(databaseDriver);
+		Connection myConn = DriverManager.getConnection(databaseURL +  security);
 		Statement myStmt = myConn.createStatement();
 		result = myStmt.executeQuery(query);
 		return result;

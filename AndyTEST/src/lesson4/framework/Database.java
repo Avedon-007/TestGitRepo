@@ -11,6 +11,9 @@ public class Database
 	{
 		Connection conn = null;
 		Statement stmt = null;
+		
+		
+		
 
 		// Register JDBC driver
 		Class.forName(databaseDriver);
@@ -79,8 +82,7 @@ public class Database
 		stmt.close();
 		conn.close();	
 	}
-	
-	
+		
 	protected void fillData(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;

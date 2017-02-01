@@ -14,23 +14,23 @@ public class TestEnvironment
 	private String pathToExcelFile = "";
 	private String databaseDriver = "";
 	private String databaseURL = "";
-	private String username = "";
-	private String password = "";
-	private String security = ""; // For MS SQL Server
+	private String username = ""; // For Oracle
+	private String password = ""; // For Oracle
+	private String databaseSecurity  = ""; // For MS SQL Server
 	
 
-	public void initialiseEnvironmentVariables() throws IOException
+	public void initialiseEnvironmentVariables() throws IOException, ClassNotFoundException
 	{
 		this.pathToExcelFile = getValueFromFile(DATA_FILE, "pathToExcelFile");
 		this.databaseDriver = getValueFromFile(DATA_FILE, "databaseDriver");
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
-		this.username  = getValueFromFile(DATA_FILE, "username");
-		this.password  = getValueFromFile(DATA_FILE, "password");
-		this.security  = getValueFromFile(DATA_FILE, "security");
+		//this.username  = getValueFromFile(DATA_FILE, "username");
+		//this.password  = getValueFromFile(DATA_FILE, "password");
+		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity ");
 
 	}
 
-	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException {
+	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException, ClassNotFoundException {
 		String resultValue = "";
 		// open file (.ini) and read row by row
 		// if row starts from myParam then return the content after =
@@ -49,27 +49,13 @@ public class TestEnvironment
 		String line = "";
 		while ((line = br.readLine()) != null)
 		{
-			resultValue += line + "\n";
+			String bufferArray[] = line.split(" ");	//раздел€ю строку на масив из слов			
 			
-			
-			if(myParam.equalsIgnoreCase("pathToExcelFile") )
+			if(bufferArray[0].equalsIgnoreCase(myParam) )
 			{
-				
-			}
-			else if(myParam.equalsIgnoreCase("databaseDriver") )
-			{
-				
-			}
-			else if(myParam.equalsIgnoreCase("databaseURL") )
-			{
-				
-			}
-			else if(myParam.equalsIgnoreCase("security") )
-			{
-				
-			}
-			
-			
+				resultValue = line.substring(line.indexOf("=")+2);	// read part of string beginning after "=" . 2  means that the "=" + "space"				
+				break;
+			}			
 		}
 		 br.close();
 
@@ -79,17 +65,17 @@ public class TestEnvironment
 	public void  createEnvironment() throws ClassNotFoundException, SQLException
 	{
 		Database myDatabase = new Database();
-		myDatabase.createStructure(databaseDriver, databaseURL, security);
-		myDatabase.createTables(databaseDriver, databaseURL, security);
-		myDatabase.fillData(databaseDriver, databaseURL, security);
+		myDatabase.createStructure(databaseDriver, databaseURL, databaseSecurity );
+		myDatabase.createTables(databaseDriver, databaseURL, databaseSecurity );
+		myDatabase.fillData(databaseDriver, databaseURL, databaseSecurity );
 	}
 
-	public void  runTests(String pathToExcelFile, String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, IOException, SQLException
+	public void  runTests() throws ClassNotFoundException, IOException, SQLException
 	{
 		Test myTest = new Test();
-		myTest.readData();
-		myTest.executeTestCases(pathToExcelFile, databaseDriver, databaseURL, security);
-		myTest.generateReports();
+		//myTest.readData();
+		myTest.executeTestCases(pathToExcelFile, databaseDriver, databaseURL, databaseSecurity );
+		//myTest.generateReports();
 	}
 	
 	

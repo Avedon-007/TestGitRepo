@@ -2,25 +2,19 @@ package lesson4.framework;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
-
-import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFColor;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteSQLQueryResult
 {
-	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int sh, int i)	throws IOException, ClassNotFoundException, SQLException
+	public void writeExcelCellsWithSQLQueryResult(String pathToExcelFile, String resultOfSQLQueryExecut, int sh, int i)	throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
+		File myFile = new File(pathToExcelFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
