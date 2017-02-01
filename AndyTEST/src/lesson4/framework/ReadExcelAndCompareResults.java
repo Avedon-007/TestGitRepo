@@ -99,13 +99,13 @@ public class ReadExcelAndCompareResults
 				arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);
 			}
 			ReadExcelAndCompareResults instance = new ReadExcelAndCompareResults();
-			instance.compareColumns(sh2);
+			instance.compareColumns(pathToExcelFile, sh2);
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 
-	protected void compareColumns(int sh2) throws ClassNotFoundException, IOException, SQLException
+	protected void compareColumns(String pathToExcelFile, int sh2) throws ClassNotFoundException, IOException, SQLException
 	{
 		String resultOfcompare = "";
 		int counter2 = 0; // Make COUNTER for pass through the name of column and get only data
@@ -121,14 +121,14 @@ public class ReadExcelAndCompareResults
 					{
 						resultOfcompare = "Pass";
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);						
+						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sh2, counter2);						
 						counter2++;
 
 					} else
 					{
 						resultOfcompare = "Fail";
 						WriteExcelForCompareColumns myNewObject = new WriteExcelForCompareColumns();
-						myNewObject.writeExcelCell(resultOfcompare, sh2, counter2);
+						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sh2, counter2);
 						counter2++;
 					}
 				}

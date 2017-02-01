@@ -14,7 +14,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class ReadExcelNoPoi
 {
-	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\test.xlsx";
+	private static String fileSource = "C:\\Users\\ANDY\\Desktop\\UserStoriesChecklist_02.xlsx";
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;
@@ -73,7 +73,7 @@ public class ReadExcelNoPoi
 				{
 					// System.out.println(buferArry[2].toString()); // DEBUG
 					resultOfReadCell = buferArry[2].toString();
-					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
+					ExecuteQuery myObject = new ExecuteQuery();
 					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
 					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы

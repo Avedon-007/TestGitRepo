@@ -17,9 +17,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteExcelForCompareColumns
 {
-	protected void writeExcelCell(String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
+	protected void writeExcelCell(String pathToExcelFile, String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
+		File myFile = new File(pathToExcelFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);		
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);

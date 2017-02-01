@@ -7,7 +7,7 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class ExecuteQueryAndGenerateCSV
+public class ExecuteQuery
 {
 	static final String DATABASE_DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	static final String DATABASE_URL = "jdbc:sqlserver://localhost:1433;";
@@ -17,7 +17,7 @@ public class ExecuteQueryAndGenerateCSV
 	
 	public String executeSQLQuery(String resultOfReadCell) throws ClassNotFoundException, SQLException
 	{
-		ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();		
+		ExecuteQuery myObject = new ExecuteQuery();		
 		return myObject.ResultSetToString(myObject.getResultSetFromQuery(resultOfReadCell));
 	}	// end of Main method
 

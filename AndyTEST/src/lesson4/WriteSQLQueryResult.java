@@ -2,7 +2,6 @@ package lesson4;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ public class WriteSQLQueryResult
 {
 	public void writeExcelCellsWithSQLQueryResult(String resultOfSQLQueryExecut, int sh, int i)	throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\ANDY\\Desktop\\test.xlsx");
+		File myFile = new File("C:\\Users\\ANDY\\Desktop\\UserStoriesChecklist_02.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh);  // sh - number of excel sheet
