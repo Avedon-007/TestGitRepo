@@ -27,7 +27,7 @@ public class TestEnvironment
 		//this.username  = getValueFromFile(DATA_FILE, "username");
 		//this.password  = getValueFromFile(DATA_FILE, "password");
 		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity ");
-
+System.out.println("!!!!!!");
 	}
 
 	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException, ClassNotFoundException {

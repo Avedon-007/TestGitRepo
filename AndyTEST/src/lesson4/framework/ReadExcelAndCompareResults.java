@@ -72,7 +72,7 @@ public class ReadExcelAndCompareResults
 					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();
 					String bufferSQLResult = myObject.executeSQLQuery(databaseDriver, databaseURL, security, resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
-					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
+					myObject2.writeExcelCellsWithSQLQueryResult(bufferSQLResult, bufferSQLResult, sh, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
 					counter++;																			// пропустить первую с названиями колонок)
 				}
 			}
