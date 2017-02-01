@@ -30,23 +30,7 @@ public class DataBaseCreate
 		System.out.println("Creating database...");
 		stmt = conn.createStatement();
 	      
-		String sql = "CREATE DATABASE TestDB ON " 
-						+ " ( "
-						+ " NAME = 'TestDB', "
-						+ " FILENAME = 'E:\\йспяш\\TestClub\\Automation\\DataBase\\TestDB.mdf', "
-						+ " SIZE = 5MB, "
-						+ " MAXSIZE = 10MB, "
-						+ " FILEGROWTH = 1MB "
-						+ " ) "
-						+ " LOG ON "
-						+ " ( "
-						+ " NAME = 'Log_TestDB', "
-						+ " FILENAME = 'E:\\йспяш\\TestClub\\Automation\\DataBase\\TestDB.ldf', "
-						+ " SIZE = 5MB, "
-						+ " MAXSIZE = 10MB, "
-						+ " FILEGROWTH = 1MB "
-						+ " ) "
-						+ " COLLATE Cyrillic_General_CI_AS ";
+		String sql = "CREATE DATABASE TestDB " 					;
 	     
 		stmt.executeUpdate(sql);
 		System.out.println("Database created successfully...");
