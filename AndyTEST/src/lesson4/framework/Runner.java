@@ -20,3 +20,5 @@ public class Runner
 		  System.out.println("FINISH!!!");
 	}
 }
+// Runner should be more user friendly, it should provide status messageies
+

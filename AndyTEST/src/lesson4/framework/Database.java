@@ -5,33 +5,54 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+
 public class Database
 {
-	protected void createStructure(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
-	{		
-		Connection conn = null;
-		Statement stmt = null;		
-
-		// Register JDBC driver
-		Class.forName(databaseDriver);
-
-		// Open a connection
-		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + security);
-
-		//  Execute a query
-		System.out.println("Creating database...");
-		stmt = conn.createStatement();
-	      
-		String sql = "CREATE DATABASE TestDB";			
-					
-		stmt.executeUpdate(sql);
-		System.out.println("Database created successfully...BINGO!!!");
-		stmt.close();
-		conn.close();		
+	private String databaseDriver;
+	private String databaseURL;
+	private String security;
+	private  String username;
+	private  String password;
+	
+	
+	
+	public Database(String databaseDriver, String databaseURL, String security, String username, String password)
+	{
+		this.databaseDriver = databaseDriver;
+		this.databaseURL = databaseURL;
+		this.security = security;
+		this.username = username;
+		this.password = password;
 	}
 	
-	protected void createTables(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
+	
+	
+	
+//	protected void createStructure() throws ClassNotFoundException, SQLException
+//	{		
+//		Connection conn = null;
+//		Statement stmt = null;		
+//
+//		// Register JDBC driver
+//		Class.forName(databaseDriver);
+//
+//		// Open a connection
+//		System.out.println("Connecting to database...");
+//		conn = DriverManager.getConnection(databaseURL + username + password);
+//
+//		//  Execute a query
+//		System.out.println("Creating database...");
+//		stmt = conn.createStatement();
+//	      
+//		//String sql = "CREATE DATABASE TestDB";			
+//					
+////		stmt.executeUpdate(sql);
+////		System.out.println("Database created successfully...BINGO!!!");
+////		stmt.close();
+////		conn.close();		
+//	}
+	
+	protected void createTables() throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;
 		Statement stmt = null;
@@ -41,14 +62,14 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + security);
+		conn = DriverManager.getConnection(databaseURL, username, password);
 
 		//  Execute a query
 		System.out.println("Creating Tables...");
 		stmt = conn.createStatement();
-	      
-		String sql = "USE TestDB "
-	    		  + " CREATE TABLE Airports "
+	    /////////// SQL query read form file  
+		String sql = 
+	    		   " CREATE TABLE Airports "
 	    		  + " ( "
 	    		  + " airportNumber int NOT NULL PRIMARY KEY, "
 	    		  + " airport varchar(20) NOT NULL, "
@@ -80,7 +101,7 @@ public class Database
 		conn.close();	
 	}
 		
-	protected void fillData(String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, SQLException
+	protected void fillData() throws ClassNotFoundException, SQLException
 	{
 		Connection conn = null;
 		Statement stmt = null;
@@ -90,14 +111,18 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + security);
+		conn = DriverManager.getConnection(databaseURL, username, password);
 
 		//  Execute a query
-		System.out.println("Filling the Tables of datasóå...");
+		System.out.println("Filling the Tables of database...");
 		stmt = conn.createStatement();
-	      
-		String sql = "USE TestDB "
-				  + " INSERT INTO Airports "
+/////////// SQL query read form file 
+		
+		
+		
+		
+		String sql = 
+				   " INSERT INTO Airports "
 	    		  + " (airportNumber, airport, dutyFree, priorityBoarding) "
 	    		  + " VALUES "
 	    		  + " (1, 'London', 'yes', 'yes'), "
@@ -191,8 +216,9 @@ public class Database
 	    		  + " (1033, 'Air France', 'no', 'yes', 'no'), "
 	    		  + " (1034, 'WizzAir', 'no', 'yes', 'yes'), "
 	    		  + " (1035, 'Ryanair', 'no', 'yes', 'no')";		
-					
+		System.out.println(sql);			
 		stmt.executeUpdate(sql);
+		
 		System.out.println("Tables were filled successfully...BINGO!!!");
 		stmt.close();
 		conn.close();	

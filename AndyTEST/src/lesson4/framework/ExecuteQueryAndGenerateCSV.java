@@ -11,14 +11,28 @@ import java.sql.Statement;
 
 public class ExecuteQueryAndGenerateCSV
 {
-
-	protected String executeSQLQuery(String databaseDriver, String databaseURL, String security, String resultOfReadCel) throws ClassNotFoundException, SQLException
+	private String databaseDriver;
+	private String databaseURL;
+	private String security;
+	
+	
+	
+	public ExecuteQueryAndGenerateCSV()
 	{
-		ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();		
-		return myObject.resultSetToString(myObject.getResultSetFromQuery(databaseDriver, databaseURL, security, resultOfReadCel));
+		this.databaseDriver = databaseDriver;
+		this.databaseURL = databaseURL;
+		this.security = security;
+	}
+	
+	
+	
+	protected String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException
+	{
+			
+		return resultSetToString(getResultSetFromQuery(resultOfReadCel));
 	}	// end of Main method
 	
-	private ResultSet getResultSetFromQuery(String databaseDriver, String databaseURL, String security, String query) throws ClassNotFoundException, SQLException
+	private ResultSet getResultSetFromQuery(String query) throws ClassNotFoundException, SQLException
 	{
 		ResultSet result;
 		Class.forName(databaseDriver);

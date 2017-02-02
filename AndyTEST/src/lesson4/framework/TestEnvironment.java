@@ -10,22 +10,24 @@ import java.sql.SQLException;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\Libs\\FrameworkForMSSQL.ini";
-	private static String pathToExcelFile = "";
-	private static String databaseDriver = "";
-	private static String databaseURL = "";
-	private static String username = ""; // For Oracle
-	private static String password = ""; // For Oracle
-	private static String databaseSecurity  = ""; // For MS SQL Server
+	public static final String DATA_FILE = "C:\\Users\\Пользователь\\git\\AndyTest4\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMSSQL.ini";
+	protected  String pathToExcelFile = "";
+	protected  String pathToReportFolder = "";
+	protected  String databaseDriver = "";
+	protected  String databaseURL = "";
+	protected  String username = ""; // For Oracle
+	protected  String password = ""; // For Oracle
+	protected  String databaseSecurity  = ""; // For MS SQL Server
 	
 
 	public void initialiseEnvironmentVariables() throws IOException, ClassNotFoundException
 	{
 		this.pathToExcelFile = getValueFromFile(DATA_FILE, "pathToExcelFile");
+		this.pathToReportFolder = getValueFromFile(DATA_FILE, "pathToReportFolder");
 		this.databaseDriver = getValueFromFile(DATA_FILE, "databaseDriver");
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
-		//this.username  = getValueFromFile(DATA_FILE, "username");
-		//this.password  = getValueFromFile(DATA_FILE, "password");
+		this.username  = getValueFromFile(DATA_FILE, "username");
+		this.password  = getValueFromFile(DATA_FILE, "password");
 		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity");
 
 	}
@@ -64,20 +66,17 @@ public class TestEnvironment
 
 	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
 	{
-		Database myDatabase = new Database();
-		myDatabase.createStructure(databaseDriver, databaseURL, databaseSecurity );
-		myDatabase.createTables(databaseDriver, databaseURL, databaseSecurity );
-		myDatabase.fillData(databaseDriver, databaseURL, databaseSecurity );
+		Database myDatabase = new Database(databaseDriver, databaseURL, databaseSecurity, username, password);
+		//myDatabase.createStructure();
+		myDatabase.createTables();
+		myDatabase.fillData();
 	}
 
 	public void  runTests() throws ClassNotFoundException, IOException, SQLException
 	{
-		Test myTest = new Test();
-		//myTest.readData();
-		myTest.executeTestCases(pathToExcelFile, databaseDriver, databaseURL, databaseSecurity );
-		//myTest.generateReports();
-	}
-	
-	
+		Test myTest = new Test(pathToExcelFile, pathToReportFolder, databaseDriver, databaseURL, databaseSecurity );		
+		myTest.executeTestCases();
+		
+	}	
 
 }

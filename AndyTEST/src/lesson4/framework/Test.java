@@ -7,23 +7,29 @@ import java.sql.SQLException;
 
 public class Test
 {
-//	protected void readData()
-//	{
-//		
-//	}
+	private String pathToExcelFile;
+	private String pathToReportFolder;
+	private String databaseDriver;
+	private String databaseURL;
+	private String security;
 	
-	protected void executeTestCases(String pathToExcelFile, String databaseDriver, String databaseURL, String security) throws ClassNotFoundException, IOException, SQLException
+	public Test(String pathToExcelFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security) {
+		this.pathToExcelFile = pathToExcelFile;
+		this.pathToReportFolder = pathToReportFolder;
+		this.databaseDriver = databaseDriver;
+		this.databaseURL = databaseURL;
+		this.security = security;
+	}
+
+	public void executeTestCases() throws ClassNotFoundException, IOException, SQLException
 	{
-		ReadExcelAndCompareResults instance = new ReadExcelAndCompareResults();
-		instance.writeDataFromExcelToArrayList(pathToExcelFile, databaseDriver, databaseURL, security);		
-		instance.addSQLresultToArrayList(pathToExcelFile);	
+		ReadExcelAndCompareResults instance = new ReadExcelAndCompareResults(pathToExcelFile, pathToReportFolder, databaseDriver, databaseURL, security);
+		instance.writeDataFromExcelToArrayList();		
+		instance.addSQLresultToArrayList();	
 		
 		
 	}
 	
-//	protected void generateReports()
-//	{
-//		
-//	}
+
 	
 }
