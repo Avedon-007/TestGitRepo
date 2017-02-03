@@ -68,8 +68,8 @@ public class TestEnvironment
 
 	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
 	{
-		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, databaseSecurity, username, password);		
-		myDatabase.createTablesAndFillData();		
+//		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, databaseSecurity, username, password);		
+//		myDatabase.createTablesAndFillData();		
 	}
 
 	public void  runTests() throws ClassNotFoundException, IOException, SQLException

@@ -23,13 +23,16 @@ public class Test
 
 	public void executeTestCases() throws ClassNotFoundException, IOException, SQLException
 	{
-		CreateEmptyTestReportFile myInstance = new CreateEmptyTestReportFile();
-		myInstance.createTeseReportFile(pathToTestCaseFile, pathToReportFolder);
+		CreateEmptyTestReportFile myInstance = new CreateEmptyTestReportFile(pathToTestCaseFile, pathToReportFolder);
+		myInstance.copyTestCaseFileToArrayList();
 		
+		CopyTestCaseFileToTestReportFile myInstance2 = new CopyTestCaseFileToTestReportFile();
+		myInstance2.copyTestCaseFileToArrayList(pathToTestCaseFile);
 		
-		ReadExcelAndCompareResults myInstance2 = new ReadExcelAndCompareResults(pathToExcelFile, pathToReportFolder, databaseDriver, databaseURL, security);		
-		myInstance2.writeDataFromExcelToArrayList();		
-		myInstance2.addSQLresultToArrayList();			
+//		
+//		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, security);		
+//		myInstance3.writeDataFromExcelToArrayList();		
+//		myInstance3.addSQLresultToArrayList();			
 	}
 	
 }
