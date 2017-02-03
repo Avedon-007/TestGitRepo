@@ -20,7 +20,7 @@ public class WriteNewExcel
 
 	public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File("C:\\Users\\MAMA\\Desktop\\SimpleScenariosChecklist_02.xlsx");
+		File myFile = new File("D:\\Git\\TestGitRepo\\AndyTEST\\lesson4TestReport\\TESTY.xlsx");
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis); 
 		XSSFSheet mySheet = myWorkBook.getSheetAt(1);

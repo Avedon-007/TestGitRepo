@@ -20,7 +20,7 @@ import lesson4.test.DataBaseSelect;
 
 public class ReadExcelAndCompareResults
 {	
-	private String pathToExcelFile;
+	private String pathToTestCaseFile;
 	private String pathToReportFolder; 
 	private String databaseDriver;
 	private String databaseURL;
@@ -33,9 +33,9 @@ public class ReadExcelAndCompareResults
 	private static String[] myArrayForArrayListAfterSQL;
 	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();
 	
-	public ReadExcelAndCompareResults(String pathToExcelFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security)
+	public ReadExcelAndCompareResults(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security)
 	{
-		this.pathToExcelFile = pathToExcelFile;
+		this.pathToTestCaseFile = pathToTestCaseFile;
 		this.pathToReportFolder = pathToReportFolder;
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
@@ -46,7 +46,7 @@ public class ReadExcelAndCompareResults
 	
 	public void writeDataFromExcelToArrayList() throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File(pathToExcelFile);
+		File myFile = new File(pathToTestCaseFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);	
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++)
@@ -64,13 +64,13 @@ public class ReadExcelAndCompareResults
 				arrayListOfTestCases.add(myArrayForArrayList);
 			}
 			
-			gettingExactColumnFromArrayList(i);
+			gettingExecutColumnFromArrayList(i);
 			arrayListOfTestCases.clear(); // I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !!
 		}
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
-	private void gettingExactColumnFromArrayList(int sheetNumber) throws ClassNotFoundException, SQLException, IOException
+	private void gettingExecutColumnFromArrayList(int sheetNumber) throws ClassNotFoundException, SQLException, IOException
 	{
 		String resultOfReadCell = "";
 		int counter = 0; // Make COUNTER for pass through the name of column and get only data
@@ -83,19 +83,23 @@ public class ReadExcelAndCompareResults
 				if (buferArry[2] != null)
 				{					
 					resultOfReadCell = buferArry[2].toString();
-					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV();  //
+					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV(databaseDriver, databaseURL, security);  //
 					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
-					myObject2.writeExcelCellsWithSQLQueryResult(pathToExcelFile, pathToReportFolder, bufferSQLResult, sheetNumber, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
+					myObject2.writeExcelCellsWithSQLQueryResult(pathToTestCaseFile, pathToReportFolder, bufferSQLResult, sheetNumber, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
 					counter++;																			// пропустить первую с названиями колонок)
 				}
 			}
 		}
+
 	} // end of gettingExectColumnFromArrayList()
 
 	protected void addSQLresultToArrayList() throws IOException, ClassNotFoundException, SQLException // Create new ArrayList and add Excel table with SQL query results to it
 	{
-		File myFile = new File(pathToExcelFile);
+		WriteSQLQueryResult myObject3 = new WriteSQLQueryResult();  // Create Instance of WriteSQLQueryResult class to use "pathToTestReportFile" variable		
+		String pathToFile =  myObject3.pathToTestReportFile;
+		
+		File myFile = new File(pathToFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++) 
@@ -113,13 +117,13 @@ public class ReadExcelAndCompareResults
 				arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);
 			}
 			
-			compareColumns(i);
+			compareColumns(pathToFile, i);
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 
-	private void compareColumns(int sheetnumber2) throws ClassNotFoundException, IOException, SQLException
+	private void compareColumns(String pathToFile, int sheetnumber2) throws ClassNotFoundException, IOException, SQLException
 	{
 		String resultOfcompare = "";
 		int counter2 = 0; // Make COUNTER for pass through the name of column and get only data
@@ -135,14 +139,14 @@ public class ReadExcelAndCompareResults
 					{
 						resultOfcompare = "Pass";
 						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
-						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sheetnumber2, counter2);						
+						myNewObject.writeExcelCell(pathToFile, resultOfcompare, sheetnumber2, counter2);						
 						counter2++;
 
 					} else
 					{
 						resultOfcompare = "Fail";
 						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
-						myNewObject.writeExcelCell(pathToExcelFile, resultOfcompare, sheetnumber2, counter2);
+						myNewObject.writeExcelCell(pathToFile, resultOfcompare, sheetnumber2, counter2);
 						counter2++;
 					}
 				}

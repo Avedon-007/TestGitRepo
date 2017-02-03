@@ -10,9 +10,10 @@ import java.sql.SQLException;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "C:\\Users\\Пользователь\\git\\AndyTest4\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMSSQL.ini";
-	protected  String pathToExcelFile = "";
+	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMSSQL.ini";
+	protected  String pathToTestCaseFile = "";
 	protected  String pathToReportFolder = "";
+	protected  String pathToDatabaseAndTablesCreationFile = "";
 	protected  String databaseDriver = "";
 	protected  String databaseURL = "";
 	protected  String username = ""; // For Oracle
@@ -22,8 +23,9 @@ public class TestEnvironment
 
 	public void initialiseEnvironmentVariables() throws IOException, ClassNotFoundException
 	{
-		this.pathToExcelFile = getValueFromFile(DATA_FILE, "pathToExcelFile");
+		this.pathToTestCaseFile = getValueFromFile(DATA_FILE, "pathToTestCaseFile");
 		this.pathToReportFolder = getValueFromFile(DATA_FILE, "pathToReportFolder");
+		this.pathToDatabaseAndTablesCreationFile = getValueFromFile(DATA_FILE, "pathToDatabaseAndTablesCreationFile");
 		this.databaseDriver = getValueFromFile(DATA_FILE, "databaseDriver");
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
 		this.username  = getValueFromFile(DATA_FILE, "username");
@@ -66,17 +68,14 @@ public class TestEnvironment
 
 	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
 	{
-		Database myDatabase = new Database(databaseDriver, databaseURL, databaseSecurity, username, password);
-		//myDatabase.createStructure();
-		myDatabase.createTables();
-		myDatabase.fillData();
+		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, databaseSecurity, username, password);		
+		myDatabase.createTablesAndFillData();		
 	}
 
 	public void  runTests() throws ClassNotFoundException, IOException, SQLException
 	{
-		Test myTest = new Test(pathToExcelFile, pathToReportFolder, databaseDriver, databaseURL, databaseSecurity );		
-		myTest.executeTestCases();
-		
+		Test myTest = new Test(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, databaseSecurity );		
+		myTest.executeTestCases();		
 	}	
 
 }

@@ -17,7 +17,7 @@ public class ExecuteQueryAndGenerateCSV
 	
 	
 	
-	public ExecuteQueryAndGenerateCSV()
+	public ExecuteQueryAndGenerateCSV(String databaseDriver, String databaseURL, String security)
 	{
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
@@ -27,8 +27,7 @@ public class ExecuteQueryAndGenerateCSV
 	
 	
 	protected String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException
-	{
-			
+	{			
 		return resultSetToString(getResultSetFromQuery(resultOfReadCel));
 	}	// end of Main method
 	

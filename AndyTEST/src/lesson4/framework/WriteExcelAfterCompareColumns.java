@@ -17,9 +17,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteExcelAfterCompareColumns
 {
-	protected void writeExcelCell(String pathToExcelFile, String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
+	protected void writeExcelCell(String pathToTestCaseFile, String resultOfcompare, int sh2, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File(pathToExcelFile);
+		File myFile = new File(pathToTestCaseFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);		
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sh2);	//sh - number of excel sheet
