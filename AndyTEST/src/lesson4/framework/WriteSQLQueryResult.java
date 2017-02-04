@@ -31,14 +31,7 @@ public class WriteSQLQueryResult
 	public void writeExcelCellsWithSQLQueryResult(String pathToTestCaseFile, String pathToReportFolder,
 			String resultOfSQLQueryExecut, int sheetNumber, int i) throws IOException, ClassNotFoundException, SQLException
 	{
-		// -Get from pathToExcelFile only file name
-		// - add output folder as prefix and "TestReport" + time stamp
-		
-		String pathToTestReportFile = pathToReportFolder + pathToTestCaseFile
-				.substring(getLastCharacterIndex(pathToTestCaseFile, '\\'), getLastCharacterIndex(pathToTestCaseFile, '.')) + "_TestReport_" + timeStamp() + ".xlsx";
-		
-		
-		
+			
 		
 				
 		File myFile = new File(pathToTestReportFile);
