@@ -72,7 +72,7 @@ public class TestEnvironment
 //		myDatabase.createTablesAndFillData();		
 	}
 
-	public void  runTests() throws ClassNotFoundException, IOException, SQLException
+	public void  runTests() throws ClassNotFoundException, IOException, SQLException, InterruptedException
 	{
 		Test myTest = new Test(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, databaseSecurity );		
 		myTest.executeTestCases();		

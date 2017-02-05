@@ -2,6 +2,7 @@ package lesson4.framework;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
 
 
 
@@ -21,18 +22,19 @@ public class Test
 		this.security = security;
 	}
 
-	public void executeTestCases() throws ClassNotFoundException, IOException, SQLException
+	public void executeTestCases() throws ClassNotFoundException, IOException, SQLException, InterruptedException
 	{
 		CreateEmptyTestReportFile myInstance = new CreateEmptyTestReportFile(pathToTestCaseFile, pathToReportFolder);
 		myInstance.createTestReportFile();
+					
+		System.out.println("Starting to copy data from Test Case to Test Result file...");
+		CopyTestCaseFileToTestReportFile myInstance2 = new CopyTestCaseFileToTestReportFile(pathToTestCaseFile);		
+		myInstance2.copyAllDataFromTestCaseToTestReportFile();
+		System.out.println("Data copied from Test Case to Test Result file...successefully!");
 		
-		CopyTestCaseFileToTestReportFile myInstance2 = new CopyTestCaseFileToTestReportFile();
-		myInstance2.copyTestCaseFileToArrayList(pathToTestCaseFile);
-		
-		
-//		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, security);		
-//		myInstance3.writeDataFromExcelToArrayList();		
-//		myInstance3.addSQLresultToArrayList();			
+		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(databaseDriver, databaseURL, security);		
+		myInstance3.writeDataFromExcelToArrayList();		
+		myInstance3.addSQLresultToArrayList();			
 	}
 	
 }

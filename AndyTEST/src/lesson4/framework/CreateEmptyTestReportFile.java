@@ -15,16 +15,23 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CreateEmptyTestReportFile
 {
 	public static final String DATE_FORMAT_NOW = "dd.MM.yyyy_HH-mm-ss";	
-	public String pathToTestReportFile ="";		
+	//public String pathToTestReportFile ="D:/Git/TestGitRepo/AndyTEST/lesson4TestReport/UserStoriesChecklist_02_TestReport_06.02.2017_00-09-37.xlsx";		
+	public static String pathToTestReportFile ;
 	private String pathToTestCaseFile;
 	private String pathToReportFolder;	
 	private static List <String> sheetNames = new ArrayList<String>();
+	
+	public CreateEmptyTestReportFile()
+	{		
+	}
 	
 	public CreateEmptyTestReportFile(String pathToTestCaseFile, String pathToReportFolder) throws ClassNotFoundException, IOException, SQLException
 	{
@@ -46,14 +53,13 @@ public class CreateEmptyTestReportFile
 	} 	//End of readTestCaseFile()
 		
 	public void createTestReportFile() throws IOException, ClassNotFoundException, SQLException
-
 	{
 		readTestCaseFile();  // Read Test Case file for create duplicate of it	
 		
 		System.out.println("Creating new Test Report file...");
 		// -Get from pathToExcelFile only file name
 		// - add output folder as prefix and "TestReport" + time stamp		
-		String pathToTestReportFile = pathToReportFolder + pathToTestCaseFile
+		pathToTestReportFile = pathToReportFolder + pathToTestCaseFile
 				.substring(getLastCharacterIndex(pathToTestCaseFile, '\\'), getLastCharacterIndex(pathToTestCaseFile, '.')) + "_TestReport_" + timeStamp() + ".xlsx";		
 		
 		 XSSFWorkbook myWorkBook = new XSSFWorkbook(); 
@@ -73,6 +79,7 @@ public class CreateEmptyTestReportFile
 		myWorkBook.close();
 		os.close();
 		System.out.println("New Test Report file created successefully!");
+
 	} // end of writeExcelCellsWithSQLQueryResult()
 		
 

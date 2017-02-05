@@ -33,20 +33,16 @@ public class ReadExcelAndCompareResults
 	private static String[] myArrayForArrayListAfterSQL;
 	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();
 	
-	public ReadExcelAndCompareResults(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security)
-	{
-		this.pathToTestCaseFile = pathToTestCaseFile;
-		this.pathToReportFolder = pathToReportFolder;
+	public ReadExcelAndCompareResults(String databaseDriver, String databaseURL, String security)
+	{		
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
-		this.security = security;
-		
-		
+		this.security = security;		
 	}
 	
 	public void writeDataFromExcelToArrayList() throws IOException, ClassNotFoundException, SQLException
 	{
-		File myFile = new File(pathToTestCaseFile);
+		File myFile = new File(pathToTestReportFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);	
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++)
@@ -86,7 +82,7 @@ public class ReadExcelAndCompareResults
 					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV(databaseDriver, databaseURL, security);  //
 					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
-					myObject2.writeExcelCellsWithSQLQueryResult(pathToTestCaseFile, pathToReportFolder, bufferSQLResult, sheetNumber, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
+					myObject2.writeExcelCellsWithSQLQueryResult(pathToTestReportFile, bufferSQLResult, sheetNumber, counter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы
 					counter++;																			// пропустить первую с названиями колонок)
 				}
 			}
@@ -96,10 +92,10 @@ public class ReadExcelAndCompareResults
 
 	protected void addSQLresultToArrayList() throws IOException, ClassNotFoundException, SQLException // Create new ArrayList and add Excel table with SQL query results to it
 	{
-		WriteSQLQueryResult myObject3 = new WriteSQLQueryResult();  // Create Instance of WriteSQLQueryResult class to use "pathToTestReportFile" variable		
-		String pathToFile =  myObject3.pathToTestReportFile;
+		CreateEmptyTestReportFile myInstance = new CreateEmptyTestReportFile(); // Create Instance of WriteSQLQueryResult class to use "pathToTestReportFile" variable		
 		
-		File myFile = new File(pathToFile);
+		
+		File myFile = new File(myInstance.pathToTestReportFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++) 
@@ -117,13 +113,13 @@ public class ReadExcelAndCompareResults
 				arrayListOfTestCasesWithSQLResults.add(myArrayForArrayListAfterSQL);
 			}
 			
-			compareColumns(pathToFile, i);
+			compareColumns(myInstance.pathToTestReportFile, i);
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 
-	private void compareColumns(String pathToFile, int sheetnumber2) throws ClassNotFoundException, IOException, SQLException
+	private void compareColumns(String pathToTestReportFile, int sheetnumber2) throws ClassNotFoundException, IOException, SQLException
 	{
 		String resultOfcompare = "";
 		int counter2 = 0; // Make COUNTER for pass through the name of column and get only data
@@ -139,14 +135,14 @@ public class ReadExcelAndCompareResults
 					{
 						resultOfcompare = "Pass";
 						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
-						myNewObject.writeExcelCell(pathToFile, resultOfcompare, sheetnumber2, counter2);						
+						myNewObject.writeExcelCell(pathToTestReportFile, resultOfcompare, sheetnumber2, counter2);						
 						counter2++;
 
 					} else
 					{
 						resultOfcompare = "Fail";
 						WriteExcelAfterCompareColumns myNewObject = new WriteExcelAfterCompareColumns();
-						myNewObject.writeExcelCell(pathToFile, resultOfcompare, sheetnumber2, counter2);
+						myNewObject.writeExcelCell(pathToTestReportFile, resultOfcompare, sheetnumber2, counter2);
 						counter2++;
 					}
 				}
