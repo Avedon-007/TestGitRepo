@@ -79,6 +79,8 @@ public class CreateEmptyTestReportFile
 		myWorkBook.close();
 		os.close();
 		System.out.println("New Test Report file created successefully!");
+		
+		ReadExcelAndCompareResults myInstance = new ReadExcelAndCompareResults(pathToTestReportFile);
 
 	} // end of writeExcelCellsWithSQLQueryResult()
 		

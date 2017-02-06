@@ -34,11 +34,9 @@ public class TestEnvironment
 
 	}
 
-	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException, ClassNotFoundException {
-		String resultValue = "";
-		// open file (.ini) and read row by row
-		// if row starts from myParam then return the content after =
-		//use subString
+	private String getValueFromFile(String DATA_FILE, String myParam) throws IOException, ClassNotFoundException 
+	{
+		String resultValue = "";		
 		
 		// Specify path to your file
 		File file = new File(DATA_FILE);

@@ -2,8 +2,6 @@ package lesson4.framework;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.concurrent.TimeUnit;
-
 
 
 public class Test
@@ -14,7 +12,8 @@ public class Test
 	private String databaseURL;
 	private String security;
 	
-	public Test(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security) {
+	public Test(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security) 
+	{
 		this.pathToTestCaseFile = pathToTestCaseFile;
 		this.pathToReportFolder = pathToReportFolder;
 		this.databaseDriver = databaseDriver;
@@ -30,7 +29,7 @@ public class Test
 		System.out.println("Starting to copy data from Test Case to Test Result file...");
 		CopyTestCaseFileToTestReportFile myInstance2 = new CopyTestCaseFileToTestReportFile(pathToTestCaseFile);		
 		myInstance2.copyAllDataFromTestCaseToTestReportFile();
-		System.out.println("Data copied from Test Case to Test Result file...successefully!");
+		System.out.println("Data copied from Test Case to Test Result file...successefully!");		
 		
 		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(databaseDriver, databaseURL, security);		
 		myInstance3.writeDataFromExcelToArrayList();		

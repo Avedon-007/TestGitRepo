@@ -14,17 +14,13 @@ public class ExecuteQueryAndGenerateCSV
 	private String databaseDriver;
 	private String databaseURL;
 	private String security;
-	
-	
-	
+		
 	public ExecuteQueryAndGenerateCSV(String databaseDriver, String databaseURL, String security)
 	{
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
 		this.security = security;
-	}
-	
-	
+	}	
 	
 	protected String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException
 	{			
@@ -52,6 +48,7 @@ public class ExecuteQueryAndGenerateCSV
 			for (int i = 1; i <= columnCount; i++)			
 				resultString += result.getString(rsmd.getColumnName(i)) + ";";			
 		}
+		
 		return resultString;
 	}	// end of ResultSetToString()
 }	// end of class

@@ -15,23 +15,15 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class WriteSQLQueryResult
-{
-	
-	//public String pathToTestReportFile = "D:\\Git\\TestGitRepo\\AndyTEST\\lesson4TestReport\\TESTY.xlsx";
-	
-	
-	
-	
-	
-	public void writeExcelCellsWithSQLQueryResult(String pathToTestCaseFile, String pathToReportFolder,
-			String resultOfSQLQueryExecut, int sheetNumber, int i) throws IOException, ClassNotFoundException, SQLException
-	{
-				
+{	
+	public void writeExcelCellsWithSQLQueryResult(String pathToTestReportFile,
+			String resultOfSQLQueryExecut, int sheetNumber, int rowCounter) throws IOException, ClassNotFoundException, SQLException
+	{				
 		File myFile = new File(pathToTestReportFile);
 		FileInputStream fis = new FileInputStream(myFile);
 		XSSFWorkbook myWorkBook = new XSSFWorkbook(fis);
 		XSSFSheet mySheet = myWorkBook.getSheetAt(sheetNumber);
-		XSSFRow row = mySheet.createRow(i);
+		XSSFRow row = mySheet.getRow(rowCounter);
 		if (row != null)
 		{
 			XSSFCell cell = row.getCell(4);
@@ -50,9 +42,7 @@ public class WriteSQLQueryResult
 		// Close workbook, OutputStream and Excel file to prevent leak
 		myWorkBook.close();
 		os.close();
-	} // end of writeExcelCellsWithSQLQueryResult()
-
-	
+	} // end of writeExcelCellsWithSQLQueryResult()	
 
 } // end of class
 
