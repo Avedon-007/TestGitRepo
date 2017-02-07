@@ -13,13 +13,18 @@ public class ExecuteQueryAndGenerateCSV
 {
 	private String databaseDriver;
 	private String databaseURL;
-	private String security;
+	//private String security;	//For MSSQL
+	private  String username; 
+	private  String password;
 		
-	public ExecuteQueryAndGenerateCSV(String databaseDriver, String databaseURL, String security)
+	public ExecuteQueryAndGenerateCSV(String databaseDriver, String databaseURL, String username, String password)
 	{
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
-		this.security = security;
+		//this.security = security;
+		this.username = username;
+		this.password = password;
+		
 	}	
 	
 	protected String executeSQLQuery(String resultOfReadCel) throws ClassNotFoundException, SQLException
@@ -31,7 +36,7 @@ public class ExecuteQueryAndGenerateCSV
 	{
 		ResultSet result;
 		Class.forName(databaseDriver);
-		Connection myConn = DriverManager.getConnection(databaseURL +  security);
+		Connection myConn = DriverManager.getConnection(databaseURL, username, password);
 		Statement myStmt = myConn.createStatement();
 		result = myStmt.executeQuery(query);
 		return result;

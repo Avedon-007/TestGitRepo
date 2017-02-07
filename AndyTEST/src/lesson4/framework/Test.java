@@ -10,15 +10,19 @@ public class Test
 	private String pathToReportFolder;
 	private String databaseDriver;
 	private String databaseURL;
-	private String security;
+	//private String security;	// For MSSQL
+	protected  String username; 
+	protected  String password;
 	
-	public Test(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String security) 
+	public Test(String pathToTestCaseFile, String pathToReportFolder, String databaseDriver, String databaseURL, String username, String password) 
 	{
 		this.pathToTestCaseFile = pathToTestCaseFile;
 		this.pathToReportFolder = pathToReportFolder;
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
-		this.security = security;
+		//this.security = security;
+		this.username  = username;
+		this.password  = password;
 	}
 
 	public void executeTestCases() throws ClassNotFoundException, IOException, SQLException, InterruptedException
@@ -31,7 +35,7 @@ public class Test
 		myInstance2.copyAllDataFromTestCaseToTestReportFile();
 		System.out.println("Data copied from Test Case to Test Result file...successefully!");		
 		
-		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(databaseDriver, databaseURL, security);		
+		ReadExcelAndCompareResults myInstance3 = new ReadExcelAndCompareResults(databaseDriver, databaseURL, username, password);		
 		myInstance3.writeDataFromExcelToArrayList();		
 		myInstance3.addSQLresultToArrayList();			
 	}

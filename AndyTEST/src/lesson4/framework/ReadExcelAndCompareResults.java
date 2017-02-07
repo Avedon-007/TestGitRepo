@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,18 +17,23 @@ public class ReadExcelAndCompareResults
 {		
 	private String databaseDriver;
 	private String databaseURL;
-	private String security;		
+	//private String security;	//For MSSQL
+	private  String username; 
+	private  String password;
+	
 	private static String[] myArrayForArrayList;
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;
 	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();
 	private static String pathToTestReportFile;
 	
-	public ReadExcelAndCompareResults(String databaseDriver, String databaseURL, String security)
+	public ReadExcelAndCompareResults(String databaseDriver, String databaseURL, String username, String password)
 	{		
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
-		this.security = security;		
+		//this.security = security;
+		this.username = username;
+		this.password = password;
 	}
 	
 	public ReadExcelAndCompareResults(String pathToTestReportFile)
@@ -74,7 +80,7 @@ public class ReadExcelAndCompareResults
 				if (buferArry[2] != null)
 				{			
 					resultOfReadCell = buferArry[2].toString();
-					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV(databaseDriver, databaseURL, security);  //
+					ExecuteQueryAndGenerateCSV myObject = new ExecuteQueryAndGenerateCSV(databaseDriver, databaseURL, username, password);  //
 					String bufferSQLResult = myObject.executeSQLQuery(resultOfReadCell); // присваиваю буферной переменной результат выполнения SQL запроса
 					WriteSQLQueryResult myObject2 = new WriteSQLQueryResult();
 					myObject2.writeExcelCellsWithSQLQueryResult(pathToTestReportFile, bufferSQLResult, sheetNumber, rowCounter); // передаю SQL запрос, номер страници и номер строки(номер строки, чтобы

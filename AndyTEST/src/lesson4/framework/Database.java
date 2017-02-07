@@ -16,20 +16,20 @@ public class Database
 	private String pathToDatabaseAndTablesCreationFile;
 	private String databaseDriver;
 	private String databaseURL;
-	private String security;
-//	private  String username;
-//	private  String password;
+	//private String security;
+	private  String username;
+	private  String password;
 	
 	
 	
-	public Database(String pathToDatabaseAndTablesCreationFile, String databaseDriver, String databaseURL, String security, String username, String password)
+	public Database(String pathToDatabaseAndTablesCreationFile, String databaseDriver, String databaseURL, String username, String password)
 	{
 		this.pathToDatabaseAndTablesCreationFile = pathToDatabaseAndTablesCreationFile;
 		this.databaseDriver = databaseDriver;
 		this.databaseURL = databaseURL;
-		this.security = security;
-//		this.username = username;
-//		this.password = password;
+		//this.security = security;
+		this.username = username;
+		this.password = password;
 	}
 	
 	protected void createTablesAndFillData() throws ClassNotFoundException, SQLException, IOException
@@ -42,7 +42,7 @@ public class Database
 
 		// Open a connection
 		System.out.println("Connecting to database...");
-		conn = DriverManager.getConnection(databaseURL + security);
+		conn = DriverManager.getConnection(databaseURL, username, password);
 		System.out.println("Connection to database is successeful!");
 		
 		//  Execute a query		

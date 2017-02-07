@@ -10,15 +10,15 @@ import java.sql.SQLException;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMSSQL.ini";
+	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMySQL.ini";
 	protected  String pathToTestCaseFile = "";
 	protected  String pathToReportFolder = "";
 	protected  String pathToDatabaseAndTablesCreationFile = "";
 	protected  String databaseDriver = "";
 	protected  String databaseURL = "";
-	protected  String username = ""; // For Oracle
-	protected  String password = ""; // For Oracle
-	protected  String databaseSecurity  = ""; // For MS SQL Server
+	protected  String username = ""; // For Oracle, MySQL
+	protected  String password = ""; // For Oracle, MySQL
+	//protected  String databaseSecurity  = ""; // For MS SQL Server
 	
 
 	public void initialiseEnvironmentVariables() throws IOException, ClassNotFoundException
@@ -30,7 +30,7 @@ public class TestEnvironment
 		this.databaseURL = getValueFromFile(DATA_FILE, "databaseURL");
 		this.username  = getValueFromFile(DATA_FILE, "username");
 		this.password  = getValueFromFile(DATA_FILE, "password");
-		this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity");
+		//this.databaseSecurity   = getValueFromFile(DATA_FILE, "databaseSecurity");
 
 	}
 
@@ -64,15 +64,15 @@ public class TestEnvironment
 		return resultValue;
 	}
 
-	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
-	{
-//		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, databaseSecurity, username, password);		
+//	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
+//	{
+//		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, username, password);		
 //		myDatabase.createTablesAndFillData();		
-	}
+//	}
 
 	public void  runTests() throws ClassNotFoundException, IOException, SQLException, InterruptedException
 	{
-		Test myTest = new Test(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, databaseSecurity );		
+		Test myTest = new Test(pathToTestCaseFile, pathToReportFolder, databaseDriver, databaseURL, username,  password);		
 		myTest.executeTestCases();		
 	}	
 
