@@ -3,14 +3,13 @@ package lesson4.framework;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.sql.SQLException;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMySQL.ini";
+	public static final String DATA_FILE = "D:\\others\\Новая папка\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMySQL.ini";
 	protected  String pathToTestCaseFile = "";
 	protected  String pathToReportFolder = "";
 	protected  String pathToDatabaseAndTablesCreationFile = "";
@@ -64,11 +63,11 @@ public class TestEnvironment
 		return resultValue;
 	}
 
-//	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
-//	{
-//		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, username, password);		
-//		myDatabase.createTablesAndFillData();		
-//	}
+	public void  createEnvironment() throws ClassNotFoundException, SQLException, IOException
+	{
+		Database myDatabase = new Database(pathToDatabaseAndTablesCreationFile, databaseDriver, databaseURL, username, password);		
+		myDatabase.createTablesAndFillData();		
+	}
 
 	public void  runTests() throws ClassNotFoundException, IOException, SQLException, InterruptedException
 	{

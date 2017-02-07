@@ -11,13 +11,13 @@ public class Runner
 		
 		TestEnvironment myInstance = new TestEnvironment();
 
-		  myInstance.initialiseEnvironmentVariables();
+		myInstance.initialiseEnvironmentVariables();
 
-		  //myInstance.createEnvironment();
+		myInstance.createEnvironment();
 
-		  myInstance.runTests();
+		myInstance.runTests();
 		  
-		  System.out.println("FINISH!!!");
+		System.out.println("FINISH!!!");
 	}
 }
 // Runner should be more user friendly, it should provide status messageies
