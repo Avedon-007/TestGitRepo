@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class TestEnvironment 
 {	
-	public static final String DATA_FILE = "D:\\others\\Новая папка\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMySQL.ini";
+	public static final String DATA_FILE = "D:\\Git\\TestGitRepo\\AndyTEST\\ini\\FrameworkForMySQL.ini";
 	protected  String pathToTestCaseFile = "";
 	protected  String pathToReportFolder = "";
 	protected  String pathToDatabaseAndTablesCreationFile = "";
