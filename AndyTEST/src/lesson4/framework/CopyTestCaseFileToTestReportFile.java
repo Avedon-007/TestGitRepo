@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -21,8 +20,7 @@ public class CopyTestCaseFileToTestReportFile
 {
 	private  String[] myArrayForEachObjectOfArrayList;
 	private static List<String[]> arrayListOfTestCases = new ArrayList<String[]>();
-	private String pathToTestCaseFile;
-	private String pathToTestReportFile;	
+	private String pathToTestCaseFile;		
 	
 	CopyTestCaseFileToTestReportFile(){};
 	
@@ -45,7 +43,7 @@ public class CopyTestCaseFileToTestReportFile
 		
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++)
 		{			
-			XSSFSheet excelSheet = excelBook.getSheetAt(i);			
+			excelBook.getSheetAt(i);			
 			
 			for (Row row : excelBook.getSheetAt(i))
 			{				
@@ -63,6 +61,7 @@ public class CopyTestCaseFileToTestReportFile
 			readArrayList(i);		
 			arrayListOfTestCases.clear(); // I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !!
 		}
+		excelBook.close();
 		fis.close();
 	} // end of copyTestCaseFileToArrayList
 	

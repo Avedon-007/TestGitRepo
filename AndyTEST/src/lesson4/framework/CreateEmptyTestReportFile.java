@@ -15,16 +15,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
-
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 public class CreateEmptyTestReportFile
 {
 	public static final String DATE_FORMAT_NOW = "dd.MM.yyyy_HH-mm-ss";	
 	//public String pathToTestReportFile ="D:/Git/TestGitRepo/AndyTEST/lesson4TestReport/UserStoriesChecklist_02_TestReport_06.02.2017_00-09-37.xlsx";		
-	public static String pathToTestReportFile ;
+	String pathToTestReportFile ;
 	private String pathToTestCaseFile;
 	private String pathToReportFolder;	
 	private static List <String> sheetNames = new ArrayList<String>();
@@ -48,7 +45,8 @@ public class CreateEmptyTestReportFile
 			
 			// Get names of Excel sheets
 		for(int i = 0; i < excelBook.getNumberOfSheets(); i++) sheetNames.add(excelBook.getSheetName(i));			
-						
+		
+		excelBook.close();
 		fis.close();		
 	} 	//End of readTestCaseFile()
 		
@@ -66,7 +64,7 @@ public class CreateEmptyTestReportFile
 		 for(String bufferSheetName: sheetNames)
 		{
 			System.out.println("Creating new sheet...");
-			XSSFSheet mySheet = myWorkBook.createSheet(bufferSheetName);		 		
+			myWorkBook.createSheet(bufferSheetName);		 		
 			System.out.println("New sheet was created.");		
 		}	
 

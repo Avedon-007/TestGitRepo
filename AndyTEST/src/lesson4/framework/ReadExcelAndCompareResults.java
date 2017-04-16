@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
@@ -25,7 +24,7 @@ public class ReadExcelAndCompareResults
 	private static ArrayList<String[]> arrayListOfTestCases = new ArrayList<String[]>();
 	private static String[] myArrayForArrayListAfterSQL;
 	private static ArrayList<String[]> arrayListOfTestCasesWithSQLResults = new ArrayList<String[]>();
-	private static String pathToTestReportFile;
+	private String pathToTestReportFile;
 	
 	public ReadExcelAndCompareResults(String databaseDriver, String databaseURL, String username, String password)
 	{		
@@ -48,7 +47,7 @@ public class ReadExcelAndCompareResults
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);	
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++)
 		{
-			XSSFSheet excelSheet = excelBook.getSheetAt(i);
+			excelBook.getSheetAt(i);
 			for (Row row : excelBook.getSheetAt(i))
 			{
 				myArrayForArrayList = new String[6];
@@ -64,6 +63,7 @@ public class ReadExcelAndCompareResults
 			gettingExecutColumnFromArrayList(i);
 			arrayListOfTestCases.clear(); // I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !!
 		}
+		excelBook.close();
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
@@ -98,7 +98,7 @@ public class ReadExcelAndCompareResults
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		for (int i = 0; i < excelBook.getNumberOfSheets(); i++) 
 		{
-			XSSFSheet excelSheet = excelBook.getSheetAt(i);
+			excelBook.getSheetAt(i);
 			for (Row row : excelBook.getSheetAt(i))
 			{
 				myArrayForArrayListAfterSQL = new String[6];
@@ -114,6 +114,7 @@ public class ReadExcelAndCompareResults
 			compareColumns(i);
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
+		excelBook.close();
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 

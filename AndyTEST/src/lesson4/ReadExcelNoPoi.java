@@ -8,7 +8,6 @@ import java.util.ArrayList;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 
@@ -38,7 +37,7 @@ public class ReadExcelNoPoi
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);	
 		for (int sh = 0; sh < excelBook.getNumberOfSheets(); sh++)
 		{
-			XSSFSheet excelSheet = excelBook.getSheetAt(sh);
+			excelBook.getSheetAt(sh);
 			for (Row row : excelBook.getSheetAt(sh))
 			{
 				myArrayForArrayList = new String[6];
@@ -57,6 +56,7 @@ public class ReadExcelNoPoi
 			instance.gettingExectColumnFromArrayList(sh);
 			arrayListOfTestCases.clear(); // I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! !!
 		}
+		excelBook.close();
 		fis.close();
 	} // end of writeDataFromExcelToArrayList()
 
@@ -91,7 +91,7 @@ public class ReadExcelNoPoi
 		XSSFWorkbook excelBook = new XSSFWorkbook(fis);
 		for (int sh2 = 0; sh2 < excelBook.getNumberOfSheets(); sh2++)  // sh - number of excel sheet
 		{
-			XSSFSheet excelSheet = excelBook.getSheetAt(sh2);
+			excelBook.getSheetAt(sh2);
 			for (Row row : excelBook.getSheetAt(sh2))
 			{
 				myArrayForArrayListAfterSQL = new String[6];
@@ -107,6 +107,7 @@ public class ReadExcelNoPoi
 			instance.compareColumns(sh2);
 			arrayListOfTestCasesWithSQLResults.clear();// I M P O R T A N T !!! clear Arraylist for use it for next excel sheet ! ! ! ! ! ! ! ! ! ! ! !!! ! ! ! ! !!
 		}
+		excelBook.close();
 		fis.close();
 	}	// end of addSQLresultToArrayList()
 
